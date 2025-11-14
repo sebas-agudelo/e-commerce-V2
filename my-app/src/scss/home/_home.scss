@@ -304,7 +304,7 @@
                         width: 110px;
                         padding: 8px 0;
                         border-style: none;
-                        background-color: #efdd54;
+                        background-color: #f5752b;
 
 
                         a {
@@ -342,7 +342,7 @@ box-shadow: 0 -3px 8px -6px rgba(17, 17, 26, 0.12);
                 margin: 0 0 12px;
                 
                 // color: #000000a5;
-                color: #efdd54;
+                color: #f5752b;
 
             }
 
@@ -354,8 +354,8 @@ box-shadow: 0 -3px 8px -6px rgba(17, 17, 26, 0.12);
 
                 .newlatter-policy{
                 position: absolute;
-               top: 95%;
-               transform: translateY(-95%);
+               top: 84%;
+               transform: translateY(-84%);
                font-size: 16px;
 
                a{
@@ -381,7 +381,8 @@ box-shadow: 0 -3px 8px -6px rgba(17, 17, 26, 0.12);
                     &:focus{
                         
                         padding: 0 48px 0 12px;
-                        
+                        outline: 1px solid #f5752b;
+                        border-bottom: none;
                     }
                 }
 
@@ -734,11 +735,7 @@ box-shadow: 0 -3px 8px -6px rgba(17, 17, 26, 0.12);
                     background: transparent;
                     height: 40px;
                     color: #000000a5;
-                    &:focus{
-                        
-                        padding: 0 48px 0 12px;
-                        
-                    }
+                  
                 }
 
                 button{
