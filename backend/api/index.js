@@ -32,5 +32,4 @@ app.get("/", (req, res) => {
 
 app.use(routes);
 
-// ❗ IMPORTANTE: NO usar listen() en Vercel
-export default app;
+app.listen(3030, () => console.log("Server ready on port 3030....."));
