@@ -14,7 +14,7 @@ export default function Home() {
   
   useEffect(() => {
     const saleProducts = async () => {
-      const response = await fetch(`https://e-commerce-v2-virid.vercel.app/superdeals`, {
+      const response = await fetch(`https://e-commerce-v2-lyart.vercel.app/superdeals`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -29,7 +29,7 @@ export default function Home() {
     }
 
     const getCategories = async () => {
-      const response = await fetch(`https://e-commerce-v2-virid.vercel.app/api/categori/get`, {
+      const response = await fetch(`https://e-commerce-v2-lyart.vercel.app/api/categori/get`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

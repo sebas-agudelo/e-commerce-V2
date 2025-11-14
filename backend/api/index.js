@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({
   origin: [
        "https://e-commerce-v2-dycs.vercel.app", // <--- El dominio que hace la llamada
-       "https://e-commerce-v2-virid.vercel.app", // <--- El dominio de tu backend
+       "https://e-commerce-v2-lyart.vercel.app", // <--- El dominio de tu backend
        "http://localhost:3000"
    ],
   credentials: true, 
@@ -23,7 +23,6 @@ app.use(express.json());
 app.get("/", (req, res) => res.send("Express och vercel är bästtttttttttt"));
 
 app.use(routes);
-
 
 
 app.listen(3030, () => console.log("Server ready on port 3030....."));
