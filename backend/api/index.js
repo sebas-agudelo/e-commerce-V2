@@ -9,9 +9,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-   origin: ["https://e-commerce-v2-dycs.vercel.app"], // solo tu frontend
-  credentials: true, // permite cookies y credenciales
-  // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+   origin: ["https://e-commerce-v2-dycs.vercel.app", "http://localhost:3000"], 
+  credentials: true, 
 }));
 
 app.use(cookieParser())
