@@ -45,7 +45,7 @@
                 margin: 0 36px 0;
                 flex: 0 0 auto;
 
-                border-bottom: 1px solid #efdd54;
+                border-bottom: 1px solid #f5752b;
 
 
                 p {
@@ -97,7 +97,7 @@
 
         h2 {
             // color: #efdd54;
-            color: #fff;
+            color: #f5752b;
 
             font-size: 43px;
             padding: 42px 0 0 36px;
@@ -132,8 +132,8 @@
                     min-height: 500px;
                     background-color: #f5f5f5;
                     margin: 0 0 0 10px;
-                    border-bottom: 1px solid #d3d3d3;
-                    border-top: 1px solid #d3d3d3;
+         border-bottom: 2px solid #f5752b;
+                        border-top: 2px solid #f5752b;
                     padding: 0 24px;
 
                     transition: transform 0.3s ease;
@@ -510,8 +510,7 @@ box-shadow: 0 -3px 8px -6px rgba(17, 17, 26, 0.12);
                         min-height: 500px;
                         background-color: #f5f5f5;
                         margin: 0 0 0 10px;
-                        border-bottom: 1px solid #d3d3d3;
-                        border-top: 1px solid #d3d3d3;
+               
                         padding: 0 24px;
 
                         transition: transform 0.3s ease;
