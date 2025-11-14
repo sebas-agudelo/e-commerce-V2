@@ -54,7 +54,7 @@ export const ProductProvider = ({ children }) => {
   const getCategories = async () => {
     try {
       const response = await fetch(
-        `https://examensarbeten.vercel.app/api/categori/get`,
+        `https://e-commerce-v2-hts6.vercel.app/api/categori/get`,
         {
           method: "GET",
           credentials: "include",
