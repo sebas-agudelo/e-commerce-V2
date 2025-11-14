@@ -14,7 +14,7 @@ export default function Home() {
   
   useEffect(() => {
     const saleProducts = async () => {
-      const response = await fetch(`https://e-commerce-v2-lyart.vercel.app/superdeals`, {
+      const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/superdeals`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -29,7 +29,7 @@ export default function Home() {
     }
 
     const getCategories = async () => {
-      const response = await fetch(`https://e-commerce-v2-lyart.vercel.app/api/categori/get`, {
+      const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/api/categori/get`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -83,7 +83,7 @@ export default function Home() {
       </section>
 
       <section className="home-super-deals">
-        <h2>SUPER DEALSsss</h2>
+        <h2>SUPER DEALS</h2>
         {/* <p className="mmm">ALWAYS GREAT DEALS</p> */}
         <div className="home-super-deals-content">
           {saleProducts.map((p) => (
