@@ -83,7 +83,7 @@ export default function Home() {
       </section>
 
       <section className="home-super-deals">
-        <h2>SUPER DEALS</h2>
+        <h2>SUPER DEALSsss</h2>
         {/* <p className="mmm">ALWAYS GREAT DEALS</p> */}
         <div className="home-super-deals-content">
           {saleProducts.map((p) => (
