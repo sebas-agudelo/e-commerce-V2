@@ -9,13 +9,21 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: [
-       "https://e-commerce-v2-dycs.vercel.app", // <--- El dominio que hace la llamada
-       "https://e-commerce-v2-lyart.vercel.app", // <--- El dominio de tu backend
-       "http://localhost:3000"
-   ],
-  credentials: true, 
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      "https://e-commerce-v2-dycs.vercel.app",
+      "https://e-commerce-v2-lyart.vercel.app",
+      "http://localhost:3000"
+    ];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
 }));
+
 
 app.use(cookieParser())
 app.use(express.json());
