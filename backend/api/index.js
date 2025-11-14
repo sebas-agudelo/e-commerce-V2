@@ -9,7 +9,11 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-   origin: ["https://e-commerce-v2-dycs.vercel.app", "http://localhost:3000"], 
+  origin: [
+       "https://e-commerce-v2-dycs.vercel.app", // <--- El dominio que hace la llamada
+       "https://e-commerce-v2-virid.vercel.app", // <--- El dominio de tu backend
+       "http://localhost:3000"
+   ],
   credentials: true, 
 }));
 
