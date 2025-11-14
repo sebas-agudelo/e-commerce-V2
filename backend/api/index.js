@@ -15,7 +15,7 @@ app.use(cors({
 app.use(cookieParser())
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("Express och vercel är bästt"));
+app.get("/", (req, res) => res.send("Express och vercel är bästtttttttttt"));
 
 app.use(routes);
 
