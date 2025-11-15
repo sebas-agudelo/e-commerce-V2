@@ -9,7 +9,7 @@ export default function Home() {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [saleProducts, setSaleProducts] = useState([]);
-  const {setProductLoading} = useContext(ProductsApiContext)
+  const {setProductLoading, productLoading} = useContext(ProductsApiContext)
 
 
   console.log("Kategorier: ", categories);
