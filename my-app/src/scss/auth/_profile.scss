@@ -38,10 +38,6 @@
                     border-bottom: 1px solid transparent;
                     font-weight: 300;
 
-                    &:hover {
-                        border-bottom: 1px solid #efdd54;
-                        ;
-                    }
                 }
             }
         }
@@ -83,8 +79,7 @@
 
                 &:focus {
                     outline: none;
-                    border: 1px solid #efdd54;
-                    padding: 12px 6px;
+                    border: 1px solid #515151;
                 }
             }
 
@@ -244,7 +239,7 @@
                         font-weight: 300;
 
                         &:hover {
-                            border-bottom: 1px solid #efdd54;
+                            border-bottom: 1px solid #363636;
                             ;
                         }
                     }
