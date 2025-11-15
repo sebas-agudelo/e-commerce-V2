@@ -61,8 +61,9 @@ export default function Home() {
 
       {/* <h2 className="fav-products">Favoriter</h2> */}
 
-      <section style={{ padding: "0"  }} className="Products-main">
+      <section className="Products-main">
         {/* <h2>TRE VÄGAR TILL DIN NÄSTA FAVORIT</h2> */}
+          <h2>Kategorier</h2>
         <article className="home-categories-container">
           {categories.map((category) => (
             <div className="home-categories" key={category.id}>
@@ -73,11 +74,8 @@ export default function Home() {
                   src={category.category_img}
                 />  
                 </div>
-               
-                  {category.category}
-             
-             
-                </Link>
+                <span>{category.category}</span>   
+              </Link>
 
 
               </p>
@@ -139,7 +137,12 @@ export default function Home() {
 
       <section className="newlatter-container">
           <div className="newsletter-text">
-            <h2>ANMÄL DIG FÖR SOUND:S NYHETSBREV</h2>
+            <h2>
+            ANMÄL DIG FÖR 
+            <br /> 
+            SOUND:S NYHETSBREV
+            </h2>
+            
             <p>Bli först med att ta del av kampanjer, nyheter och tips från SOUND direkt till din mejl</p>
             <p className="newlatter-policy">Läs vår <Link to={``}>integritetspolicy</Link></p>
           </div>
