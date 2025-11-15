@@ -106,7 +106,7 @@ export default function ShowFilters({ category, selectedCatId }) {
         </div>
 
         <div className="filter-actions">
-          <button className="filter-buttons" onClick={removeFilters}>
+          <button className="filter-buttons remove-filters" onClick={removeFilters}>
             Ta bort allt
           </button>
           <button className="filter-buttons" onClick={handleClick}>

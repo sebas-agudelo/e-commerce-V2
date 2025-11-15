@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import 'rc-slider/assets/index.css';
 import Footer from "./Footer";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { ProductsApiContext } from "../Context/ProductsContext";
 
 export default function Home() {
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [saleProducts, setSaleProducts] = useState([]);
+  const {setProductLoading} = useContext(ProductsApiContext)
 
 
   console.log("Kategorier: ", categories);
@@ -25,6 +27,7 @@ export default function Home() {
 
       if (response.ok) {
         setSaleProducts(data.data);
+        setProductLoading(true)
       }
     }
 
@@ -40,6 +43,8 @@ export default function Home() {
 
       if (response.ok) {
         setCategories(data.data);
+        setProductLoading(true)
+
       }
     };
 

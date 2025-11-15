@@ -22,10 +22,6 @@
 
         .pgn-action-btn-prev,
         .pgn-action-btn-next {
-            // height: 35px;
-            // width: 35px;
-            // border: 1px solid #efdd54;
-            // border-radius: 50%;
             border: none;
             background: transparent;
             cursor: pointer;
@@ -57,7 +53,7 @@
         }
 
         .current-page {
-            color: #efdd54;
+            color: #f5752b;
         }
     }
 }
