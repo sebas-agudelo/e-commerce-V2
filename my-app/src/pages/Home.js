@@ -16,22 +16,26 @@ export default function Home() {
   console.log("Kategorier: ", categories);
 
 
-  setProductLoading(true)
-
+  
   useEffect(() => {
+    // setProductLoading(true)
     const saleProducts = async () => {
       const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/superdeals`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
       });
-
+      
       const data = await response.json();
       console.log(data.data);
-
+      
+      // setProductLoading(true)
       if (response.ok) {
         setSaleProducts(data.data);
+        
       }
+      // setProductLoading(false)
+
     }
 
     const getCategories = async () => {
@@ -40,25 +44,25 @@ export default function Home() {
         credentials: "include",
         headers: { "Content-Type": "application/json" },
       });
-
+      
       const data = await response.json();
       console.log(data.data);
-
+      
+      // setProductLoading(true)
       if (response.ok) {
         setCategories(data.data);
-        // setProductLoading(true)
-
+        
       }
+      // setProductLoading(false)
     };
 
     saleProducts()
     getCategories();
+    // setProductLoading(false)
   }, []);
-  setProductLoading(false)
 
   return (
     <main className="home-main">
-      {productLoading ? <ContentSpinner /> : <>
         <article className="hero-video">
           <img src="Black and White Monochrome Simple Tech Company Presentation (1).png" />
         </article>
@@ -125,6 +129,11 @@ export default function Home() {
               <p>
                 Upptäck förstklassig ljudkvalitet och komfort i nästa generation med EBO 3.
               </p>
+              <div className="price-box">
+              <img src="arrow1.png"/>
+              <p className="price-box-label">FÖR ENDAST</p>
+              <p className="price-box-amount">987.00 kr.</p>
+              </div>
               <div className="home-new-product-actions">
                 <button>
                   <Link to={`/product/915af2ab-45cc-49cf-bf76-8e4daa0dd4d4`}>
@@ -163,7 +172,7 @@ export default function Home() {
         </section>
 
         <Footer />
-      </>}
+      
     </main>
   );
 }

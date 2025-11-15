@@ -2,6 +2,7 @@
     width: 100%;
     height: 100vh;
     position: relative;
+    // background-color: #181818;
 
     .hero-video {
         width: 100%;
@@ -18,6 +19,7 @@
         width: 100%;
         padding: 36px 0;
         margin: 3px 0;
+        background-color: #fff;
 
         h2 {
         
@@ -261,9 +263,9 @@
     .home-new-product {
         width: 100%;
         height: auto;
-        margin: 0 0 60px;
-        padding: 0 12px;
-        // background-color: #f5752b;
+        margin: 0 0 12px;
+        padding: 0 12px 36px;
+        background-color: #e5e5e5;
 
         .home-new-product-content {
             display: flex;
@@ -273,7 +275,9 @@
             .home-new-product-video {
 
                 width: 100%;
-                height: 350px;
+                // height: 350px;
+                height: 45vh;
+
                 overflow: hidden;
                 margin: 0 0 36px 0;
 
@@ -296,39 +300,65 @@
 
                 h2 {
                     font-size: 30px;
-                    color: #000000b7;
+                    line-height: 1.3;
+                    color: #181818;
                     text-align: center;
                 }
 
                 .home-new-product-subtitle {
                     font-size: 18px;
                     margin: 0 0 36px 0;
+                    // margin: 0 0 36px 0;
                 }
 
                 p {
                     font-size: 16px;
-                    width: 255px;
                     margin: 0 0 36px 0;
                     text-align: center;
+                }
 
-
+                .price-box{
+                    position: relative;
+                    height: auto;
+                
+                    
+                    .price-box-label{
+                        font-size: 30px;
+                        font-weight: 600;
+                        color: #f5752b;
+                        margin: 0 0 12px;
+                    }
+                    
+                    .price-box-amount{
+                        font-weight: 600;
+                        font-size: 20px;
+                        color: #181818;
+                    }
+                    img{
+              position: absolute;
+              width: 80px;
+              top: 45%;
+              right: 7%;
+              transform: translate(-7%, -45%);
+          }
                 }
 
                 .home-new-product-actions {
                     width: 100%;
                     text-align: center;
+                    
 
                     button {
                         width: 110px;
                         padding: 8px 0;
                         border-style: none;
-                        background-color: #f5752b;
+                        background-color: #181818;
 
 
                         a {
                             text-decoration: none;
                             display: block;
-                            color: #000000b7;
+                            color: #fff;
                             font-size: 14px;
                         }
                     }
@@ -359,11 +389,13 @@
         .newsletter-text {
             h2 {
                 font-size: 22px;
-                margin: 0 0 24px;
+                margin: 0 0 12px;
 
                 // color: #fff;
                 line-height: 1;    
                    color: #fff;
+                   color: #181818;
+
 
             }
 
@@ -397,10 +429,10 @@
                     width: 100%;
                     height: auto;
                     border-style: none;
-                    border-bottom: 1px solid #000000a5;
+                    border-bottom: 1px solid #181818;
                     background: transparent;
                     height: 40px;
-                    // color: #181818;
+                  
 
                     &:focus {
 
@@ -426,6 +458,8 @@
 
 @media screen and (min-width: 768px) {
     .home-main {
+
+    // background-color: #181818;
 
         .Products-main {
 h2{
@@ -591,74 +625,107 @@ h2{
             height: auto;
             margin: 0 0 12px;
             padding: 0;
-
-
+    
+            
+            
             .home-new-product-content {
                 display: flex;
                 flex-direction: row;
                 height: auto;
-
+                
                 .home-new-product-video {
 
-                    width: 50%;
+                    width: 60%;
                     height: 500px;
                     overflow: hidden;
                     margin: 0;
-
+                    
                     video {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
                         object-position: 0% 0%;
                         // height: 3oo;
-
+                        
                     }
                 }
-
+                
                 .home-new-product-info {
                     padding: 0 0 0 5rem;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
-
+                    
                     margin: 0 auto;
-
+                    
                     h2 {
                         font-size: 36px;
-                        color: #000000b7;
+                        color: #181818;
                         text-align: left;
+                        // line-height: 1;
                     }
-
+                    
                     .home-new-product-subtitle {
                         font-size: 18px;
-                        margin: 0 0 36px 0;
+                        margin: 0 0 24px;
+                        color: #181818;
                     }
-
+                    
                     p {
                         font-size: 16px;
                         width: 355px;
-                        margin: 0 0 36px 0;
+                        margin: 0 0 36px;
                         text-align: left;
+                        
+                        
+                    }
+                    
+                    .price-box{
+                        height: auto;
+                        width: auto;
+                        position: relative;
 
+                        .price-box-label{
+                            font-size: 30px;
+                            font-weight: 600;
+                            color: #f5752b;
+                            margin: 0 0 12px;
+    
+                        }
+                        
+                        .price-box-amount{
+                            font-weight: 600;
+                            font-size: 24px;
+                            color: #181818;
+                        }
 
+                        img{
+                            position: absolute;
+                            width: 80px;
+                            top: 50%;
+                            right: 26%;
+                            // left: 87%;
+                            transform: translate(-26%, -50%);
+                        }
                     }
 
                     .home-new-product-actions {
                         width: 100%;
-                        text-align: center;
+                        text-align: left;
 
                         button {
                             width: 110px;
-                            padding: 8px 0;
+                            padding: 10px 0;
                             border-style: none;
-                            background-color: #f5752b;
-
-
+                            border-radius: 5px;
+                    
                             a {
-                                text-decoration: none;
-                                display: block;
-                                color: #000000b7;
-                                font-size: 14px;
+                                transition: color 350ms ease;
+                                
+
+                                &:hover{
+                                    color: #f5752b;
+                                }
                             }
                         }
                     }
@@ -718,21 +785,16 @@ h2{
 
                 h2 {
                     font-size: 30px;
-                    margin: 0 0 24px;
-
-                    // color: #000000a5;
-                    // color: #efdd54;
-                    // color: #f5752b;
-                    // color: #181818;
+                    margin: 0 0 36px;
 
 
                 }
 
                 p {
-                    width: 415px;
-                    // color: #000000a5;
+                    width: 330px;
+               
                     margin: 0;
-                    // font-size: 16px;
+                
 
                 }
 
@@ -759,7 +821,7 @@ h2{
                         border-bottom: 1px solid #000000a5;
                         background: transparent;
                         height: 40px;
-                        color: #000000a5;
+                        // color: #000000a5;
 
                     }
 

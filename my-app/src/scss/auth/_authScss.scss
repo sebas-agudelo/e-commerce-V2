@@ -54,7 +54,7 @@
             form {
                 input {
                     width: 100%;
-                    padding: 12px 6px;
+                    padding: 12px 0;
                     margin-bottom: 24px;
                     background: transparent;
                     border: 1px solid transparent;
@@ -63,9 +63,9 @@
                     // color: #fff;
 
                     &:focus {
-                        border: 1px solid #181818;
-                        outline: #181818;
-
+                        border: 1px solid #f5752b;
+                        outline: #f5752b;
+                        padding: 12px 12px;
                     }
                 }
 
@@ -75,7 +75,7 @@
                     border: none;
                     cursor: pointer;
                     margin-bottom: 8px;
-                    background-color: #181818;
+                    background-color: #f5752b;
                     font-size: 16px;
                     color: #fff;
 
