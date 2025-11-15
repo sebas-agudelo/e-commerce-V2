@@ -61,7 +61,7 @@ export default function Home() {
 
       {/* <h2 className="fav-products">Favoriter</h2> */}
 
-      <section style={{ padding: "0" }} className="Products-main">
+      <section style={{ padding: "0"  }} className="Products-main">
         {/* <h2>TRE VÄGAR TILL DIN NÄSTA FAVORIT</h2> */}
         <article className="home-categories-container">
           {categories.map((category) => (
