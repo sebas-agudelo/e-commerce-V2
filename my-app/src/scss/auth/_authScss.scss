@@ -90,11 +90,13 @@
 
 .signout-btn-container{
     .signout-btn{
-        padding: 8px 12px;
-        background-color: #efdd54;
-        border-radius: 8px;
-        border: none;
-        font-size: 16px;
+     padding: 0 0 6px;
+
+    background: transparent;
+
+    border: none;
+    font-size: 16px;
+    border-bottom: 1px solid #000;
     }
 
 }

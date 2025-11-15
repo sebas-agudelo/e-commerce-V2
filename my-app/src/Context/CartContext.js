@@ -164,7 +164,7 @@ export const CartProvider = ({ children }) => {
       try {
         const response = await fetch(
           //  "https://examensarbeten.vercel.app/api/cart/addtocart"
-          "http://localhost:3030/api/cart/addtocart",
+          "https://e-commerce-v2-hts6.vercel.app/api/cart/addtocart",
           {
             method: "POST",
             credentials: "include",

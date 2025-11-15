@@ -17,8 +17,8 @@ export default function SignIn() {
           setErrorMessage("Email samt lösenord får inte vara tomma")
           return
         }
-        // https://examensarbeten.vercel.app/auth/signin
-        // https://examensarbeten.vercel.app/ 
+      
+        // https://e-commerce-v2-hts6.vercel.app 
       const response = await fetch(`http://localhost:3030/auth/signin`, {
         method: "POST",
         credentials: "include",
@@ -28,6 +28,8 @@ export default function SignIn() {
   
       const data = await response.json();
   
+      console.log("Sign in data: ",data);
+      
       if (response.ok) {
         setSession(true)
         nav("/profile");
