@@ -1,8 +1,9 @@
 .product-details {
 
     section {
-        padding-left: 24px;
-        padding-right: 24px;
+       padding-left: 24px;
+            padding-right: 24px;
+            padding-bottom: 24px;
 
         .image-wrapper {
             width: 45%;
@@ -139,14 +140,15 @@
     .product-details {
 
         section {
-            padding-left: 24px;
-            padding-right: 24px;
-    
+        
             .image-wrapper {
-                width: 45%;
-                max-width: 425px;
-                padding-left: 12px;
-                padding-right: 12px;
+                width: 20%;
+                max-width: 244px;
+                // margin: 0 auto;
+                
+                margin: 0;
+                // padding-left: 12px;
+                // padding-right: 12px;
     
                 img {
                     width: 100%;
@@ -165,27 +167,40 @@
                 width: 40%;
                 transform: translateY(-40%);
     
-                #title {
-                    font-size: 24px;
-                    font-weight: 500;
-                }
-    
-                #price {
-                    font-size: 38px;
-                    font-weight: 500;
-                    margin-bottom: 12px;
-                }
+             #title {
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            
+            .price {
+                font-size: 18px;
+                font-weight: 600;
+                margin: 12px 0 0;
+                
+            }
+
+            .price.mmm{
+                text-decoration: line-through;
+                font-weight: 300;
+                font-size: 16px;
+            }
+            .sale_price{
+                color: #c90000;
+                 font-size: 18px;
+                font-weight: 600;
+            }
     
                 .add-cart-btn {
                     width: 100%;
                     padding: 12px 24px;
-                    background-color: #efdd54;
+                    // background-color: #efdd54;
                     border-style: none;
-                    color: #000;
+                    // color: #000;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    margin-bottom: 24px;
+            cursor: pointer;
     
                     svg {
                         font-size: 24px;
