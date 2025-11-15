@@ -359,24 +359,25 @@
         .newsletter-text {
             h2 {
                 font-size: 22px;
-                margin: 0 0 12px;
+                margin: 0 0 24px;
 
                 // color: #fff;
                 line-height: 1;    
-                   color: #181818;
+                   color: #fff;
 
             }
 
             p {
                 margin: 0 0 48px;
                 font-size: 13px;
+                font-weight: 300;
                 color: #000000a5;
             }
 
             .newlatter-policy {
                 position: absolute;
-                top: 84%;
-                transform: translateY(-84%);
+                top: 77%;
+                transform: translateY(-77%);
                 font-size: 16px;
 
                 a {
@@ -399,7 +400,7 @@
                     border-bottom: 1px solid #000000a5;
                     background: transparent;
                     height: 40px;
-                    color: #181818;
+                    // color: #181818;
 
                     &:focus {
 
@@ -700,7 +701,7 @@ h2{
 
         .newlatter-container {
             padding: 0 36px;
-            height: 250px;
+            height: 290px;
             // background-color: #262626;
             // background-color: #f7f7f7;
 
@@ -717,7 +718,7 @@ h2{
 
                 h2 {
                     font-size: 30px;
-                    margin: 0 0 12px;
+                    margin: 0 0 24px;
 
                     // color: #000000a5;
                     // color: #efdd54;
@@ -729,9 +730,9 @@ h2{
 
                 p {
                     width: 415px;
-                    color: #000000a5;
+                    // color: #000000a5;
                     margin: 0;
-                    font-size: 16px;
+                    // font-size: 16px;
 
                 }
 
