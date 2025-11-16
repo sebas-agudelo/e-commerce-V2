@@ -6,22 +6,10 @@ import { routes } from './routes/routes.js';
 
 dotenv.config();
 const app = express();
-
-app.use(cors({
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      "https://e-commerce-v2-dycs.vercel.app",
-    
-      "http://localhost:3000"
-    ];
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-}));
+ app.use(cors({
+        origin: ["https://e-commerce-v2-dycs.vercel.app", "http://localhost:3000"],
+        credentials: true
+    }));
 
 app.use(cookieParser());
 app.use(express.json());
