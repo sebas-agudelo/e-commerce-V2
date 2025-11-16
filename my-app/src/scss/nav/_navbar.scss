@@ -44,11 +44,11 @@ header {
                 width: 100%;
                 // display: flex;
                 position: fixed;
-                height: 100%;
+                height: 100vh;
                 top: 0%;
                 // transform: translateY(-100%);
                 right: -100%;
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                // box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
                 transition: right 650ms ease-in-out;
                 // padding: 56px 0 0;
                 opacity: 0;
@@ -111,6 +111,8 @@ header {
                 opacity: 1;
                 right: 0;
                 background-color: #ffffff;
+                height: 100vh;
+
             }
         }
 
