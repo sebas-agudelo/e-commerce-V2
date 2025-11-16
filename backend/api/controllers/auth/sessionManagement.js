@@ -105,8 +105,8 @@ export const signOut = async (req, res) => {
 
     res.clearCookie("cookie_key", {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
     });
 
     console.log("har loggat ut");
