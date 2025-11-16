@@ -1,5 +1,5 @@
 .products-filter-container {
-  width: 95%;
+  width: 100%;
   position: fixed;
   top: 0;
   right: 0%;
@@ -9,7 +9,7 @@
   padding: 12px 16px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   opacity: 1;
-  transition: right 350ms ease-in-out;
+  transition: right 300ms ease-in-out;
   overflow: hidden;
 
   .products-filters-wrapper {
@@ -23,13 +23,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 0 10px 0;
-      // border-bottom: 1px solid #f5752b;
-      border-bottom: 1px solid #373737;
+      padding: 12px 0;
+      border-bottom: 0.5px solid #181818;
 
 
       h3 {
         font-size: 22px;
+        color: #181818;
         font-weight: 500;
       }
 
@@ -39,63 +39,17 @@
       }
     }
 
-    .price-range {
-      padding: 38px 0 0;
-
-      h3 {
-        font-weight: 400;
-        font-size: 22px;
-        padding: 0 0 20px;
-
-        span {
-          // background-color: #f5752b;
-          // background-color: #333333;
-
-          border-radius: 3px;
-          padding: 0 6px;
-          margin-left: 8px;
-          font-size: 18px;
-          // color: #fff;
-        }
-      }
-
-      .slider {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 12px;
-        border-radius: 5px;
-        // background: #f5752b;
-        background: #f5752b;
-
-        outline: none;
-        opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-      }
-
-      .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: #373737;
-        cursor: pointer;
-      }
-
-    }
-
     .categories-checkboxes {
       display: flex;
       flex-direction: column;
       align-items: start;
-      padding: 38px 0 0;
+margin: 48px 0 0;
 
 
       h3 {
         font-weight: 400;
-        font-size: 22px;
-        padding: 0 0 20px;
+        font-size: 18px;
+        margin: 0 0 12px;
 
         span {
           border-radius: 3px;
@@ -109,7 +63,7 @@
         width: 100%;
         padding: 8px 0;
         border-style: none;
-        border-bottom: 1px solid #373737;
+        border-bottom: 0.5px solid #181818;
         cursor: pointer;
       }
     }
@@ -192,31 +146,14 @@
 
 @media screen and (min-width: 768px) {
   .products-filter-container {
-    width: 25%;
+    width: 30%;
     
     .products-filters-wrapper {
-      .price-range {
-        h3 {
-          font-weight: 400;
-          font-size: 16px;
-          padding: 0 0 20px;
-          
-          span {
-            // background-color: #f5752b;
-            border-radius: 3px;
-            padding: 0 6px;
-            margin-left: 8px;
-            font-size: 16px;
-          }
-        }
-        
-      }
       
       .categories-checkboxes {
         display: flex;
         flex-direction: column;
         align-items: start;
-        padding: 28px 0 0;
         
         
         h3 {
@@ -235,8 +172,6 @@
         select {
           width: 100%;
           padding: 8px 0;
-          border-style: none;
-          border-bottom: 1px solid #373737;
           cursor: pointer;
         }
       }
