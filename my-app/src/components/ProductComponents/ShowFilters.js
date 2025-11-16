@@ -82,7 +82,27 @@ export default function ShowFilters({ category, selectedCatId }) {
                 </select>
               )}
             </>
-          </div>  
+          </div>
+          {/* <div className="price-range">
+            <h3>
+              Pris: <span>{price}:-</span>
+            </h3>
+            <input
+              type="range"
+              min={0}
+              max={2000}
+              value={price}
+              className="slider"
+              id="myRange"
+              onChange={(e) => {
+                setPrice(parseInt(e.target.value));
+              }}
+              onMouseUp={() => setLivePrice(price)}
+              onTouchEnd={() => setLivePrice(price)}
+            />
+          </div> */}
+
+          
         </div>
 
         <div className="filter-actions">
