@@ -45,8 +45,8 @@ header {
                 // display: flex;
                 position: fixed;
                 height: 100%;
-                top: 100%;
-                transform: translateY(-100%);
+                top: 0%;
+                // transform: translateY(-100%);
                 right: -100%;
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
                 transition: right 650ms ease-in-out;
