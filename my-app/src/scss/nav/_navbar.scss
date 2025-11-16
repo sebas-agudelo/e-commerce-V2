@@ -12,7 +12,7 @@ header {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     .navbar-container {
         width: 100%;
-        // z-index: 999;
+        z-index: 999;
         text-align: right;
         padding: 0 15px;
         color: #000000;
@@ -77,9 +77,8 @@ header {
                     }
 
                     .dropdown-links {
-                        width: 100%;
+                        width: 100vw;
                         visibility: visible;
-                        top: 100%;
                         transition: visibility 250ms ease-in-out;
                         display: flex;
                         flex-direction: column;
@@ -209,8 +208,9 @@ header {
 @media screen and (min-width: 768px) {
     header {
         .navbar-container {
+            // position: relative;
             width: 100%;
-            z-index: 999;
+            // z-index: 999;
             position: fixed;
             text-align: right;
             padding: 0 15px;
@@ -246,24 +246,20 @@ header {
                     width: auto;
                     height: 100%;
                     display: flex;
-                    // flex-direction: row;
+                    flex-direction: row;
                     align-items: center;
-                    justify-content: center;
+                    justify-content: left;
                     position: initial;
-                    // height: auto;
-                    right: 0%;
-                    top: 0;
-                transform: translateY(-0%);
-
+                   
                     padding: 0;
 
                     opacity: 1;
-                    // width: 100%;
+
 
                     ul {
                         display: flex;
                         flex-direction: row;
-
+                        
                         .headphones-link-container {
                             display: inline-block;
                             padding: 20px 0;
@@ -287,15 +283,14 @@ header {
                         .dropdown-links {
                             display: none;
                             position: absolute;
-                            left: 0;
+                            left: 0%;
                             top: 100%;
                             background-color: #ffffff;
-                            width: 100%;
+                            width: 100vw;
                             height: 450px;
                             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
                             padding: 25px 56px;
                             margin: 0;
-
                             
                         li {
                             padding: 0 0 16px;
@@ -328,6 +323,7 @@ header {
                         .dropdown-links.visible {
                             display: flex;
                             flex-direction: column;
+                            
                         }
                     }
                 }

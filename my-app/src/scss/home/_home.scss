@@ -239,13 +239,15 @@
                 }
 
                 .home-new-product-subtitle {
-                    font-size: 18px;
+                    font-size: 16px;
                     margin: 0 0 36px 0;
+                    color: #f5752b;
                 }
 
                 p {
                     font-size: 16px;
                     margin: 0 0 36px 0;
+                    padding: 0 48px;
                     text-align: center;
                 }
 
@@ -576,22 +578,23 @@ h2{
                     margin: 0 auto;
                     
                     h2 {
-                        font-size: 36px;
                         color: #181818;
                         text-align: left;
-                        // line-height: 1;
+
                     }
                     
                     .home-new-product-subtitle {
-                        font-size: 18px;
+
                         margin: 0 0 24px;
-                        color: #181818;
+
                     }
                     
                     p {
                         font-size: 16px;
                         width: 355px;
                         margin: 0 0 36px;
+                    padding: 0;
+
                         text-align: left;
                         
                         
