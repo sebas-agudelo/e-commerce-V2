@@ -85,10 +85,11 @@ export const signIn = async (req, res) => {
     }
     const { access_token } = sessionData.session;
 
-    cookie("cookie_key", access_token, {
+     return res
+    .cookie("cookie_key", access_token, {
       httpOnly: true,     
-      secure: true,    
-      sameSite: "none",
+      secure: false,    
+      sameSite: "lax",
       maxAge: 24 * 60 * 60 * 1000,
     })
       .status(200)
