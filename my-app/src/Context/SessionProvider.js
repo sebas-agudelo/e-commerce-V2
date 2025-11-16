@@ -25,7 +25,7 @@ export const SessionProvider = ({ children }) => {
     try {
       const response = await fetch(
         // https://e-commerce-v2-hts6.vercel.app/auth/sessionAuthCheck
-        "http://localhost:3030/auth/sessionAuthCheck",
+        "https://e-commerce-v2-hts6.vercel.app/auth/sessionAuthCheck",
         {
           method: "GET",
           credentials: "include",
