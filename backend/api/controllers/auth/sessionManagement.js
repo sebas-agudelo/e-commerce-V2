@@ -33,7 +33,7 @@ export const authenticateUser = async (req, res, next) => {
     const access_token = req.cookies.cookie_key;
 
     console.log(access_token);
-    
+
     if (!access_token) {
       return res
         .status(401)
@@ -67,7 +67,9 @@ export const signIn = async (req, res) => {
       email,
       password,
     });
-    
+
+    console.log("User data: ", data);
+
 
     if (error) {
       return res.status(400).json({
@@ -83,15 +85,14 @@ export const signIn = async (req, res) => {
     }
     const { access_token } = sessionData.session;
 
-    return res
-      .cookie("cookie_key", access_token, {
-        httpOnly: true,
-        secure: false,
-        sameSite: "lax",
-        maxAge: 24 * 60 * 60 * 1000,
-      })
+    cookie("cookie_key", access_token, {
+      httpOnly: true,     
+      secure: true,    
+      sameSite: "none",
+      maxAge: 24 * 60 * 60 * 1000,
+    })
       .status(200)
-      .json({ successfully: "Du är inloggad"});
+      .json({ successfully: "Du är inloggad" });
   } catch (error) {
     console.log("Ett oväntat fel inträffade. Försök senare igen.");
   }
@@ -103,7 +104,7 @@ export const signOut = async (req, res) => {
 
     res.clearCookie("cookie_key", {
       httpOnly: true,
-      secure: false,   
+      secure: false,
       sameSite: "lax",
     });
 
@@ -138,15 +139,15 @@ export const profile = async (req, res) => {
 
 export const updateUserData = async (req, res) => {
   const { firstname, lastname, phone, birthday, address, postal } = req.body;
-    const userID = req?.user?.id;
-  
-    if (!userID) {
-      return res
-        .status(401)
-        .json({ error: "Ogiltig användare. Försök att logga in." });
-    }
+  const userID = req?.user?.id;
 
-   const validationError = uuserDataValidations(
+  if (!userID) {
+    return res
+      .status(401)
+      .json({ error: "Ogiltig användare. Försök att logga in." });
+  }
+
+  const validationError = uuserDataValidations(
     firstname,
     lastname,
     birthday,
@@ -155,8 +156,8 @@ export const updateUserData = async (req, res) => {
     postal
   );
 
-  console.log("Firstname: ",firstname);
-  
+  console.log("Firstname: ", firstname);
+
   if (validationError) {
     return res.status(400).json(validationError);
   }
@@ -180,12 +181,12 @@ export const updateUserData = async (req, res) => {
 
 
 
-      if(error){
-        throw new Error(`internt fel: Kunde inte uppdatera användarensuppgidter. (insertUserData: error): ${JSON.stringify(
-            error
-          )}`)
-      }
-    
+    if (error) {
+      throw new Error(`internt fel: Kunde inte uppdatera användarensuppgidter. (insertUserData: error): ${JSON.stringify(
+        error
+      )}`)
+    }
+
     return res.status(201).json({ success: "Dina uppgifter har uppdaterats." });
   } catch (error) {
     console.error(error);
