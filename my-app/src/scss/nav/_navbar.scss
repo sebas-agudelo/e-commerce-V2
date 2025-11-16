@@ -44,7 +44,7 @@ header {
                 width: 100%;
                 // display: flex;
                 position: fixed;
-                height: calc(100dvh - 75px);
+                height: 100%;
                 top: 100%;
                 transform: translateY(-100%);
                 right: -100%;
@@ -84,8 +84,8 @@ header {
                         display: flex;
                         flex-direction: column;
                         text-align: left;
-                        padding: 0 24px;
-                        margin: 12px 0 0;
+                        padding: 0 20px;
+                        margin: 84px 0 0;
 
                         li {
                             list-style: none;
