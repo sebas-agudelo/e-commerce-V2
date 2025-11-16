@@ -30,8 +30,7 @@ export const ProductProvider = ({ children }) => {
   const fetchProductById = async (id) => {
     try {
       const response = await fetch(
-        // https://examensarbeten.vercel.app/api/product/get/${id}
-        `http://localhost:3030/api/product/get/${id}`,
+        `https://e-commerce-v2-hts6.vercel.app/api/product/get/${id}`,
         {
           method: "GET",
           credentials: "include",

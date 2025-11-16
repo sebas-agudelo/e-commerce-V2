@@ -24,7 +24,6 @@ export const SessionProvider = ({ children }) => {
   const verifySession = async () => {
     try {
       const response = await fetch(
-        // https://e-commerce-v2-hts6.vercel.app/auth/sessionAuthCheck
         "https://e-commerce-v2-hts6.vercel.app/auth/sessionAuthCheck",
         {
           method: "GET",

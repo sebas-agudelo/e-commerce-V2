@@ -56,7 +56,7 @@ export default function ShowSelectedFilters() {
               </div>
             )}
 
-            {/* {price > 0 && (
+            {price > 0 && (
               <div
                 className="selected-price"
                 onClick={() => removeSelectedFilter("price")}
@@ -64,7 +64,7 @@ export default function ShowSelectedFilters() {
                 <h3>{livePrice}</h3>
                 <IoCloseOutline />
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>

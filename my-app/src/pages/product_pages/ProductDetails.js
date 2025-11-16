@@ -15,7 +15,6 @@ export default function ProductDetails() {
   const fetchProductById = async (id) => {
     try {
       const response = await fetch(
-        // http://localhost:3030/api/product/get/${id}
         `https://e-commerce-v2-hts6.vercel.app/api/product/get/${id}`,
         {
           method: "GET",
@@ -28,9 +27,7 @@ export default function ProductDetails() {
 
       if (response.ok) {
         setProductData(data.product);
-      } else {
-        // setErrorMessage(data.error);
-      }
+      } 
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen");
     }

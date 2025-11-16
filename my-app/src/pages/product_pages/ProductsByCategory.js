@@ -13,7 +13,7 @@ export default function ProductsByCategory() {
   const urlPage = parseInt(searchParams.get("page")) || 1;
   const nav = useNavigate();
   
-  const { fetchProducts, currenPage, price, setCategoryID, setProductLoading} =
+  const { fetchProducts, currenPage, price, setProductLoading} =
     useContext(ProductsApiContext);
 
     useEffect(() => {   
@@ -24,17 +24,14 @@ export default function ProductsByCategory() {
   
   const fetchProductByCategory = async () => {
     setProductLoading(true)
-    // let url = `https://examensarbeten.vercel.app/api/product/categori/${selectedCatId}?page=${currenPage}`;
     try {
-      let url = `http://localhost:3030/api/product/categori/${selectedCatId}?page=${currenPage}`;
+      let url = `https://e-commerce-v2-hts6.vercel.app/api/product/categori/${selectedCatId}?page=${currenPage}`;
 
       if (price) {
         url += `&price=${price}`;
       } 
 
     await fetchProducts(url);
-
-    // setProductLoading(false)
 
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen.")

@@ -14,7 +14,7 @@ export default function CheckOut() {
 
   useEffect(() => {
 
-    fetch("https://examensarbeten.vercel.app/create-payment-intent", {
+    fetch("https://e-commerce-v2-hts6.vercel.app/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items: cartItems}),

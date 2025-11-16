@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ContentSpinner from "../../components/spinners/ContentSpinner";
 import { CgArrowRight } from "react-icons/cg";
-import { MdOutlineExpandMore } from "react-icons/md";
-import { MdExpandLess } from "react-icons/md";
+
 import { Link } from "react-router-dom";
 import UserProfileActions from "../../components/ProfileComponent/UserProfileActions";
 
@@ -10,7 +9,6 @@ export default function MyOrders() {
   const [orders, setOrders] = useState();
   const [loading, setLoading] = useState(true);
   const [seMore, setSeMore] = useState({});
-  const [items, setItems] = useState();
   const [width, setWidth] = useState(window.innerWidth >= 768);
   
  useEffect(() => {
@@ -22,8 +20,7 @@ export default function MyOrders() {
       try {
         setLoading(true);
         const response = await fetch(
-          // https://examensarbeten.vercel.app/api/order/myorders
-          `http://localhost:3030/api/order/myorders`,
+          `https://e-commerce-v2-hts6.vercel.app/api/order/myorders`,
           {
             method: "GET",
             credentials: "include",

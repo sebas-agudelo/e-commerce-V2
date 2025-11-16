@@ -139,11 +139,7 @@ export default function Cart() {
       totalPrice = item.unit_price * newQty;
     }
 
-    // console.log(newQty);
-
-
     if (newQty === 0) {
-      //  productToDelete = item;
       setShowDelMessage(true);
       setProductToDelete(item);
       return;

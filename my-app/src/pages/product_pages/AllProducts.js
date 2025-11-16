@@ -33,7 +33,6 @@ export default function Products() {
   const fetchAllProducts = async () => {
 setProductLoading(true)
     try {
-      // `http://localhost:3030/api/products/show?page=${currenPage}`
       let url = `https://e-commerce-v2-hts6.vercel.app/api/products/show?page=${currenPage}`;
 
       if (price && categoryID) {
