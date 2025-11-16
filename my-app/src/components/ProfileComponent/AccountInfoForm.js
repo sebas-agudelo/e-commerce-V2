@@ -41,7 +41,7 @@ export default function AccountInfoForm() {
       setLoading(true);
 
       // https://examensarbeten.vercel.app/auth/profile
-      const response = await fetch(`http://localhost:3030/auth/profile`, {
+      const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/auth/profile`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -79,8 +79,7 @@ export default function AccountInfoForm() {
   const updateUserData = async () => {
     try {
       const response = await fetch(
-        // https://examensarbeten.vercel.app/auth/user/update`
-        `http://localhost:3030/auth/user/update`,
+        `https://e-commerce-v2-hts6.vercel.app/auth/user/update`,
         {
           method: "PUT",
           credentials: "include",
@@ -115,7 +114,7 @@ export default function AccountInfoForm() {
       return;
     }
     try {
-      const response = await fetch(`https://examensarbeten.vercel.app/auth/user/add-info`, {
+      const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/auth/user/add-info`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
