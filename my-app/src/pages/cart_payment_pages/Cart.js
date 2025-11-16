@@ -196,8 +196,8 @@ export default function Cart() {
 
   return (
     <main className="cart-container">
+        <h2 className="shopping-cart">VAROKORG</h2>
       <section>
-        {/* <h2 style={}>{`Shoppingbag`.toUpperCase()}</h2> */}
         <ShowCartItems reduceQty={reduceQty} incruseQty={incruseQty} />
         {showDelMessage ? (
           <CartRemoveProductConfirm

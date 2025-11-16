@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import { BsPlusLg } from "react-icons/bs";
 import { PiMinusThin } from "react-icons/pi";
+import { paymethods } from "../../data/paymentMethods";
 
 export default function ShowCartItems({ reduceQty, incruseQty }) {
   const { cartItems, total, saleTotalPrice } = useContext(CartContext);
@@ -65,6 +66,12 @@ export default function ShowCartItems({ reduceQty, incruseQty }) {
             <button className="checkout-btn">
               <Link to={`/checkout`}>Till kassan</Link>
             </button>
+
+            <div className="payment-methods">
+              {paymethods?.map((method) => (
+                <img src={method}/>
+              ))}
+            </div>
           </>
         </article>
       )}

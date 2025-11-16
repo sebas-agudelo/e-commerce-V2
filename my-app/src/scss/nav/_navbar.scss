@@ -72,7 +72,7 @@ header {
                             border-bottom: 2px solid transparent;
 
                             &:hover {
-                                border-bottom: 2px solid #efdd54;
+                                border-bottom: 2px solid #f5752b;
                             }
                         }
                     }
@@ -97,11 +97,8 @@ header {
                                 color: #000;
                                 font-weight: 400;
                                 padding: 0 0 6px;
-                                border-bottom: 2px solid #efdd54;                                
+                                border-bottom: 2px solid #f5752b;                                
 
-                                &:hover {
-                                    border-bottom: 2px solid #efdd54;
-                                }
                             }
                         }
 
@@ -147,7 +144,7 @@ header {
                         width: 85%;
                         padding: 0 0 6px;
                         border-style: none;
-                        border-bottom: 2px solid #efdd54;
+                        border-bottom: 2px solid #f5752b;
 
                         &:focus {
                             outline: none;
@@ -266,16 +263,12 @@ header {
 
                             .headphones-link {
                                 color: #000;
-                                font-size: 19px;
+                                font-size: 18px;
                                 font-weight: 400;
                                 display: block;
                                 text-decoration: none;
-                              
-
-                                &:hover {
-                                    border-bottom: 2px solid #efdd54;
-                                }
                             }
+                            
                         }
 
                         .dropdown-links {
@@ -293,15 +286,29 @@ header {
                         li {
                             padding: 0 0 16px;
                             a {
+                                position: relative;
                                 font-size: 18px;
-                                padding: 0 0 0;
+                                padding: 0 0 3px;
                                 border-bottom: none;                                
+                            }
 
-                                &:hover {
-                                    border-bottom: 2px solid #efdd54;
-                                }
+                            a::after{
+                                position: absolute;
+                                content: "";
+                                bottom: 0%;
+                                left: 0%;
+                                width: 0%;
+                                height: 1px;
+                                background-color: #f5752b;
+                                transform: skew(0);
+                                transition: width 350ms ease;
+                            }
+
+                            a:hover::after{
+                                width: 100%;
                             }
                         }
+                        
                         }
 
                         .dropdown-links.visible {
@@ -370,7 +377,7 @@ header {
                         input {
                             width: 100%;
                             border-style: none;
-                            border-bottom: 1px solid #efdd54;
+                            border-bottom: 1px solid #f5752b;
                             padding: 0 5px 5px;
 
                             &:focus {
