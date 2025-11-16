@@ -119,33 +119,33 @@ $letterSize: 16px;
             .checkout-total-price {
                 p {
                     font-size: 15px;
-                font-weight: 300;
-                 display: flex;
-                justify-content: space-between;
+                    font-weight: 300;
+                    display: flex;
+                    justify-content: space-between;
 
 
-                       span{
-                    font-weight: 600;
-                    font-size: 15px;
+                    span {
+                        font-weight: 600;
+                        font-size: 15px;
+                    }
+
+                    .discount-total {
+                        color: #c90000;
+                    }
                 }
 
-                .discount-total{
-                     color: #c90000;
-                }
-                }
-
-                #checkout-price{
-                       margin: 16px 0;
-                font-size: 18px;
-
-                span{
+                #checkout-price {
+                    margin: 16px 0;
                     font-size: 18px;
+
+                    span {
+                        font-size: 18px;
+                    }
                 }
-                }
 
 
 
-                
+
             }
 
             //Knappen för att gå vidare till kunduppgifter
@@ -160,7 +160,8 @@ $letterSize: 16px;
                     cursor: pointer;
                     font-size: 14px;
                     padding: 8px 0;
-                    background-color: #353535;
+                    border-radius: 5px;
+                    background-color: #f5752b;
                     color: #fff;
                 }
             }
@@ -263,8 +264,9 @@ $letterSize: 16px;
                     .checkout-btn {
                         width: 170px;
                         text-align: center;
-                            background-color: #353535;
-                    color: #fff;
+                        border-radius: 5px;
+                        background-color: #f5752b;
+                        color: #fff;
                         font-size: 14px;
                         padding: 8px 0;
                     }
@@ -276,7 +278,7 @@ $letterSize: 16px;
     .checkout-payment-wrapper {
         display: flex;
         flex-direction: column;
-        border: 1px solid #efdd54;
+        border: 1px solid #f5752b;
         padding: 38px 28px;
         margin: 20px 0 0;
 
@@ -288,7 +290,8 @@ $letterSize: 16px;
             .pay-btn {
                 width: 170px;
                 text-align: center;
-                    background-color: #353535;
+                 border-radius: 5px;
+                    background-color: #f5752b;
                     color: #fff;
                 cursor: pointer;
                 font-size: 14px;
@@ -345,7 +348,7 @@ $letterSize: 16px;
                     transition: color 250ms linear;
 
                     &:hover {
-                        color: #efdd54;
+                        color: #f5752b;
                     }
                 }
             }
@@ -369,7 +372,7 @@ $letterSize: 16px;
                     margin: 24px 0 0;
 
 
-                   
+
 
                     .checkout-items-details {
                         width: 634px;
@@ -391,7 +394,7 @@ $letterSize: 16px;
 
                 .checkout-total-price {
                     margin: 24px 0 0;
-                 
+
                 }
             }
 

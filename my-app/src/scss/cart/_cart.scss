@@ -121,12 +121,13 @@
 
             .checkout-btn {
                 width: 100%;
-                background-color: #01110f;
+                background-color: #f5752b;
                 border-style: none;
                 padding: 12px 24px;
+                border-radius: 5px;
 
                 a {
-                    color: #fff;
+                    color: #181818;
                     text-decoration: none;
                     display: block;
                 }
@@ -318,7 +319,7 @@
 
                         a{
                             &:hover{
-                                color: #f5752b;
+                                color: #fff;
                             }
                         }
                     

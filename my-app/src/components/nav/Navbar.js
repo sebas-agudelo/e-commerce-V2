@@ -107,7 +107,7 @@ export default function Navbar() {
       <div className="navbar-container">
         <div className="navbar-content-wrapper">
           <div
-            onClick={isClose}
+            onClick={() => {window.location.reload()}}
             className="nav-logo-img">
             <Link to={`/`}>
               <img src="/sound.png" />
