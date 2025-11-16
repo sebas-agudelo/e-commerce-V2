@@ -184,9 +184,6 @@
 
                     #price {
                         text-decoration: line-through;
-                        // font-weight: 600;
-
-
                     }
 
                     #sale-price {
@@ -198,63 +195,6 @@
                     &:hover {
                         transform: translateY(-8px);
                     }
-                }
-            }
-        }
-
-
-    }
-
-
-    .fav-products {
-        font-size: 44px;
-        font-weight: 500;
-        width: 100%;
-        text-align: center;
-        padding: 34px;
-    }
-
-
-    .more-section {
-        display: flex;
-        height: 100vh;
-        background-color: #efdd54;
-
-
-        .caption-img {
-            display: none;
-
-        }
-
-        .about-sound {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 0 60px;
-
-            .SOUND1 {
-                font-size: 34px;
-            }
-
-            p {
-                margin: 50px 0;
-            }
-
-            button {
-
-                background-color: #ffffff;
-                border: none;
-                padding: 12px 24px;
-                cursor: pointer;
-
-
-                a {
-                    text-align: center;
-                    text-decoration: none;
-                    color: #000;
                 }
             }
         }
@@ -272,10 +212,7 @@
             height: auto;
 
             .home-new-product-video {
-
                 width: 100%;
-                // height: 350px;
-                // height: 35vh;
 
                 overflow: hidden;
                 margin: 0 0 36px 0;
@@ -284,13 +221,10 @@
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    // height: 3oo;
-
                 }
             }
 
             .home-new-product-info {
-                // padding: 0 0 0 5rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -307,7 +241,6 @@
                 .home-new-product-subtitle {
                     font-size: 18px;
                     margin: 0 0 36px 0;
-                    // margin: 0 0 36px 0;
                 }
 
                 p {
@@ -345,20 +278,17 @@
                 .home-new-product-actions {
                     width: 100%;
                     text-align: center;
-                    
-
                     button {
                         width: 110px;
                         padding: 8px 0;
                         border-style: none;
-                        background-color: #181818;
-
-
+                        background-color: #f5752b;
+                        border-radius: 5px;
                         a {
                             text-decoration: none;
                             display: block;
-                            color: #fff;
-                            font-size: 14px;
+                            color: #181818;
+                            font-size: 13px;
                         }
                     }
                 }
@@ -372,30 +302,18 @@
         height: 450px;
         position: relative;
         background-color: #f5752b;
-
-        // background-color: #262626;
-        // background-color: #f7f7f7;
-
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin: 0 0 12px;
         box-shadow: 0 -3px 8px -6px rgba(17, 17, 26, 0.12);
 
-
-
-        // margin: 100px 0;
         .newsletter-text {
             h2 {
                 font-size: 22px;
                 margin: 0 0 12px;
-
-                // color: #fff;
                 line-height: 1;    
-                   color: #fff;
-                   color: #181818;
-
-
+                color: #fff;     
             }
 
             p {
@@ -703,27 +621,17 @@ h2{
                             width: 80px;
                             top: 50%;
                             right: 26%;
-                            // left: 87%;
                             transform: translate(-26%, -50%);
                         }
                     }
 
                     .home-new-product-actions {
-                        width: 100%;
                         text-align: left;
-
                         button {
-                            width: 110px;
-                            padding: 10px 0;
-                            border-style: none;
-                            border-radius: 5px;
-                    
                             a {
                                 transition: color 350ms ease;
-                                
-
                                 &:hover{
-                                    color: #f5752b;
+                                    color: #fff;
                                 }
                             }
                         }

@@ -19,7 +19,7 @@ export default function SignIn() {
         }
       
         // https://e-commerce-v2-hts6.vercel.app 
-      const response = await fetch(`http://localhost:3030/auth/signin`, {
+      const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/auth/signin`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
