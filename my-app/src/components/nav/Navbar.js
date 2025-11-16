@@ -110,7 +110,7 @@ export default function Navbar() {
             onClick={() => {window.location.reload()}}
             className="nav-logo-img">
             <Link to={`/`}>
-              <img src="/sound.png" />
+              <img src="/sound1logo1.png" />
             </Link>
           </div>
 
