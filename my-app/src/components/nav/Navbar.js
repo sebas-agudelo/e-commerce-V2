@@ -106,7 +106,9 @@ export default function Navbar() {
     <header className={`${isScrolled ? "scrolled" : ""}`}>
       <div className="navbar-container">
         <div className="navbar-content-wrapper">
-          <div className="nav-logo-img">
+          <div
+            onClick={isClose}
+            className="nav-logo-img">
             <Link to={`/`}>
               <img src="/sound.png" />
             </Link>
@@ -124,9 +126,8 @@ export default function Navbar() {
                 </Link>
 
                 <ul
-                  className={`dropdown-links ${
-                    isDropdownOpen ? "visible" : ""
-                  }`}
+                  className={`dropdown-links ${isDropdownOpen ? "visible" : ""
+                    }`}
                 >
                   <li>
                     <Link
@@ -186,43 +187,48 @@ export default function Navbar() {
                 ""
               ) : (
                 <>
-                  {isClicked ? (
-                    ""
-                  ) : (
-                    <>
-                      <div className="grapper">
+                  <div className="grapper">
+                    {isClicked ? (
+                      ""
+                    ) : (
+                      <>
                         <IoSearchOutline
                           className="search-icon"
                           onClick={openSearchInput}
                         />
-                        {session ? (
-                          <div>
-                            <Link to={`/profile`}>
-                              <GoPerson />
-                            </Link>
-                          </div>
-                        ) : (
-                          <div>
-                            <Link to={`/signin`}>
-                              <GoPerson />
-                            </Link>
-                          </div>
-                        )}
-                        <Link className="cart-icon" to={`/cart`}>
-                          <PiShoppingCartThin />
-                          <p className="qty-wrapper">
-                            {cartItems && cartItems.length > 0
-                              ? cartItems.forEach((qty) => {
-                                  totalQty += qty.quantity;
-                                  return totalQty;
-                                })
-                              : ""}
-                            {totalQty}
-                          </p>
-                        </Link>
-                      </div>
-                    </>
-                  )}
+                      </>
+                    )}
+                    <div onClick={isClose}>
+                      {session ? (
+                        <div>
+                          <Link to={`/profile`}>
+                            <GoPerson />
+                          </Link>
+                        </div>
+                      ) : (
+                        <div>
+                          <Link to={`/signin`}>
+                            <GoPerson />
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                    <Link
+                    onClick={isClose} 
+                    className="cart-icon" 
+                    to={`/cart`}>
+                      <PiShoppingCartThin />
+                      <p className="qty-wrapper">
+                        {cartItems && cartItems.length > 0
+                          ? cartItems.forEach((qty) => {
+                            totalQty += qty.quantity;
+                            return totalQty;
+                          })
+                          : ""}
+                        {totalQty}
+                      </p>
+                    </Link>
+                  </div>
                 </>
               )}
 

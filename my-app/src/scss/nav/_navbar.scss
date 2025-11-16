@@ -8,10 +8,11 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-
+    
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     .navbar-container {
         width: 100%;
-        z-index: 999;
+        // z-index: 999;
         text-align: right;
         padding: 0 15px;
         color: #000000;
@@ -25,9 +26,10 @@ header {
             max-width: 68px;
 
             .nav-logo-img {
-                z-index: 999;
                 width: 68px;
                 height: 100%;
+                z-index: 2000;
+                position: relative;
 
                 padding: 0px;
                 margin: 0 35px 0 0;
@@ -39,17 +41,20 @@ header {
             }
 
             nav {
-                width: 95%;
+                width: 100%;
                 display: flex;
-                flex-direction: column;
-                align-items: center;
+                // flex-direction: column;
+                // align-items: center;
                 position: fixed;
-                height: 100vh;
-                top: 0;
+                height: calc(100vh - 75px);
+                // height: 900px;
+
+                top: 100%;
+                transform: translateY(-100%);
                 right: -100%;
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
                 transition: right 650ms ease-in-out;
-                padding: 56px 0 0;
+                // padding: 56px 0 0;
                 opacity: 0;
                 text-align: center;
 
@@ -71,20 +76,20 @@ header {
                             text-decoration: none;
                             border-bottom: 2px solid transparent;
 
-                            &:hover {
-                                border-bottom: 2px solid #f5752b;
-                            }
+                           
                         }
                     }
 
                     .dropdown-links {
+                        width: 100%;
                         visibility: visible;
                         top: 100%;
                         transition: visibility 250ms ease-in-out;
                         display: flex;
                         flex-direction: column;
                         text-align: left;
-                        padding: 25px;
+                        padding: 0 24px;
+                        margin: 12px 0 0;
 
                         li {
                             list-style: none;
@@ -97,7 +102,7 @@ header {
                                 color: #000;
                                 font-weight: 400;
                                 padding: 0 0 6px;
-                                border-bottom: 2px solid #f5752b;                                
+                                border-bottom: 1px solid #f5752b;                                
 
                             }
                         }
@@ -190,11 +195,13 @@ header {
 
             .open {
                 font-size: 25px;
-                margin: 0 0 0 35px;
+                margin: 0 0 0 17px;
             }
 
             .close{
-                font-size: 28px;
+                font-size: 25px;
+                margin: 0 0 0 17px;
+
 
             }
         }
@@ -241,16 +248,19 @@ header {
                     width: auto;
                     height: 100%;
                     display: flex;
-                    flex-direction: row;
+                    // flex-direction: row;
                     align-items: center;
                     justify-content: center;
                     position: initial;
-                    height: auto;
+                    // height: auto;
                     right: 0%;
                     top: 0;
+                transform: translateY(-0%);
+
                     padding: 0;
 
                     opacity: 1;
+                    // width: 100%;
 
                     ul {
                         display: flex;
@@ -267,6 +277,11 @@ header {
                                 font-weight: 400;
                                 display: block;
                                 text-decoration: none;
+                                transition:  border-bottom 300ms ease;
+
+                                 &:hover {
+                                border-bottom: 1px solid #f5752b;
+                            }
                             }
                             
                         }
@@ -281,6 +296,7 @@ header {
                             height: 450px;
                             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
                             padding: 25px 56px;
+                            margin: 0;
 
                             
                         li {
@@ -301,7 +317,7 @@ header {
                                 height: 1px;
                                 background-color: #f5752b;
                                 transform: skew(0);
-                                transition: width 350ms ease;
+                                transition: width 300ms ease;
                             }
 
                             a:hover::after{
