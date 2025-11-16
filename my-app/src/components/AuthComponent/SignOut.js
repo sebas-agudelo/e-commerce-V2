@@ -8,7 +8,7 @@ export default function SignOut() {
 
   const signOut = async () => {
     // `https://examensarbeten.vercel.app/auth/signout`
-    const response = await fetch(`http://localhost:3030/auth/signout`, {
+    const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/auth/signout`, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" }
