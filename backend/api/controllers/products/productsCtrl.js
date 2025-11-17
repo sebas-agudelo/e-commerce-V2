@@ -371,6 +371,7 @@ let { data: superDealsCategories, superDealsCategoriesError } = await supabase
       p.id === "1cec906e-7235-44e1-8fb9-dbfa14ac14c6" || 
       p.id === "d627f757-fe2f-4253-853b-8c863a56099c" || 
       p.id === "75ddd05c-5bc1-40fd-9783-4a4dae05d130"||
+      p.id === "f1cde2cc-549b-49ce-8111-e000cdf04e50" ||
       p.id === "f1cde2cc-549b-49ce-8111-e000cdf04e50"
     ) 
 
