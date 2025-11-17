@@ -3,7 +3,8 @@ import { validateCustomerData } from "../../validate/signValidation.js";
 import validator from "validator";
 const supabase = supabase_config();
 
-export const sessionAuthCheck = async (req, res) => {
+// Checks if the user has an active Supabase session via cookie.
+export const checkUserSession = async (req, res) => {
   const token = req?.cookies?.cookie_key;
 
   if (!token) {
@@ -14,13 +15,6 @@ export const sessionAuthCheck = async (req, res) => {
 
   const email = data?.user?.email;
 
-  if (!email) {
-    return res.status(400).json({ error: "Ingen användare hittad" });
-  }
-
-  console.log(email);
-  console.log("Token från sessionAuthCheck", token);
-
   if (error || !data?.user) {
     return res.status(200).json({ isLoggedIn: false });
   }
@@ -28,16 +22,15 @@ export const sessionAuthCheck = async (req, res) => {
   return res.status(200).json({ isLoggedIn: true, email: data.user.email });
 };
 
-export const authenticateUser = async (req, res, next) => {
+// Checks if the user has a valid Supabase JWT session via cookie.
+export const authMiddleware = async (req, res, next) => {
   try {
     const access_token = req.cookies.cookie_key;
-
-    console.log(access_token);
 
     if (!access_token) {
       return res
         .status(401)
-        .json({ error: "Ingen giltig inloggning hittades" });
+        .json({ error: "Du måste vara inloggad." });
     }
     const {
       data: { user },
@@ -47,29 +40,28 @@ export const authenticateUser = async (req, res, next) => {
     if (error || !user) {
       return res
         .status(401)
-        .json({ error: "Ingen giltig inloggning hittades" });
+        .json({ error: "Du måste vara inloggad." });
     }
 
     req.user = user;
 
     next();
   } catch (error) {
+    // console.log("auth middleware error",error);
+
     return res
       .status(500)
-      .json({ error: "Ett oväntat fel inträffade. Försök senare igen." });
+      .json({ error: "Ett oväntat fel inträffade. Försök igen." });
   }
 };
 
 export const signIn = async (req, res) => {
-  const { email, password } = req.body;
+ const { email, password } = req.body;
   try {
     let { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
-
-    console.log("User data: ", data);
-
 
     if (error) {
       return res.status(400).json({
@@ -77,13 +69,13 @@ export const signIn = async (req, res) => {
       });
     }
 
-    const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+    const access_token = data.session?.access_token;
 
-    if (sessionError || !sessionData.session) {
-      return res.status(400).json({ error: error.message });
+    if (!access_token) {
+      return res.status(400).json({
+        error: "Felaktig e-postadress eller lösenord. Vänligen försök igen.",
+      });
     }
-    const { access_token } = sessionData.session;
 
      return res
     .cookie("cookie_key", access_token, {
@@ -101,24 +93,22 @@ export const signIn = async (req, res) => {
 
 export const signOut = async (req, res) => {
   try {
-    console.log("Logga ut mig");
-
     res.clearCookie("cookie_key", {
       httpOnly: true,
       secure: true,
       sameSite: "none",
     });
 
-    console.log("har loggat ut");
     return res.status(200).json({ successfully: "Du är utloggad" });
+    
   } catch (error) {
     console.error("Fel vid utloggning:", error);
-    return res.status(500).json({ error: "Ett oväntat fel inträffade. Försök senare igen." });
+    return res.status(500).json({ error: "Ett oväntat fel inträffade. Försök igen." });
   }
 };
 
 export const profile = async (req, res) => {
-  try {
+   try {
     const userId = req?.user?.id;
     const userEmail = req?.user?.email;
 
@@ -127,25 +117,27 @@ export const profile = async (req, res) => {
       .select("*")
       .eq("user_id", userId);
 
-    if (!users_info) {
-      console.log("Ingen användare hittades för user_id:", userId);
+    if (!users_info || error) {
       return res.status(200).json({ success: [] });
     } else if (users_info) {
       return res.status(200).json({ success: "Ja Ja", users_info, userEmail });
     }
   } catch (error) {
-    console.log("");
+     // console.log("profile error",error);
+    return res
+      .status(500)
+      .json({ error: "Ett oväntat fel inträffade. Försök igen." })
   }
 };
 
 export const updateUserData = async (req, res) => {
-  const { email, birthday, firstname, lastname, phone, address, postal  } = req.body;
+   const { email, birthday, firstname, lastname, phone, address, postal } = req.body;
   const userID = req?.user?.id;
 
   if (!userID) {
     return res
       .status(401)
-      .json({ error: "Ogiltig användare. Försök att logga in." });
+      .json({ error: "Du måste vara inloggad." });
   }
 
   const validationError = validateCustomerData(
@@ -157,8 +149,6 @@ export const updateUserData = async (req, res) => {
     address,
     postal
   );
-
-  console.log("Firstname: ", firstname);
 
   if (validationError) {
     return res.status(400).json(validationError);
@@ -186,64 +176,39 @@ export const updateUserData = async (req, res) => {
     }
 
     return res.status(201).json({ success: "Dina uppgifter har uppdaterats." });
+
   } catch (error) {
     console.error(error);
     return res
       .status(500)
-      .json({ error: "Ett oväntat fel har inträffat. Försök senare igen." });
+      .json({ error: "Ett oväntat fel har inträffat. Försök igen." });
   }
 };
 
 export const addUserInfo = async (req, res) => {
   const { firstname, lastname, phone, birthday, address, postal, email } =
     req.body;
-  const postalCode = postal.toString();
-  const userID = req?.user?.id;
+    const userID = req?.user?.id;
   const userEmail = req?.user?.email;
-
-  const nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿÅÄÖåäößñÑ' -]+$/;
-  const addressRegex = /^[a-zA-Z0-9À-ÖØ-öø-ÿÅÄÖåäößñÑ\s.,\-\/]+$/;
 
   if (!userID) {
     return res
       .status(401)
-      .json({ error: "Ogiltig användare. Försök att logga in." });
+      .json({ error: "Du måste vara inloggad." });
   }
 
-  if (!firstname || !lastname || !phone || !birthday || !address || !postal) {
-    return res
-      .status(400)
-      .json({
-        error: "Det saknas information i ett eller flera obligatoriska fält.",
-      });
-  }
+  const validationError = validateCustomerData(
+    email,
+    firstname,
+    lastname,
+    birthday,
+    phone,
+    address,
+    postal
+  );
 
-  if (!firstname) {
-    return res.status(400).json({ error: "Förnam är obligatoriskt!" });
-  }
-  if (!lastname) {
-    return res.status(400).json({ error: "Efternamn är obligatoriskt!" });
-  }
-  if (!nameRegex.test(firstname) || !nameRegex.test(lastname)) {
-    return res
-      .status(400)
-      .json({ error: "För och efternamn bör endast innehålla bokstäver." });
-  }
-
-  if (!phone) {
-    return res.status(400).json({ error: "Telefonnummer ör obligatoriskt" });
-  }
-
-  if (!validator.isDate(birthday, new Date())) {
-    return res.status(400).json({ error: "Ogiltigt datumformat!" });
-  }
-
-  if (!addressRegex.test(address)) {
-    return res.status(400).json({ error: "Adress är obligatoriskt!" });
-  }
-
-  if (!validator.isPostalCode(postalCode, "SE")) {
-    return res.status(400).json({ error: "Ogiltigt postnummer!" });
+  if (validationError) {
+    return res.status(400).json(validationError);
   }
 
   try {
@@ -277,6 +242,6 @@ export const addUserInfo = async (req, res) => {
   } catch (error) {
     return res
       .status(500)
-      .json({ error: "Ett oväntat fel har inträffat. Försök senare igen." });
+      .json({ error: "Ett oväntat fel har inträffat. Försök igen." });
   }
 };
