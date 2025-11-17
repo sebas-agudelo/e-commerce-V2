@@ -1,7 +1,7 @@
 import express from 'express';
 import { sessionAuthCheck, signIn, signOut, authenticateUser, profile, updateUserData, addUserInfo } from '../controllers/auth/sessionManagement.js'
 import { addToCart, updateCartQty, showCart } from '../controllers/cart/addToCartCtrl.js';
-import { customerAuthOrders, customerOrders, getUserOrderDetails, getUserOrderSummaries, validateCheckoutUserData } from '../controllers/orders/ordersCtrl.js';
+import { customerAuthOrders, customerOrders, getUserOrderDetails, getUserOrderSummaries, validateCheckoutCustomerData } from '../controllers/orders/ordersCtrl.js';
 import { stripeCheckOut } from '../controllers/stripe/checkOut.js';
 import { categories, getProductByID, getProducts, searchProduct, productByCategory, getSuperDealsProducts } from '../controllers/products/productsCtrl.js';
 
@@ -28,7 +28,7 @@ routes.put('/api/cart/update', authenticateUser, updateCartQty);
 routes.get('/api/cart/show', authenticateUser, showCart);
 routes.post('/api/order/insert', authenticateUser, customerAuthOrders);
 routes.post('/api/order/guestorder', customerOrders);
-routes.post('/api/user/validation', validateCheckoutUserData);
+routes.post('/api/user/validation', validateCheckoutCustomerData);
 routes.get('/api/order/myorders',authenticateUser, getUserOrderSummaries);
 routes.get('/api/order/details/:order_id',authenticateUser, getUserOrderDetails);
 

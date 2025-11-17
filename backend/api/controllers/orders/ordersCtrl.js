@@ -1,14 +1,14 @@
 import { supabase_config } from "../../supabase_config/supabase_conlig.js";
 import validator from "validator";
-import { userDataValidations } from "../../validate/signValidation.js";
+import { validateCustomerData } from "../../validate/signValidation.js";
 
 const supabase = supabase_config();
 
-export const validateCheckoutUserData = async (req, res) => {
+export const validateCheckoutCustomerData = async (req, res) => {
   const { email, firstname, lastname, birthday, phone, address, postal } =
     req.body;
 
-  const validationError = userDataValidations(
+  const validationError = validateCustomerData(
     email,
     firstname,
     lastname,
@@ -262,7 +262,7 @@ export const customerOrders = async (req, res) => {
 
   const userId = req?.user?.id || null;
 
-  const validationError = userDataValidations(
+  const validationError = validateCustomerData(
     email,
     firstname,
     lastname,

@@ -1,5 +1,5 @@
 import { supabase_config } from "../../supabase_config/supabase_conlig.js";
-import { uuserDataValidations } from "../../validate/signValidation.js";
+import { validateCustomerData } from "../../validate/signValidation.js";
 import validator from "validator";
 const supabase = supabase_config();
 
@@ -139,7 +139,7 @@ export const profile = async (req, res) => {
 };
 
 export const updateUserData = async (req, res) => {
-  const { firstname, lastname, phone, birthday, address, postal } = req.body;
+  const { email, birthday, firstname, lastname, phone, address, postal  } = req.body;
   const userID = req?.user?.id;
 
   if (!userID) {
@@ -148,7 +148,8 @@ export const updateUserData = async (req, res) => {
       .json({ error: "Ogiltig användare. Försök att logga in." });
   }
 
-  const validationError = uuserDataValidations(
+  const validationError = validateCustomerData(
+    email,
     firstname,
     lastname,
     birthday,
@@ -177,10 +178,6 @@ export const updateUserData = async (req, res) => {
         },
       ])
       .eq("user_id", userID);
-
-
-
-
 
     if (error) {
       throw new Error(`internt fel: Kunde inte uppdatera användarensuppgidter. (insertUserData: error): ${JSON.stringify(
