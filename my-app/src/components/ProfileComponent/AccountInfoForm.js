@@ -5,6 +5,7 @@ import ContentSpinner from "../spinners/ContentSpinner";
 
 export default function AccountInfoForm() {
   const [changeData, setChangeData] = useState({
+    email: "",
     firstname: "",
     lastname: "",
     phone: "",
@@ -39,8 +40,6 @@ export default function AccountInfoForm() {
   const getUserData = async () => {
     try {
       setLoading(true);
-
-      // https://examensarbeten.vercel.app/auth/profile
       const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/auth/profile`, {
         method: "GET",
         credentials: "include",
@@ -56,6 +55,7 @@ export default function AccountInfoForm() {
         if (userArray.length > 0) {
           const user = userArray[0];
           setChangeData({
+            email: user.email || "",
             firstname: user.firstname || "",
             lastname: user.lastname || "",
             phone: user.phone || "",

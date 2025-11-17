@@ -100,7 +100,6 @@ const CheckoutForm = () => {
     //Validerar gäst och inloggad användarensdata i backend.
     try {
       const response = await fetch(
-        // https://examensarbeten.vercel.app/api/user/validation
         `https://e-commerce-v2-hts6.vercel.app/api/user/validation`,
         {
           method: "POST",
@@ -119,8 +118,6 @@ const CheckoutForm = () => {
       }
 
       if (!response.ok) {
-        // alert(data.error);
-
         setUserInputError(data.errors);
 
         return;
