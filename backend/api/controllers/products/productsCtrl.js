@@ -353,7 +353,7 @@ export const getSuperDealsProducts = async (req, res) => {
 let { data: superDealsCategories, superDealsCategoriesError } = await supabase
   .from("categories")
   .select("category")
-  .in("category", ["On-ear", "In-ear"]); // sin espacio al final
+  .in("category", ["On-ear", "In-ear"]);
 
   let results = [];
 
@@ -372,7 +372,7 @@ let { data: superDealsCategories, superDealsCategoriesError } = await supabase
       p.id === "d627f757-fe2f-4253-853b-8c863a56099c" || 
       p.id === "75ddd05c-5bc1-40fd-9783-4a4dae05d130"||
       p.id === "f1cde2cc-549b-49ce-8111-e000cdf04e50" ||
-      p.id === "f1cde2cc-549b-49ce-8111-e000cdf04e50"
+      p.id === "59b39ed7-b193-487c-abdf-f458464a352e"
     ) 
 
   let results2 = [];
@@ -384,6 +384,9 @@ let { data: superDealsCategories, superDealsCategoriesError } = await supabase
         p.sale_price = Math.round(pricies)        
         results2.push(p) 
       }
+
+      console.log();
+      
 
     return res.status(200).json({data: results2})
 
