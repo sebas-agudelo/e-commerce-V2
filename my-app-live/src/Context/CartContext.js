@@ -34,7 +34,7 @@ export const CartProvider = ({ children }) => {
   loadCart();
 }, [session]);
 
-  //Hämtar hela varukorgen för utloggade och inloggade användare
+  //Hämtar hela varukorgen för utloggade och inloggade användaren
   const showCart = async () => {
     setIsLoading(true);
 
