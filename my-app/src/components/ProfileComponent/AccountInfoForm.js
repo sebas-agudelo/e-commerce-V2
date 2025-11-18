@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserInfoValidation from "../../hooks/UserInfoValidation";
+import UserInfoValidation from "../../hooks/UserInfoValidation"
 import { MdErrorOutline } from "react-icons/md";
 import ContentSpinner from "../spinners/ContentSpinner";
 
@@ -102,18 +102,6 @@ export default function AccountInfoForm() {
   };
 
   const addUserInfo = async () => {
-    const inputValidation = userInputValidation(
-      changeData?.firstname,
-      changeData?.lastname,
-      changeData?.phone,
-      changeData?.birthday,
-      changeData?.address,
-      changeData?.postal
-    );
-
-    if (!inputValidation) {
-      return;
-    }
     try {
       const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/auth/user/add-info`, {
         method: "POST",
