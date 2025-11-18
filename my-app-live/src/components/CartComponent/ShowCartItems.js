@@ -4,17 +4,11 @@ import { CartContext } from "../../Context/CartContext";
 import { BsPlusLg } from "react-icons/bs";
 import { PiMinusThin } from "react-icons/pi";
 import { paymethods } from "../../data/paymentMethods";
-import { AuthSessionContext } from "../../Context/SessionProvider";
-import ContentSpinner from "../spinners/ContentSpinner";
-import Spinners from "../spinners/Spinners";
 
 export default function ShowCartItems({ reduceQty, incruseQty }) {
-  const { cartItems, total, saleTotalPrice, isLoading } = useContext(CartContext);
-  // const {loading} = useContext(AuthSessionContext)
+  const { cartItems, total, saleTotalPrice } = useContext(CartContext);
 
   return (
-    <>
-    {isLoading ? <Spinners /> : 
     <>
       {cartItems && cartItems.length === 0 ? (
         <article className="cart-content-empty">
@@ -81,8 +75,6 @@ export default function ShowCartItems({ reduceQty, incruseQty }) {
           </>
         </article>
       )}
-      </>
-      }
     </>
   );
 }

@@ -10,32 +10,23 @@ export const CartProvider = ({ children }) => {
   const [total, setTotal] = useState();
   const [saleTotalPrice, setSaleTotalPrice] = useState()
   const { session } = useContext(AuthSessionContext);
-  const [isLoading, setIsLoading] = useState(false)
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // useEffect(() => {
-  //   checkLocalStorage();
-  // }, [session]);
+  useEffect(() => {
+    checkLocalStorage();
+  }, [session]);
 
   useEffect(() => {
-  if (session === undefined || session === null) return; // espera a que la sesión se confirme
-
-  const loadCart = async () => {
-    await showCart();
-  };
-
-  loadCart();
-}, [session]);
-
+    showCart();
+  }, [])
 
   //Hämtar hela varukorgen för utloggade och inloggade användare
   const showCart = async () => {
-    setIsLoading(true)
     const storedCart = localStorage.getItem("cart");
     const cartData = JSON.parse(storedCart);
 
-    if (session === false) {
+    if (!session) {
       if (cartData) {
         setCartItems(cartData);
 
@@ -58,14 +49,15 @@ export const CartProvider = ({ children }) => {
         setTotal(totalPrice);
         setSaleTotalPrice(newsalePriceSum)
 
+        console.log("Sale total: ", saleTotalPrice);
+
+
       } else {
         setCartItems([]);
       }
-    setIsLoading(false)
-
     }
 
-    if (session === true) {
+    if (session) {
       try {
         const response = await fetch("https://e-commerce-v2-hts6.vercel.app/api/cart/show", {
           method: "GET",
@@ -84,9 +76,6 @@ export const CartProvider = ({ children }) => {
         }
       } catch (error) {
         alert("Något gick fel. Försök igen");
-      }finally{
-    setIsLoading(false)
-
       }
     }
   };
@@ -286,8 +275,7 @@ export const CartProvider = ({ children }) => {
         setTotal,
         clearCart,
         saleTotalPrice,
-        setSaleTotalPrice,
-        isLoading
+        setSaleTotalPrice
       }}
     >
       {children}
