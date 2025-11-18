@@ -17,7 +17,7 @@ export const CartProvider = ({ children }) => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   useEffect(() => {
-        if(!session) {
+        if(session === null || session === undefined) {
       return;
     }
     checkLocalStorage();
@@ -25,7 +25,7 @@ export const CartProvider = ({ children }) => {
 
  useEffect(() => {
   const loadCart = async () => {
-    if(!session) {
+    if(session === null || session === undefined) {
       return;
     }
     await showCart();

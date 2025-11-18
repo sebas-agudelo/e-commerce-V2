@@ -25,14 +25,14 @@ export default function Cart() {
 
    useEffect(() => {
   const loadCart = async () => {
-        if(!session) {
+        if(session === null || session === undefined) {
       return;
     }
     await showCart();
   };
 
   loadCart();
-}, []);
+}, [session]);
 
   const handleConfirmDelete = () => {
     if (!productToDelete) {
