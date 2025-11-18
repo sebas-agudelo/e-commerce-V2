@@ -17,17 +17,13 @@ export const CartProvider = ({ children }) => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   useEffect(() => {
-        if(session === null || session === undefined) {
-      return;
-    }
+        if(session === undefined) return; 
     checkLocalStorage();
   }, [session]);
 
  useEffect(() => {
   const loadCart = async () => {
-    if(session === null || session === undefined) {
-      return;
-    }
+    if(session === undefined) return; 
     await showCart();
   };
 
@@ -41,7 +37,7 @@ export const CartProvider = ({ children }) => {
     const storedCart = localStorage.getItem("cart");
     const cartData = JSON.parse(storedCart);
 
-    if (!session) {
+    if (!session === null) {
       if (cartData) {
         setCartItems(cartData);
 
@@ -115,7 +111,7 @@ export const CartProvider = ({ children }) => {
 
 
     // Lägg till produkten i localStorage om inte inloggad
-    if (!session) {
+    if (!session === null) {
       setCartItems((prevCart) => {
         const existingProductIndex = prevCart.findIndex(
           (item) => item.product_id === product.id

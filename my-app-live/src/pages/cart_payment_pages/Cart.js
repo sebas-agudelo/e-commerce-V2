@@ -25,9 +25,7 @@ export default function Cart() {
 
    useEffect(() => {
   const loadCart = async () => {
-        if(session === null || session === undefined) {
-      return;
-    }
+        if(session === undefined) return; 
     await showCart();
   };
 
@@ -63,7 +61,7 @@ export default function Cart() {
     setTotal(newTotal);
     setSaleTotalPrice(newsalePriceSum)
 
-    if (!session) {
+    if (session === null) {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     } else {
       updateCartQty(productToDelete.product_id, 0);
@@ -127,7 +125,7 @@ export default function Cart() {
     setCartItems(updatedCart);
     setSaleTotalPrice(newsalePriceSum)
 
-    if (!session) {
+    if (session === null) {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     } else {
       updateCartQty(item.product_id, newQty);
@@ -192,7 +190,7 @@ export default function Cart() {
     setSaleTotalPrice(newsalePriceSum)
 
 
-    if (!session) {
+    if (session === null) {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     } else if (session) {
       updateCartQty(item.product_id, newQty);
