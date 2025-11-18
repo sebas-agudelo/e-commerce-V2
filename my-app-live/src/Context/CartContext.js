@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
   }, [session]);
 
   useEffect(() => {
-  if (session === undefined) return; // espera a que la sesión se confirme
+  if (session === undefined || session === null) return; // espera a que la sesión se confirme
 
   const loadCart = async () => {
     await showCart();
