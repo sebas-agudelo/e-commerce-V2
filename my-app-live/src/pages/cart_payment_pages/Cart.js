@@ -21,8 +21,11 @@ export default function Cart() {
     if (id) {
       fetchProductById(id);
     }
-    showCart();
   }, [setCartItems, id]);
+
+   useEffect(() => {
+    showCart();
+  }, [])
 
 
   const handleConfirmDelete = () => {

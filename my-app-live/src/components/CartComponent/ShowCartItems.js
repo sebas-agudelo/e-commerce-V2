@@ -4,12 +4,16 @@ import { CartContext } from "../../Context/CartContext";
 import { BsPlusLg } from "react-icons/bs";
 import { PiMinusThin } from "react-icons/pi";
 import { paymethods } from "../../data/paymentMethods";
+import ContentSpinner from "../spinners/ContentSpinner";
 
 export default function ShowCartItems({ reduceQty, incruseQty }) {
-  const { cartItems, total, saleTotalPrice } = useContext(CartContext);
+  const { cartItems, total, saleTotalPrice, isLoading } = useContext(CartContext);
 
   return (
     <>
+    {isLoading ? <ContentSpinner /> : 
+    <>
+    
       {cartItems && cartItems.length === 0 ? (
         <article className="cart-content-empty">
           <div className="empty-cart-container">
@@ -75,6 +79,8 @@ export default function ShowCartItems({ reduceQty, incruseQty }) {
           </>
         </article>
       )}
+      </>
+      }
     </>
   );
 }

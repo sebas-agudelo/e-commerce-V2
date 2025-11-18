@@ -10,6 +10,7 @@ export const CartProvider = ({ children }) => {
   const [total, setTotal] = useState();
   const [saleTotalPrice, setSaleTotalPrice] = useState()
   const { session } = useContext(AuthSessionContext);
+  const [isLoading, setIsLoading] = useState(false)
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -25,7 +26,7 @@ export const CartProvider = ({ children }) => {
   const showCart = async () => {
     const storedCart = localStorage.getItem("cart");
     const cartData = JSON.parse(storedCart);
-
+    
     if (!session) {
       if (cartData) {
         setCartItems(cartData);
@@ -36,31 +37,31 @@ export const CartProvider = ({ children }) => {
           if (item.unit_price) {
             totalPrice += item.total_price || 0;
           } else if (item.sale_unit_price) {
-
+            
             totalPrice += item.sale_unit_price || 0;
           }
-
+          
           if (item.sale_unit_price) {
             let unitDiscount = item.unit_price - item.sale_unit_price || 0;
             newsalePriceSum += unitDiscount * item.quantity || 0;
           }
         });
-
+        
         setTotal(totalPrice);
         setSaleTotalPrice(newsalePriceSum)
-
+        
         console.log("Sale total: ", saleTotalPrice);
-
-
+        
+        
       } else {
         setCartItems([]);
       }
     }
-
+    
     if (session) {
       try {
-        // "https://examensarbeten.vercel.app/api/cart/show"
-        const response = await fetch("https://e-commerce-v2-hts6.vercel.app/api/cart/show", {
+        setIsLoading(true);
+          const response = await fetch("https://e-commerce-v2-hts6.vercel.app/api/cart/show", {
           method: "GET",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
@@ -77,7 +78,10 @@ export const CartProvider = ({ children }) => {
         }
       } catch (error) {
         alert("Något gick fel. Försök igen");
-      }
+      }finally {
+           
+            setIsLoading(false); 
+        }
     }
   };
 
