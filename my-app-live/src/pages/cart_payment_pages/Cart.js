@@ -29,7 +29,7 @@ export default function Cart() {
   };
 
   loadCart();
-}, []);
+}, [session]);
 
   const handleConfirmDelete = () => {
     if (!productToDelete) {

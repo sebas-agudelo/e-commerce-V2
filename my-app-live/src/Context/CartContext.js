@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     checkLocalStorage();
-  }, [session]);
+  }, []);
 
  useEffect(() => {
   const loadCart = async () => {
@@ -26,7 +26,7 @@ export const CartProvider = ({ children }) => {
   };
 
   loadCart();
-}, []);
+}, [session]);
 
   //Hämtar hela varukorgen för utloggade och inloggade användare
   const showCart = async () => {
