@@ -14,12 +14,12 @@ export const SessionProvider = ({ children }) => {
       setLoading(false);
     };
     fetchSessionData();
-    const interval = setInterval(() => {
-      verifySession();
-    }, 60 * 60 * 1000);
+    // const interval = setInterval(() => {
+    //   verifySession();
+    // }, 60 * 60 * 1000);
     
-    return () => clearInterval(interval);
-  }, [session, admin]);
+    // return () => clearInterval(interval);
+  }, []);
   
   console.log("Session desde SessionProvider: ",session); 
   const verifySession = async () => {
@@ -37,11 +37,12 @@ export const SessionProvider = ({ children }) => {
       if (response.ok && data.isLoggedIn) {
         setSession(true);
         setEmail(data.email);
-      } else {
-        setSession(false);
-      }
+      } 
+      // else {
+      //   setSession(false);
+      // }
     } catch (error) {
-      setSession(false);
+      // setSession(false);
       alert("Ett oväntat fel har inträffat. Försök igen.")
     }
   };

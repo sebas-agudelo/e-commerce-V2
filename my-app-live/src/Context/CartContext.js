@@ -19,11 +19,11 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     if(session === undefined) return; 
     checkLocalStorage();
-  }, [session]);
+  }, []);
   
   useEffect(() => {
+    if(session === undefined) return; 
     const loadCart = async () => {
-      if(session === undefined) return; 
       await showCart();
     };
     
@@ -36,68 +36,131 @@ export const CartProvider = ({ children }) => {
   //Hämtar hela varukorgen för utloggade och inloggade användaren
   const showCart = async () => {
     setIsLoading(true);
-
     const storedCart = localStorage.getItem("cart");
     const cartData = JSON.parse(storedCart);
-
-    if (!session === null) {
+    
+    if (session) {
+ try {    
+            const response = await fetch("https://e-commerce-v2-hts6.vercel.app/api/cart/show", {
+            method: "GET",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+          });
+  
+          const data = await response.json();
+          
+          if (response.ok) {
+            setCartItems(data.shopping_cart || []);
+            setTotal(data.totalPrice || 0);
+            setSaleTotalPrice(data.salePriceSum || 0);
+          } else {
+            alert(data.error || "Ett fel uppstod vid hämtning av varukorgen.");
+          }
+      
+        
+      } catch (error) {
+        alert("Något gick fel. Försök igen");
+      }finally{
+            setIsLoading(false);  
+          }
+    }
+    
+    else{
       if (cartData) {
         setCartItems(cartData);
-
+        
         let totalPrice = 0;
         let newsalePriceSum = 0
         cartData.forEach((item) => {
           if (item.unit_price) {
             totalPrice += item.total_price || 0;
           } else if (item.sale_unit_price) {
-
+            
             totalPrice += item.sale_unit_price || 0;
           }
-
+          
           if (item.sale_unit_price) {
             let unitDiscount = item.unit_price - item.sale_unit_price || 0;
             newsalePriceSum += unitDiscount * item.quantity || 0;
           }
         });
-
+        
         setTotal(totalPrice);
         setSaleTotalPrice(newsalePriceSum)
-
-        console.log("Sale total: ", saleTotalPrice);
-
-
+        
       } else {
         setCartItems([]);
       }
       setIsLoading(false);
-
-    }
-
-    if (session) {
-      try {
-          const response = await fetch("https://e-commerce-v2-hts6.vercel.app/api/cart/show", {
-          method: "GET",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          setCartItems(data.shopping_cart || []);
-          setTotal(data.totalPrice || 0);
-          setSaleTotalPrice(data.salePriceSum || 0);
-        } else {
-          alert(data.error || "Ett fel uppstod vid hämtning av varukorgen.");
-        }
-      } catch (error) {
-        alert("Något gick fel. Försök igen");
-      }finally{
-      setIsLoading(false);
-
-      }
+     
     }
   };
+
+
+  // const showCart = async () => {
+  //   setIsLoading(true);
+
+  //   const storedCart = localStorage.getItem("cart");
+  //   const cartData = JSON.parse(storedCart);
+
+  //   if (!session === null) {
+  //     if (cartData) {
+  //       setCartItems(cartData);
+
+  //       let totalPrice = 0;
+  //       let newsalePriceSum = 0
+  //       cartData.forEach((item) => {
+  //         if (item.unit_price) {
+  //           totalPrice += item.total_price || 0;
+  //         } else if (item.sale_unit_price) {
+
+  //           totalPrice += item.sale_unit_price || 0;
+  //         }
+
+  //         if (item.sale_unit_price) {
+  //           let unitDiscount = item.unit_price - item.sale_unit_price || 0;
+  //           newsalePriceSum += unitDiscount * item.quantity || 0;
+  //         }
+  //       });
+
+  //       setTotal(totalPrice);
+  //       setSaleTotalPrice(newsalePriceSum)
+
+  //       console.log("Sale total: ", saleTotalPrice);
+
+
+  //     } else {
+  //       setCartItems([]);
+  //     }
+  //     setIsLoading(false);
+
+  //   }
+
+  //   if (session) {
+  //     try {
+  //         const response = await fetch("https://e-commerce-v2-hts6.vercel.app/api/cart/show", {
+  //         method: "GET",
+  //         credentials: "include",
+  //         headers: { "Content-Type": "application/json" },
+  //       });
+
+  //       const data = await response.json();
+
+  //       if (response.ok) {
+  //         setCartItems(data.shopping_cart || []);
+  //         setTotal(data.totalPrice || 0);
+  //         setSaleTotalPrice(data.salePriceSum || 0);
+  //       } else {
+  //         alert(data.error || "Ett fel uppstod vid hämtning av varukorgen.");
+  //       }
+  //     } catch (error) {
+  //       alert("Något gick fel. Försök igen");
+  //     }finally{
+  //     setIsLoading(false);
+
+  //     }
+  //   }
+  // };
 
   //Lägger till produkter i varukorgen för utloggade och inloggade användare
   const addToCart = async (product, product_id) => {

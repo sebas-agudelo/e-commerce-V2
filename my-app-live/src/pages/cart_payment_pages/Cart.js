@@ -17,8 +17,6 @@ export default function Cart() {
 
   const { id } = useParams();
 
-  console.log(id);
-  
 
   useEffect(() => {
     if (id) {
@@ -27,8 +25,8 @@ export default function Cart() {
   }, [setCartItems, id]);
 
    useEffect(() => {
+     if(session === undefined) return; 
   const loadCart = async () => {
-        if(session === undefined) return; 
     await showCart();
   };
 
