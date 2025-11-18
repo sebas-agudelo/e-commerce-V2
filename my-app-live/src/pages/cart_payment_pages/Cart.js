@@ -25,7 +25,7 @@ export default function Cart() {
 
    useEffect(() => {
     showCart();
-  }, [])
+  }, [session])
 
 
   const handleConfirmDelete = () => {
