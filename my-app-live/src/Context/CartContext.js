@@ -17,11 +17,17 @@ export const CartProvider = ({ children }) => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   useEffect(() => {
+        if(!session) {
+      return;
+    }
     checkLocalStorage();
-  }, []);
+  }, [session]);
 
  useEffect(() => {
   const loadCart = async () => {
+    if(!session) {
+      return;
+    }
     await showCart();
   };
 
