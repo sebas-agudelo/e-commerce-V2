@@ -17,10 +17,11 @@ export const SessionProvider = ({ children }) => {
     const interval = setInterval(() => {
       verifySession();
     }, 60 * 60 * 1000);
-
+    
     return () => clearInterval(interval);
   }, [session, admin]);
-
+  
+  console.log("Session desde SessionProvider: ",session); 
   const verifySession = async () => {
     try {
       const response = await fetch(
@@ -45,7 +46,6 @@ export const SessionProvider = ({ children }) => {
     }
   };
 
-  console.log("Session desde SessionProvider: ",session);
   
   return (
     <AuthSessionContext.Provider

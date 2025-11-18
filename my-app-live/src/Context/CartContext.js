@@ -15,21 +15,21 @@ export const CartProvider = ({ children }) => {
   
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+  
   useEffect(() => {
-        if(session === undefined) return; 
+    if(session === undefined) return; 
     checkLocalStorage();
   }, [session]);
-
- useEffect(() => {
-  const loadCart = async () => {
-    if(session === undefined) return; 
-    await showCart();
-  };
-
-  loadCart();
-}, [session]);
-
+  
+  useEffect(() => {
+    const loadCart = async () => {
+      if(session === undefined) return; 
+      await showCart();
+    };
+    
+    loadCart();
+  }, [session]);
+  
   console.log("Session desde CartContext: ",session);
 
 
