@@ -30,6 +30,9 @@ export const CartProvider = ({ children }) => {
   loadCart();
 }, [session]);
 
+  console.log("Session desde CartContext: ",session);
+
+
   //Hämtar hela varukorgen för utloggade och inloggade användaren
   const showCart = async () => {
     setIsLoading(true);

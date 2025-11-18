@@ -45,6 +45,8 @@ export const SessionProvider = ({ children }) => {
     }
   };
 
+  console.log("Session desde SessionProvider: ",session);
+  
   return (
     <AuthSessionContext.Provider
       value={{
