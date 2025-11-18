@@ -1,0 +1,290 @@
+.product-details {
+
+    section {
+       padding-left: 24px;
+            padding-right: 24px;
+            padding-bottom: 24px;
+
+        .image-wrapper {
+            width: 45%;
+        margin: 0 auto;
+        padding: 48px 0;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .title-and-actions {
+            padding-top: 24px;
+            padding-bottom: 24px;
+
+            #title {
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            
+            .price {
+                font-size: 18px;
+                font-weight: 600;
+                margin: 12px 0 0;
+                
+            }
+
+            .price.mmm{
+                text-decoration: line-through;
+                font-weight: 300;
+                font-size: 16px;
+            }
+            .sale_price{
+                color: #c90000;
+                 font-size: 18px;
+                font-weight: 600;
+            }
+
+            .add-cart-btn {
+                width: 100%;
+                padding: 12px 24px;
+                background-color: rgb(35, 35, 35);
+                border-style: none;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 24px 0 48px;
+
+                svg {
+                    font-size: 24px;
+                    margin-right: 12px;
+                }
+
+            }
+
+            .additional-info {
+
+                p {
+                    border-bottom: 1px solid #d3d3d3;
+                    padding: 12px 0;
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        margin-right: 12px;
+                    }
+                }
+            }
+        }
+
+        .description {
+
+            .dddd {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                span {
+                    font-size: 24px;
+                    font-weight: 300;
+                }
+
+                svg {
+                    font-size: 24px;
+                }
+            }
+
+            p {
+                height: 100px;
+                overflow: hidden;
+                padding: 12px 0;
+
+
+            }
+
+            button {
+                width: 100%;
+                border-style: none;
+                padding: 12px 0;
+                border-radius: 12px;
+                font-weight: 500;
+                background-color: #efefef;
+                margin-top: 12px;
+
+            }
+
+            .isClicked {
+                overflow: visible;
+                height: auto;
+
+            }
+        }
+
+        .specifications {
+            padding: 24px 0;
+
+            span {
+                font-size: 24px;
+                font-weight: 300;
+            }
+
+            p {
+                border-bottom: 1px solid #d3d3d3;
+                padding: 12px 0;
+            }
+        }
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .product-details {
+
+        section {
+        
+            .image-wrapper {
+                width: 20%;
+                max-width: 244px;
+                // margin: 0 auto;
+                
+                margin: 0;
+                // padding-left: 12px;
+                // padding-right: 12px;
+    
+                img {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+    
+            .title-and-actions {
+                padding-top: 24px;
+                padding-bottom: 24px;
+                padding-left: 24px;
+                padding-right: 24px;
+                position: absolute;
+                top: 40%;
+                right: 0;
+                width: 40%;
+                transform: translateY(-40%);
+    
+             #title {
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            
+            .price {
+                font-size: 18px;
+                font-weight: 600;
+                margin: 12px 0 0;
+                
+            }
+
+            .price.mmm{
+                text-decoration: line-through;
+                font-weight: 300;
+                font-size: 16px;
+            }
+            .sale_price{
+                color: #c90000;
+                 font-size: 18px;
+                font-weight: 600;
+            }
+    
+                .add-cart-btn {
+                    width: 100%;
+                    padding: 12px 24px;
+                    // background-color: #efdd54;
+                    border-style: none;
+                    // color: #000;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+            cursor: pointer;
+    
+                    svg {
+                        font-size: 24px;
+                        margin-right: 12px;
+                    }
+    
+                }
+    
+                .additional-info {
+    
+                    p {
+                        border-bottom: 1px solid #d3d3d3;
+                        padding: 12px 0;
+                        display: flex;
+                        align-items: center;
+    
+                        svg {
+                            margin-right: 12px;
+                        }
+                    }
+                }
+            }
+    
+            .description {
+                width: 60%;
+                text-align: center;
+    
+                .dddd {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+    
+                    span {
+                        font-size: 24px;
+                        font-weight: 300;
+                    }
+    
+                    svg {
+                        font-size: 24px;
+                    }
+                }
+    
+                p {
+                    height: 100px;
+                    overflow: hidden;
+                    padding: 12px 0;
+                    text-align: left;
+                    margin: 24px 0;
+    
+                }
+    
+                button {
+                    width: 50%;
+                    border-style: none;
+                    padding: 12px 0;
+                    border-radius: 12px;
+                    font-weight: 500;
+                    background-color: #efefef;
+                    margin-top: 12px;
+    
+                }
+    
+                .isClicked {
+                    overflow: visible;
+                    height: auto;
+    
+                }
+            }
+    
+            .specifications {
+                width: 60%;
+                padding: 24px 0;
+    
+                span {
+                    font-size: 24px;
+                    font-weight: 300;
+                }
+    
+                p {
+                    border-bottom: 1px solid #d3d3d3;
+                    padding: 12px 0;
+                }
+            }
+    
+        }
+    }
+}

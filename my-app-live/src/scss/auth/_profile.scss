@@ -1,0 +1,351 @@
+.profile-container {
+    padding: 85px 20px 70px;
+
+    h1 {
+        width: 100%;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .profile-actions {
+        width: 100%;
+
+        .welcome {
+            // padding: 28px 0;
+            margin: 28px 0;
+            border-bottom: 1px solid #f5f4ed;
+
+            p {
+                font-size: 16px;
+                font-weight: 300;
+            }
+        }
+
+        .action-btns {
+            padding-top: 28px;
+
+            p {
+                margin-bottom: 18px;
+                
+
+                svg {
+                    font-size: 18px;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: black;
+                    font-size: 18px;
+                    border-bottom: 1px solid transparent;
+                    font-weight: 300;
+
+                }
+            }
+        }
+
+        .signout-btn-container {
+            margin-top: 58px;
+        }
+    }
+
+    .user-info-container {
+        // padding: 19px 0 0;
+        margin: 48px 0 0;
+        width: 100%;
+
+        .my-data-user-error-message {
+            color: #ff0000;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+           
+            label {
+                padding: 10px 0;
+                font-weight: 300;
+
+                span {
+                    color: #ff0000;
+                }
+            }
+
+            input {
+                padding: 12px 0;
+                border: none;
+                border-bottom: 0.5px solid #363636;
+                transition: padding 350ms linear;
+              margin: 20px 0 0;
+                font-size: 14px;
+
+                &:focus {
+                    outline: none;
+                    border: 1px solid #515151;
+                }
+            }
+
+            button {
+                // background-color: #efdd54;
+                background: none;
+                border-style: none;
+                text-align: left;
+                margin: 24px 0 0;
+                font-size: 18px;
+                width: 50px;
+                padding: 0 0 5px;
+                border-bottom: 1px solid #000;
+                cursor: pointer;
+
+            }
+
+        }
+
+        .account-actions {
+            // margin-top: 12px;
+
+            button {
+    
+                display: block;
+                background: transparent;
+                border: none;
+                padding: 0 0 6px;
+                border-bottom: 1px solid #000;
+                cursor: pointer;
+                font-size: 16px;
+                margin: 24px 0 0;
+
+
+                a {
+                    text-decoration: none;
+                    font-size: 16px;
+                    color: #000;
+
+                }
+
+            }
+        }
+    }
+
+    .my-orders-container {
+        padding-top: 18px;
+
+        h1 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 18px;
+        }
+
+        .orders-content {
+            border-bottom: 1px solid #0000002f;
+            padding: 12px 0;
+
+            #viewOrder {
+                font-size: 15px;
+                color: #1f2200;
+                display: flex;
+                justify-content: end;
+
+                a {
+                    text-decoration: none;
+                    color: #000000;
+                    height: auto;
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        margin: 0 0 0 6px;
+                        font-size: 16px;
+                    }
+
+                }
+
+
+            }
+
+            .show-products-toggle {
+                padding: 0 0 12px;
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+
+                svg {
+                    font-size: 26px;
+                }
+            }
+
+            .order-info {
+
+                #order_id {
+                    font-size: 18px;
+                }
+
+                span {
+                    font-weight: 400;
+                    font-size: 15px;
+                    display: block;
+                }
+
+                p {
+                    font-size: 15px;
+                    margin: 0 0 10px;
+                }
+            }
+
+            .order-item {
+                margin: 0 0 12px;
+
+                p {
+                    font-size: 16px;
+                }
+
+                .order-item-title {
+                    font-size: 18px;
+                    font-weight: 300;
+
+                }
+            }
+        }
+    }
+
+
+}
+
+@media screen and (min-width: 768px) {
+    .profile-container {
+        padding: 70px 36px 70px;
+        display: flex;
+        flex-wrap: wrap;
+
+        h1 {
+            font-size: 28px;
+        }
+
+        .profile-actions {
+            width: 30%;
+
+            .action-btns {
+                p {
+                    a {
+                        text-decoration: none;
+                        color: black;
+                        font-size: 18px;
+                        border-bottom: 1px solid transparent;
+                        font-weight: 300;
+
+                        &:hover {
+                            border-bottom: 1px solid #363636;
+                            ;
+                        }
+                    }
+                }
+            }
+        }
+
+        .user-info-container {
+            padding: 0 0 0 100px;
+        margin: 28px 0 0;
+
+            width: 45%;
+
+
+            .user-info-empty,
+            .show-errors-wrapper {
+                p {
+                    font-size: 16.8px;
+
+                }
+            }
+
+        }
+
+        .my-orders-container {
+            padding: 12px 0 0 100px;
+
+            width: 45%;
+
+            h1 {
+                font-size: 18px;
+                font-weight: 600;
+                margin: 0 0 18px;
+            }
+
+            .orders-content {
+                border-bottom: 1px solid #0000002f;
+                padding: 12px 0;
+
+                #viewOrder {
+                    font-size: 15px;
+                    color: #1f2200;
+                    display: flex;
+                    justify-content: end;
+
+                    a {
+                        text-decoration: none;
+                        color: #000000;
+                        height: auto;
+                        display: flex;
+                        align-items: center;
+                        transition: color 350ms ease-in-out;
+
+                        &:hover {
+                            color: #efdd54;
+                        }
+
+                        svg {
+                            margin: 0 0 0 6px;
+                            font-size: 16px;
+                        }
+
+                    }
+
+
+                }
+
+                .show-products-toggle {
+                    padding: 0 0 12px;
+                    font-size: 18px;
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        font-size: 26px;
+                    }
+                }
+
+                .order-info {
+
+                    #order_id {
+                        font-size: 18px;
+                    }
+
+                    span {
+                        font-weight: 400;
+                        font-size: 15px;
+                        display: block;
+                    }
+
+                    p {
+                        font-size: 15px;
+                        margin: 0 0 10px;
+                    }
+                }
+
+                .order-item {
+                    margin: 0 0 12px;
+
+                    p {
+                        font-size: 16px;
+                    }
+
+                    .order-item-title {
+                        font-size: 18px;
+                        font-weight: 300;
+
+                    }
+                }
+            }
+        }
+
+
+    }
+}

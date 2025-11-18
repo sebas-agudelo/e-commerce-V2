@@ -1,0 +1,480 @@
+$letterSize: 16px;
+
+.checkout-container {
+    max-width: 768px;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
+
+    .checkout-section-wrapper {
+        max-width: 100%;
+        height: auto;
+        padding: 100px 12px 70px;
+
+        h1 {
+            font-weight: 400;
+        }
+
+        // Knappen som visar orderöversitt om man vill gå tillbaka
+        .checkout-show-order {
+            width: 100%;
+            padding: 12px 28px;
+            box-shadow: #63636333 0px 2px 8px 0px;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+                cursor: pointer;
+                transition: color 250ms linear;
+
+                &:hover {
+                    color: #efdd54;
+                }
+            }
+        }
+
+        // Wrapper för att visa produkterna som finns i kassan
+        .ckeckout-order-items {
+            max-width: 100%;
+            height: auto;
+            background-color: #f8f8f8;
+            padding: 24px 12px;
+
+
+            .order-items {
+                max-width: 100%;
+                display: flex;
+                border-bottom: 1px dotted #d2d2d2;
+                height: 100px;
+                margin: 24px 0;
+
+                .order-items-img {
+                    // width: 17%;
+                    min-width: 54px;
+                    max-width: 54px;
+                    height: 100%;
+
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .checkout-items-details {
+                    width: 80%;
+                    max-width: 634px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 0 0 0 12px;
+
+
+                    .order-items-details {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        p {
+                            font-size: 16px;
+
+                        }
+
+                        .order-items-text {
+                            width: 65%;
+                        }
+
+                        .order-items-pricies {
+                            width: 35%;
+                            text-align: end;
+
+                            .checkout-unit_price {
+                                color: #000000b7;
+                                font-weight: 600;
+                            }
+
+                            .checkout-unit_price.mmm {
+                                text-decoration: line-through;
+                                font-weight: 200;
+                            }
+
+                            .checkout-sale_unit_price {
+                                font-weight: 600;
+                                color: #c90000;
+
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            .checkout-total-price {
+                p {
+                    font-size: 15px;
+                    font-weight: 300;
+                    display: flex;
+                    justify-content: space-between;
+
+
+                    span {
+                        font-weight: 600;
+                        font-size: 15px;
+                    }
+
+                    .discount-total {
+                        color: #c90000;
+                    }
+                }
+
+                #checkout-price {
+                    margin: 16px 0;
+                    font-size: 18px;
+
+                    span {
+                        font-size: 18px;
+                    }
+                }
+
+
+
+
+            }
+
+            //Knappen för att gå vidare till kunduppgifter
+            .checkout-to-costumer-info-btn {
+                display: flex;
+                justify-content: end;
+                padding: 16px 0;
+
+                p {
+                    width: 170px;
+                    text-align: center;
+                    cursor: pointer;
+                    font-size: 14px;
+                    padding: 8px 0;
+                    border-radius: 5px;
+                    background-color: #f5752b;
+                    color: #fff;
+                }
+            }
+        }
+
+        .checkout-form {
+            max-width: 100%;
+            height: auto;
+            font-size: $letterSize;
+            margin: 20px 0 0;
+
+            .checkout-costumer-info {
+                width: 100%;
+                padding: 12px 28px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+                background-color: #f8f8f8;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+            }
+
+            .checkout-user-form {
+                display: flex;
+                flex-direction: column;
+                padding: 38px 28px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+                .payment-user-error-message {
+                    color: #dd0101;
+                    margin-bottom: 12px;
+                    font-size: 15px;
+
+                }
+
+                h1 {
+                    text-align: start;
+                    padding: 0 0 38px;
+                }
+
+                input {
+                    border: 0.5px solid transparent;
+                    border-bottom: 0.5px solid #000000b7;
+                    padding: 8px 8px;
+
+
+
+                    &:focus {
+                        outline: none;
+                        border: 0.5px solid #000000b7;
+                    }
+                }
+
+                .peronnr-email-wrapper {
+                    input {
+                        width: 100%;
+                        margin: 10px 0;
+                    }
+
+                }
+
+                .firstname-lastname-wrapper {
+                    input {
+                        width: 100%;
+                        margin: 10px 0;
+                    }
+                }
+
+                .phonenumber-wrapper {
+                    input {
+                        margin: 10px 0;
+                        width: 100%;
+                    }
+                }
+
+                .address-postalcode-wrapper {
+                    #address {
+                        margin: 10px 0;
+                        width: 100%;
+                    }
+
+                    #postalcode {
+                        margin: 10px 0;
+                        width: 100%;
+                    }
+                }
+
+                .checkout-to-payment-btn {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 28px 0 0;
+
+                    .change-auth-user-info-btn {
+                        margin-bottom: 18px;
+                    }
+
+                    .checkout-btn {
+                        width: 170px;
+                        text-align: center;
+                        border-radius: 5px;
+                        background-color: #f5752b;
+                        color: #fff;
+                        font-size: 14px;
+                        padding: 8px 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .checkout-payment-wrapper {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #f5752b;
+        padding: 38px 28px;
+        margin: 20px 0 0;
+
+        .checkout-pay-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 28px 0 0;
+
+            .pay-btn {
+                width: 170px;
+                text-align: center;
+                 border-radius: 5px;
+                    background-color: #f5752b;
+                    color: #fff;
+                cursor: pointer;
+                font-size: 14px;
+                padding: 8px 0;
+                border: none;
+
+            }
+        }
+
+    }
+
+    .checkout-show-payment {
+        width: 100%;
+        padding: 12px 28px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: #f8f8f8;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .checkout-container {
+        max-width: 768px;
+        height: 100vh;
+        margin: 0 auto;
+        position: relative;
+
+        .checkout-section-wrapper {
+            width: 100%;
+            height: auto;
+            padding: 100px 0 70px;
+
+            h1 {
+                font-weight: 400;
+            }
+
+
+            // Knappen som visar orderöversitt om man vill gå tillbaka
+            .checkout-show-order {
+                width: 100%;
+                padding: 12px 28px;
+                box-shadow: #63636333 0px 2px 8px 0px;
+                background-color: #f8f8f8;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                p {
+                    cursor: pointer;
+                    transition: color 250ms linear;
+
+                    &:hover {
+                        color: #f5752b;
+                    }
+                }
+            }
+
+            // Wrapper för att visa produkterna som finns i kassan
+            .ckeckout-order-items {
+                width: 100%;
+                height: auto;
+                background-color: #f8f8f8;
+                padding: 12px 28px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .order-items {
+                    display: flex;
+                    flex-wrap: wrap;
+                    height: 100px;
+                    font-weight: 400;
+                    margin: 24px 0 0;
+
+
+
+
+                    .checkout-items-details {
+                        width: 634px;
+
+                        p {
+                            font-size: $letterSize;
+                        }
+
+                        .order-items-details {
+                            display: flex;
+                            justify-content: space-between;
+                        }
+
+                        #checkout-unit_price {
+                            color: #dd0101;
+                        }
+                    }
+                }
+
+                .checkout-total-price {
+                    margin: 24px 0 0;
+
+                }
+            }
+
+            .checkout-form {
+                .checkout-user-form {
+
+
+                    h1 {
+                        margin: 0 9px;
+                    }
+
+                    .peronnr-email-wrapper {
+                        padding: 12px 0;
+                        display: flex;
+
+                        .payment-user-data-input-wrapper {
+                            margin: 0 9px;
+                            width: calc(50% - 18px);
+                        }
+
+
+
+                    }
+
+                    .firstname-lastname-wrapper {
+                        padding: 12px 0;
+                        display: flex;
+
+                        .payment-user-data-input-wrapper {
+                            margin: 0 9px;
+                            width: calc(50% - 18px);
+                        }
+                    }
+
+                    .phonenumber-wrapper {
+                        padding: 12px 0;
+
+                        input {
+                            margin: 10px 9px;
+                            width: calc(50% - 18px);
+                        }
+
+                        .payment-user-error-message {
+                            margin: 0 9px 12px;
+                        }
+                    }
+
+                    .address-postalcode-wrapper {
+                        padding: 12px 0;
+                        display: flex;
+                        flex-direction: column;
+
+                        .payment-user-data-input-wrapper {
+                            margin: 10px 9px;
+                            width: calc(50% - 18px);
+                        }
+                    }
+
+                    .checkout-to-payment-btn {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+
+                        .change-auth-user-info-btn {
+                            margin-bottom: 0;
+                            border-bottom: 1px solid transparent;
+
+                            cursor: pointer;
+
+                            &:hover {
+                                border-bottom: 1px solid #efdd54;
+                            }
+                        }
+
+                        .checkout-btn {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
