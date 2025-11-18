@@ -13,7 +13,6 @@ export default function ShowCartItems({ reduceQty, incruseQty }) {
     <>
     {isLoading ? <ContentSpinner /> : 
     <>
-    
       {cartItems && cartItems.length === 0 ? (
         <article className="cart-content-empty">
           <div className="empty-cart-container">
