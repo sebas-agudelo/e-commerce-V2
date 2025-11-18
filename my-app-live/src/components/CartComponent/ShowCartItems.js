@@ -9,12 +9,12 @@ import ContentSpinner from "../spinners/ContentSpinner";
 import Spinners from "../spinners/Spinners";
 
 export default function ShowCartItems({ reduceQty, incruseQty }) {
-  const { cartItems, total, saleTotalPrice } = useContext(CartContext);
-  const {loading} = useContext(AuthSessionContext)
+  const { cartItems, total, saleTotalPrice, isLoading } = useContext(CartContext);
+  // const {loading} = useContext(AuthSessionContext)
 
   return (
     <>
-    {loading ? <Spinners /> : 
+    {isLoading ? <Spinners /> : 
     <>
       {cartItems && cartItems.length === 0 ? (
         <article className="cart-content-empty">
