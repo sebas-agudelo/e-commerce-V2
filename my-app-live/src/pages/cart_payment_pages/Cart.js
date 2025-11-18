@@ -17,21 +17,13 @@ export default function Cart() {
 
   const { id } = useParams();
 
-
   useEffect(() => {
     if (id) {
       fetchProductById(id);
     }
+    showCart();
   }, [setCartItems, id]);
 
-   useEffect(() => {
-     if(session === undefined) return; 
-  const loadCart = async () => {
-    await showCart();
-  };
-
-  loadCart();
-}, [session]);
 
   const handleConfirmDelete = () => {
     if (!productToDelete) {
@@ -62,7 +54,7 @@ export default function Cart() {
     setTotal(newTotal);
     setSaleTotalPrice(newsalePriceSum)
 
-    if (session === null) {
+    if (!session) {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     } else {
       updateCartQty(productToDelete.product_id, 0);
@@ -126,7 +118,7 @@ export default function Cart() {
     setCartItems(updatedCart);
     setSaleTotalPrice(newsalePriceSum)
 
-    if (session === null) {
+    if (!session) {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     } else {
       updateCartQty(item.product_id, newQty);
@@ -191,7 +183,7 @@ export default function Cart() {
     setSaleTotalPrice(newsalePriceSum)
 
 
-    if (session === null) {
+    if (!session) {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     } else if (session) {
       updateCartQty(item.product_id, newQty);
