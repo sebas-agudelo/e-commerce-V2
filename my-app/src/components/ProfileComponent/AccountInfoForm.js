@@ -18,22 +18,23 @@ export default function AccountInfoForm() {
   const [emailDisebled, setEmailDisebled] = useState(true);
   const [isDisebled, setIsDisebled] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [userInputError, setUserInputError] = useState({});
+  const [backendErrors, setBackendErrors] = useState({});
 
-  const { userInputValidation, userValidationMessage } = UserInfoValidation();
+  const { setFrontendErrors, frontendErrors, validateUserInput, errorMessages } = UserInfoValidation();
 
   useEffect(() => {
     getUserData();
   }, [isDisebled]);
 
-  const toggleUserInputAccess = () => {
+  const toggleInputEditable = () => {
     if (isDisebled) {
       setIsDisebled(false);
     }
 
     if (isDisebled === false) {
       setIsDisebled(true);
-      setUserInputError({})
+      setBackendErrors({})
+      setFrontendErrors({})
     }
   };
 
@@ -93,7 +94,7 @@ export default function AccountInfoForm() {
       if (response.ok) {
         setIsDisebled(true);
       } else {
-        setUserInputError(data.errors);
+        setBackendErrors(data.errors);
       }
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen.")
@@ -126,7 +127,7 @@ export default function AccountInfoForm() {
       if (response.ok) {
         setIsDisebled(true);
       } else {
-        setUserInputError(data.errors);
+        setBackendErrors(data.errors);
       }
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen.")
@@ -141,8 +142,21 @@ export default function AccountInfoForm() {
       [name]: value,
     }));
 
-    if (userInputError) {
-      setUserInputError((u) => ({
+    setFrontendErrors((prev) => {
+      const newErrors = { ...prev };
+
+      if (name) {
+        if (!value.trim()) {
+          newErrors[name] = errorMessages[name]
+        } else {
+          delete newErrors[name];
+        }
+      }
+      return newErrors;
+    });
+
+    if (backendErrors[name]) {
+      setBackendErrors((u) => ({
         ...u,
         [name]: null,
       }));
@@ -151,6 +165,9 @@ export default function AccountInfoForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const isValid = validateUserInput(changeData.firstname, changeData.lastname, changeData.birthday, changeData.phone, changeData.address, changeData.postal);
+    if (!isValid) return;
 
     if (user.length > 0) {
       await updateUserData();
@@ -177,7 +194,7 @@ export default function AccountInfoForm() {
           )}
 
           <form onSubmit={handleSubmit}>
-           
+
             <input
               type="email"
               name="email"
@@ -185,7 +202,7 @@ export default function AccountInfoForm() {
               value={userEmail && userEmail}
               disabled={emailDisebled}
             />
-           
+
             <input
               type="text"
               placeholder="Förnamn"
@@ -194,9 +211,14 @@ export default function AccountInfoForm() {
               value={changeData && changeData?.firstname}
               disabled={isDisebled}
             />
-            {userInputError.firstname && (
+            {frontendErrors.firstname && (
               <p className="my-data-user-error-message">
-                {userInputError.firstname}
+                {frontendErrors.firstname}
+              </p>
+            )}
+            {backendErrors.firstname && (
+              <p className="my-data-user-error-message">
+                {backendErrors.firstname}
               </p>
             )}
 
@@ -208,37 +230,54 @@ export default function AccountInfoForm() {
               value={changeData && changeData?.lastname}
               disabled={isDisebled}
             />
-            {userInputError.lastname && (
+
+            {frontendErrors.lastname && (
               <p className="my-data-user-error-message">
-                {userInputError.lastname}
+                {frontendErrors.lastname}
+              </p>
+            )}
+            {backendErrors.lastname && (
+              <p className="my-data-user-error-message">
+                {backendErrors.lastname}
               </p>
             )}
 
             <input
-              type="number"
+              type="text"
               placeholder="Förddelsedatum"
               name="birthday"
               onChange={handleChange}
               value={changeData && changeData?.birthday}
               disabled={isDisebled}
             />
-            {userInputError.birthday && (
+            {frontendErrors.birthday && (
               <p className="my-data-user-error-message">
-                {userInputError.birthday}
+                {frontendErrors.birthday}
+              </p>
+            )}
+
+            {backendErrors.birthday && (
+              <p className="my-data-user-error-message">
+                {backendErrors.birthday}
               </p>
             )}
 
             <input
-              type="number"
+              type="text"
               placeholder="Telefonnummer"
               name="phone"
               onChange={handleChange}
               value={changeData && changeData?.phone}
               disabled={isDisebled}
             />
-            {userInputError.phone && (
+            {frontendErrors.phone && (
               <p className="my-data-user-error-message">
-                {userInputError.phone}
+                {frontendErrors.phone}
+              </p>
+            )}
+            {backendErrors.phone && (
+              <p className="my-data-user-error-message">
+                {backendErrors.phone}
               </p>
             )}
 
@@ -250,9 +289,14 @@ export default function AccountInfoForm() {
               value={changeData && changeData?.address}
               disabled={isDisebled}
             />
-            {userInputError.address && (
+            {frontendErrors.address && (
               <p className="my-data-user-error-message">
-                {userInputError.address}
+                {frontendErrors.address}
+              </p>
+            )}
+            {backendErrors.address && (
+              <p className="my-data-user-error-message">
+                {backendErrors.address}
               </p>
             )}
 
@@ -264,9 +308,14 @@ export default function AccountInfoForm() {
               value={changeData && changeData?.postal}
               disabled={isDisebled}
             />
-            {userInputError.postal && (
+            {frontendErrors.postal && (
               <p className="my-data-user-error-message">
-                {userInputError.postal}
+                {frontendErrors.postal}
+              </p>
+            )}
+            {backendErrors.postal && (
+              <p className="my-data-user-error-message">
+                {backendErrors.postal}
               </p>
             )}
 
@@ -277,7 +326,7 @@ export default function AccountInfoForm() {
             ""
           ) : (
             <div className="account-actions">
-              <button onClick={toggleUserInputAccess}>
+              <button onClick={toggleInputEditable}>
                 {isDisebled ? "Ändra" : "Avbryt"}
               </button>
             </div>
@@ -287,3 +336,4 @@ export default function AccountInfoForm() {
     </div>
   );
 }
+

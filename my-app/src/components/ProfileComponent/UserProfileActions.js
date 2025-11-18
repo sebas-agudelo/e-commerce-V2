@@ -15,7 +15,7 @@ export default function UserProfileActions() {
 
       <div>
         <div className="action-btns">
-          <p>ö
+          <p>
             <Link to={`/profile/account`}>
               <MdManageAccounts /> Hantera konto
             </Link>

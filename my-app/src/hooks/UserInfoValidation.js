@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import validator from "validator";
 
 export default function UserInfoValidation() {
-  const [userValidationMessage, setUserValitionMessage] = useState("");
-  const userInputValidation = (
+  const [frontendErrors, setFrontendErrors] = useState({});
+  const errorMessages = {
+    firstname: "Du måste ange ditt förnamn.",
+    lastname: "Du måste ange ditt efternamn.",
+    birthday: "Du måste ange ditt födelsedatum.",
+    phone: "Du måste ange ditt telefonnummer.",
+    address: "Du måste ange adress.",
+    postal: "Du måste ange ett postnummer."
+  };
+  const validateUserInput = (
     firstname,
     lastname,
     phone,
@@ -11,57 +18,19 @@ export default function UserInfoValidation() {
     address,
     postal
   ) => {
-    
-    const nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿÅÄÖåäößñÑ' -]+$/;
-    const addressRegex = /^[a-zA-Z0-9À-ÖØ-öø-ÿÅÄÖåäößñÑ\s.,\-\/]+$/;
+    const newErrors = {};
+    if (!firstname) newErrors.firstname = "Du måste ange ditt förnamn.";
+    if (!lastname) newErrors.lastname = "Du måste ange ditt efternamn.";
+    if (!birthday) newErrors.birthday = "Du måste ange ditt födelsedatum.";
+    if (!phone) newErrors.phone = "Du måste ange ditt telefonnummer.";
+    if (!address) newErrors.address = "Du måste ange adress.";
+    if (!postal) newErrors.postal =  "Du måste ange ett postnummer.";
 
-    if (firstname === "") {
-      setUserValitionMessage("Förnamn är obligatoriskt");
-      return false;
-    }
-    if (lastname === "") {
-      setUserValitionMessage("Efternamn är obligatoriskt");
-      return false;
-    }
-    if (!nameRegex.test(firstname) || !nameRegex.test(lastname)) {
-      setUserValitionMessage(
-        "För och efternamn bör endast innehålla bokstäver."
-      );
-      return false;
-    }
+    setFrontendErrors(newErrors)
 
+    return Object.keys(newErrors).length === 0;
 
-    if (phone === "") {
-      setUserValitionMessage("Telefonnummer är obligatoriskt");
-      return false;
-    }
-
-
-    if (birthday === "") {
-      setUserValitionMessage("Föddelsedatum är obligatoriskt");
-      return false;
-    }
-   
-    if (address === "") {
-      setUserValitionMessage("Adress är obligatoriskt");
-      return false;
-    }
-    if (!addressRegex.test(address)) {
-      setUserValitionMessage("Adress bör endast innehålla bokstaver och siffror.");
-      return false;
-    }
-
-    if (postal === "") {
-      setUserValitionMessage("postnummer är obligatoriskt");
-      return false;
-    }
-    if (!validator.isPostalCode(postal.toString(), "SE")) {
-      setUserValitionMessage("Ogiltigt postnummer!");
-      return false;
-    }
-
-    setUserValitionMessage("");
-    return true;
   };
-  return { userInputValidation, userValidationMessage };
+  return { setFrontendErrors, frontendErrors, validateUserInput, errorMessages };
 }
+

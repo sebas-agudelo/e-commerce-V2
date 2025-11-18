@@ -1,5 +1,5 @@
 .profile-container {
-    padding: 70px 20px 70px;
+    padding: 85px 20px 70px;
 
     h1 {
         width: 100%;
@@ -16,7 +16,7 @@
             border-bottom: 1px solid #f5f4ed;
 
             p {
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 300;
             }
         }
@@ -26,6 +26,7 @@
 
             p {
                 margin-bottom: 18px;
+                
 
                 svg {
                     font-size: 18px;
@@ -74,7 +75,7 @@
                 border: none;
                 border-bottom: 0.5px solid #363636;
                 transition: padding 350ms linear;
-                margin: 0 0 30px;
+              margin: 20px 0 0;
                 font-size: 14px;
 
                 &:focus {
@@ -88,7 +89,7 @@
                 background: none;
                 border-style: none;
                 text-align: left;
-                margin: 12px 0 36px;
+                margin: 24px 0 0;
                 font-size: 18px;
                 width: 50px;
                 padding: 0 0 5px;
@@ -110,12 +111,13 @@
                 padding: 0 0 6px;
                 border-bottom: 1px solid #000;
                 cursor: pointer;
-                font-size: 18px;
+                font-size: 16px;
+                margin: 24px 0 0;
 
 
                 a {
                     text-decoration: none;
-                    font-size: 18px;
+                    font-size: 16px;
                     color: #000;
 
                 }
@@ -221,20 +223,12 @@
         .profile-actions {
             width: 30%;
 
-            .welcome {
-                p {
-                    font-size: 20px;
-                    font-weight: 300;
-
-                }
-            }
-
             .action-btns {
                 p {
                     a {
                         text-decoration: none;
                         color: black;
-                        font-size: 20px;
+                        font-size: 18px;
                         border-bottom: 1px solid transparent;
                         font-weight: 300;
 

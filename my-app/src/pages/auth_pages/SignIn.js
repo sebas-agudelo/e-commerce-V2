@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthSessionContext } from "../../Context/SessionProvider";
 
 export default function SignIn() {
-  const { setAdmin, setSession, session } = useContext(AuthSessionContext);
+  const { setSession } = useContext(AuthSessionContext);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [errorMessage, setErrorMessage] = useState("");
@@ -13,7 +13,7 @@ export default function SignIn() {
   const fetchSignIn = async () => {
     try {
       if (!email || !password) {
-        setErrorMessage("Email samt lösenord får inte vara tomma")
+        setErrorMessage("Vänligen fyll i både e-postadress och lösenord")
         return
       }
 
@@ -37,7 +37,7 @@ export default function SignIn() {
       }
 
     } catch (error) {
-      console.error("Ett oväntat fel inträffade. Försök senare igen.");
+      console.error("Ett oväntat fel inträffade. Försök igen.");
     }
   };
 
