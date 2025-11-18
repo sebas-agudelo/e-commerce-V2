@@ -21,8 +21,19 @@ export default function Cart() {
     if (id) {
       fetchProductById(id);
     }
-    showCart();
+    // showCart();
   }, [setCartItems, id]);
+
+    useEffect(() => {
+  if (session === undefined || session === null) return; // espera a que la sesión se confirme
+
+  const loadCart = async () => {
+    await showCart();
+  };
+
+  loadCart();
+}, [session]);
+
 
 
   const handleConfirmDelete = () => {

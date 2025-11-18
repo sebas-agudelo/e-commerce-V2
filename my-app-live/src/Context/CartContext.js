@@ -18,15 +18,22 @@ export const CartProvider = ({ children }) => {
   }, [session]);
 
   useEffect(() => {
-    showCart();
-  }, [])
+  if (session === undefined) return; // espera a que la sesión se confirme
+
+  const loadCart = async () => {
+    await showCart();
+  };
+
+  loadCart();
+}, [session]);
+
 
   //Hämtar hela varukorgen för utloggade och inloggade användare
   const showCart = async () => {
     const storedCart = localStorage.getItem("cart");
     const cartData = JSON.parse(storedCart);
 
-    if (!session) {
+    if (session === false) {
       if (cartData) {
         setCartItems(cartData);
 
@@ -54,7 +61,7 @@ export const CartProvider = ({ children }) => {
       }
     }
 
-    if (session) {
+    if (session === true) {
       try {
         const response = await fetch("https://e-commerce-v2-hts6.vercel.app/api/cart/show", {
           method: "GET",

@@ -11,18 +11,20 @@ export const SessionProvider = ({ children }) => {
   useEffect(() => {
     const fetchSessionData = async () => {
       await verifySession();
-      setLoading(false);
     };
     fetchSessionData();
-    const interval = setInterval(() => {
-      verifySession();
-    }, 60 * 60 * 1000);
+    // const interval = setInterval(() => {
+    //   verifySession();
+    // }, 60 * 60 * 1000);
 
-    return () => clearInterval(interval);
-  }, [session, admin]);
+    // return () => clearInterval(interval);
+  }, []);
+  // session, admin
 
   const verifySession = async () => {
     try {
+      setLoading(true);
+
       const response = await fetch(
         "https://e-commerce-v2-hts6.vercel.app/auth/checkUserSession",
         {
@@ -42,6 +44,9 @@ export const SessionProvider = ({ children }) => {
     } catch (error) {
       setSession(false);
       alert("Ett oväntat fel har inträffat. Försök igen.")
+    }finally{
+      setLoading(false);
+      
     }
   };
 
