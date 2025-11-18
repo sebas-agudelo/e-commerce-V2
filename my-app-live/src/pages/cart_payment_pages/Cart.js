@@ -16,6 +16,15 @@ export default function Cart() {
   const [productToDelete, setProductToDelete] = useState(null);
 
   const { id } = useParams();
+  useEffect(() => {
+if (session === undefined || session === null) return; // espera a que la sesión se confirme
+
+const loadCart = async () => {
+  await showCart();
+};
+
+loadCart();
+}, [session]);
 
   useEffect(() => {
     if (id) {
@@ -24,15 +33,6 @@ export default function Cart() {
     // showCart();
   }, [setCartItems, id]);
 
-    useEffect(() => {
-  if (session === undefined || session === null) return; // espera a que la sesión se confirme
-
-  const loadCart = async () => {
-    await showCart();
-  };
-
-  loadCart();
-}, [session]);
 
 
 

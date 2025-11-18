@@ -14,9 +14,9 @@ export const CartProvider = ({ children }) => {
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  useEffect(() => {
-    checkLocalStorage();
-  }, [session]);
+  // useEffect(() => {
+  //   checkLocalStorage();
+  // }, [session]);
 
   useEffect(() => {
   if (session === undefined || session === null) return; // espera a que la sesión se confirme
