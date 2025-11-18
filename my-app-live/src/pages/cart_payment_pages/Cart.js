@@ -17,6 +17,9 @@ export default function Cart() {
 
   const { id } = useParams();
 
+  console.log(id);
+  
+
   useEffect(() => {
     if (id) {
       fetchProductById(id);
