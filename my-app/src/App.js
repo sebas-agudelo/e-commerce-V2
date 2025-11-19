@@ -1,4 +1,5 @@
 import "./scss/main.scss";
+import { useEffect } from "react";
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/nav/Navbar";
@@ -19,6 +20,8 @@ import MyData from "./pages/auth_pages/MyData";
 import Account from "./pages/auth_pages/Account";
 import PageNotFound from "./pages/PageNotFound";
 import OrderDetails from "./pages/auth_pages/OrderDetails";
+import { useLocation } from 'react-router-dom';
+
 
 const Home = React.lazy(() => import("./pages/Home"));
 const AllProducts = React.lazy(() =>
@@ -34,9 +37,18 @@ const ProductsByCategory = React.lazy(() =>
 );
 
 function App() {
+    const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <ProductProvider>
           <CartProvider>
             <ProductsProvider>
