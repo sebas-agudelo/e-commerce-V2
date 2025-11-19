@@ -291,7 +291,8 @@ export const CartProvider = ({ children }) => {
         setTotal,
         clearCart,
         saleTotalPrice,
-        setSaleTotalPrice
+        setSaleTotalPrice,
+        isCartLoading
       }}
     >
       {children}
