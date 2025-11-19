@@ -10,6 +10,8 @@ export const CartProvider = ({ children }) => {
   const [total, setTotal] = useState();
   const [saleTotalPrice, setSaleTotalPrice] = useState()
   const { session, loadingSession } = useContext(AuthSessionContext);
+  const [isCartLoading, setIsCartLoading] = useState(true);
+
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -31,6 +33,7 @@ export const CartProvider = ({ children }) => {
 
   //Hämtar hela varukorgen för utloggade och inloggade användare
   const showCart = async () => {
+    setIsCartLoading(true)
     const storedCart = localStorage.getItem("cart");
     const cartData = JSON.parse(storedCart);
 
@@ -63,6 +66,8 @@ export const CartProvider = ({ children }) => {
       } else {
         setCartItems([]);
       }
+    setIsCartLoading(false)
+
     }
 
     if (session === true) {
@@ -84,6 +89,9 @@ export const CartProvider = ({ children }) => {
         }
       } catch (error) {
         alert("Något gick fel. Försök igen");
+      }finally{
+    setIsCartLoading(false)
+
       }
     }
   };
