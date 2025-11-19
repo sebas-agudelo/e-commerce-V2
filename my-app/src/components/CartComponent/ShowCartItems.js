@@ -66,12 +66,6 @@ export default function ShowCartItems({ reduceQty, incruseQty }) {
             <button className="checkout-btn">
               <Link to={`/checkout`}>Till kassannnnnnnnnnnnnn</Link>
             </button>
-
-            {/* <div className="payment-methods">
-              {paymethods?.map((method) => (
-                <img src={method}/>
-              ))}
-            </div> */}
           </>
         </article>
       )}
