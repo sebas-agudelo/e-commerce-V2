@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AccountInfoForm from "../../components/ProfileComponent/AccountInfoForm";
-import UserProfileActions from "../../components/ProfileComponent/UserProfileActions";
+import AccountInfoForm from "../../components/AuthComponent/AccountInfoForm";
+import UserProfileActions from "../../components/AuthComponent/UserProfileActions";
 
 export default function MyData() {
   const [width, setWidth] = useState(window.innerWidth >= 768);

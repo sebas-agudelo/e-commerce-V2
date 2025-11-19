@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import UserProfileActions from "../../components/ProfileComponent/UserProfileActions";
-import AccountInfoButton from "../../components/ProfileComponent/AccountInfoButton";
+import UserProfileActions from "../../components/AuthComponent/UserProfileActions";
+import AccountInfoButton from "../../components/AuthComponent/AccountInfoButton";
 
 export default function Account() {
     const [width, setWidth] = useState(window.innerWidth >= 768)

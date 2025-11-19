@@ -9,24 +9,32 @@ export const CartProvider = ({ children }) => {
   const [cartMessages, setCartMessages] = useState("");
   const [total, setTotal] = useState();
   const [saleTotalPrice, setSaleTotalPrice] = useState()
-  const { session } = useContext(AuthSessionContext);
+  const { session, loadingSession } = useContext(AuthSessionContext);
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  useEffect(() => {
-    checkLocalStorage();
-  }, [session]);
+  // useEffect(() => {
+  //   checkLocalStorage();
+  // }, [session]);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   showCart();
+  // }, [])
+
+   useEffect(() => {
+  if (loadingSession) return; 
+
+
     showCart();
-  }, [])
+
+}, [session, loadingSession]);
 
   //Hämtar hela varukorgen för utloggade och inloggade användare
   const showCart = async () => {
     const storedCart = localStorage.getItem("cart");
     const cartData = JSON.parse(storedCart);
 
-    if (!session) {
+    if (session === false) {
       if (cartData) {
         setCartItems(cartData);
 
@@ -57,9 +65,8 @@ export const CartProvider = ({ children }) => {
       }
     }
 
-    if (session) {
+    if (session === true) {
       try {
-        // "https://examensarbeten.vercel.app/api/cart/show"
         const response = await fetch("https://e-commerce-v2-hts6.vercel.app/api/cart/show", {
           method: "GET",
           credentials: "include",

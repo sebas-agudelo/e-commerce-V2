@@ -3,7 +3,7 @@ import ContentSpinner from "../../components/spinners/ContentSpinner";
 import { CgArrowRight } from "react-icons/cg";
 
 import { Link } from "react-router-dom";
-import UserProfileActions from "../../components/ProfileComponent/UserProfileActions";
+import UserProfileActions from "../../components/AuthComponent/UserProfileActions";
 
 export default function MyOrders() {
   const [orders, setOrders] = useState();

@@ -64,14 +64,14 @@ export default function ShowCartItems({ reduceQty, incruseQty }) {
             <p className="Shipping">Frakt: <span>0 kr.</span></p>
             <p className="total">Summa: <span>{total ? `${total}.00 kr.` : "0"}</span></p>
             <button className="checkout-btn">
-              <Link to={`/checkout`}>Till kassan</Link>
+              <Link to={`/checkout`}>Till kassannnnnnnnnnnnnn</Link>
             </button>
 
-            <div className="payment-methods">
+            {/* <div className="payment-methods">
               {paymethods?.map((method) => (
                 <img src={method}/>
               ))}
-            </div>
+            </div> */}
           </>
         </article>
       )}

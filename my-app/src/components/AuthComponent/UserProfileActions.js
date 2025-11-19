@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import SignOut from "../AuthComponent/SignOut";
+import SignOut from "./SignOut";
 import { MdManageAccounts } from "react-icons/md";
 import { AiOutlineProduct } from "react-icons/ai";
 import { AuthSessionContext } from "../../Context/SessionProvider";

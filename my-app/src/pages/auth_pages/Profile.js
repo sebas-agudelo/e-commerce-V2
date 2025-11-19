@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import UserProfileActions from "../../components/ProfileComponent/UserProfileActions";
+import UserProfileActions from "../../components/AuthComponent/UserProfileActions";
 
 export default function Profile() {
   return (
