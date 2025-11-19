@@ -10,7 +10,7 @@ import CartRemoveProductConfirm from "../../components/CartComponent/CartRemoveP
 export default function Cart() {
   const { cartItems, setCartItems, total, showCart, updateCartQty, setTotal, setSaleTotalPrice } =
     useContext(CartContext);
-  const { session } = useContext(AuthSessionContext);
+  const { session, loadingSession } = useContext(AuthSessionContext);
   const { fetchProductById } = useContext(ProductContext);
   const [showDelMessage, setShowDelMessage] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
@@ -21,9 +21,15 @@ export default function Cart() {
     if (id) {
       fetchProductById(id);
     }
-    showCart();
+    // showCart();
   }, [setCartItems, id]);
 
+     useEffect(() => {
+  if (loadingSession) return; // espera a que la sesión se confirme
+
+
+  showCart();
+}, [session, loadingSession]);
 
   const handleConfirmDelete = () => {
     if (!productToDelete) {

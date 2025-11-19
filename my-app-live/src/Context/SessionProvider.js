@@ -6,24 +6,30 @@ export const SessionProvider = ({ children }) => {
   const [session, setSession] = useState(null);
   const [email, setEmail] = useState();
   const [admin, setAdmin] = useState(false);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
+const [loadingSession, setLoadingSession] = useState(true);
 
-  useEffect(() => {
-    const fetchSessionData = async () => {
-      await verifySession();
-    };
-    fetchSessionData();
-    // const interval = setInterval(() => {
-    //   verifySession();
-    // }, 60 * 60 * 1000);
 
-    // return () => clearInterval(interval);
+  // useEffect(() => {
+  //   const fetchSessionData = async () => {
+  //     await verifySession();
+  //     setLoading(false);
+  //   };
+  //   fetchSessionData();
+  //   const interval = setInterval(() => {
+  //     verifySession();
+  //   }, 60 * 60 * 1000);
+
+  //   return () => clearInterval(interval);
+  // }, [session, admin]);
+
+    useEffect(() => {
+    verifySession();
   }, []);
-  // session, admin
 
   const verifySession = async () => {
     try {
-      setLoading(true);
+    setLoadingSession(true);
 
       const response = await fetch(
         "https://e-commerce-v2-hts6.vercel.app/auth/checkUserSession",
@@ -44,10 +50,9 @@ export const SessionProvider = ({ children }) => {
     } catch (error) {
       setSession(false);
       alert("Ett oväntat fel har inträffat. Försök igen.")
-    }finally{
-      setLoading(false);
-      
-    }
+    }finally {
+    setLoadingSession(false);
+  }
   };
 
   return (
@@ -55,10 +60,9 @@ export const SessionProvider = ({ children }) => {
       value={{
         session,
         setSession,
-        loading,
         verifySession,
-        setLoading,
         email,
+        loadingSession
       }}
     >
       {children}
