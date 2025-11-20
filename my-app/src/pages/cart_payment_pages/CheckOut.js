@@ -21,13 +21,10 @@ export default function CheckOut() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Server response:", data); 
         if (data.client_secret) {
           
           setClientSecret(data.client_secret);
-        } else {
-          console.error("No client_secret in server response");
-        }
+        } 
       })
       .catch((err) => console.error("Error fetching client secret:", err));
   }, []);
