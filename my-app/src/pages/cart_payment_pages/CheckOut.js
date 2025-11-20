@@ -7,7 +7,7 @@ import { CartContext } from "../../Context/CartContext";
 import Spinners from "../../components/spinners/Spinners";
 
 export default function CheckOut() {
-  const stripePromise = loadStripe("pk_test_51QcxyBC8xBDEyq1IR3JDFzfgJGgjFiZZAhiodN7TVq5ruc0xyohbyDMWhnfQoYp87rwM6nfskIhkFZE1rBAmhF6K00MyGgTfj9");
+  const stripePromise = loadStripe(process.env.REACT_APP_PUBLIC_STRIPE_KEY);
   const [clientSecret, setClientSecret] = useState("");
 
   const {cartItems} = useContext(CartContext);

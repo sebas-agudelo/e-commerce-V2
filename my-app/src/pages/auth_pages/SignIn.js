@@ -26,8 +26,6 @@ export default function SignIn() {
 
       const data = await response.json();
 
-      console.log("Sign in data: ", data);
-
       if (response.ok) {
         setSession(true)
         nav("/profile");

@@ -3,9 +3,8 @@ import { AuthSessionContext } from '../Context/SessionProvider';
 import { useNavigate } from "react-router-dom";
 
 export default function RedirectedRoutes({ children }) {
-  const { session, admin, loading, verifySession, verifyAdmin } = useContext(AuthSessionContext);
-  // verifySession()
-  // verifyAdmin()
+  const { session, loading } = useContext(AuthSessionContext);
+
 
   const navigate = useNavigate();
 
@@ -15,8 +14,6 @@ export default function RedirectedRoutes({ children }) {
       }
   
       if (session) {
-        
-        console.log("Du är inloggad");
         navigate('/profile', { replace: true });
       }
 
@@ -26,6 +23,5 @@ export default function RedirectedRoutes({ children }) {
     if (loading) {
       return <div>Loading...</div>;
     }
-  
     return children;
 }

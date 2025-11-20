@@ -14,22 +14,18 @@ export const CartProvider = ({ children }) => {
 
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    useEffect(() => {
+      if (loadingSession) return; 
+      
+      
+      showCart();
+      
+    }, [session, loadingSession]);
 
-  // useEffect(() => {
-  //   checkLocalStorage();
-  // }, [session]);
-
-  // useEffect(() => {
-  //   showCart();
-  // }, [])
-
-   useEffect(() => {
-  if (loadingSession) return; 
-
-
-    showCart();
-
-}, [session, loadingSession]);
+    useEffect(() => {
+      checkLocalStorage();
+    }, []);
 
   //Hämtar hela varukorgen för utloggade och inloggade användare
   const showCart = async () => {
@@ -59,8 +55,6 @@ export const CartProvider = ({ children }) => {
 
         setTotal(totalPrice);
         setSaleTotalPrice(newsalePriceSum)
-
-        console.log("Sale total: ", saleTotalPrice);
 
 
       } else {
@@ -159,8 +153,6 @@ export const CartProvider = ({ children }) => {
             quantity: quantity,
           };
 
-          console.log("Total price: ", priceToUse);
-
 
           updatedCart = [...prevCart, productToAdd];
         }
@@ -183,8 +175,6 @@ export const CartProvider = ({ children }) => {
           }
         );
         const data = await response.json();
-        console.log(session);
-
         if (response.ok) {
           await showCart();
         } else {
@@ -265,7 +255,6 @@ export const CartProvider = ({ children }) => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Produkter tillagda i databasen.");
         setCartItems("");
       } else {
         alert(data.error);

@@ -19,10 +19,7 @@ export const ProductsProvider = ({ children }) => {
     
     try {
       const response = await fetch(url);
-      const data = await response.json();    
-
-      console.log(data);
-      
+      const data = await response.json();          
       
       if (response.ok) {
           setPages(data.totalPages || 1);

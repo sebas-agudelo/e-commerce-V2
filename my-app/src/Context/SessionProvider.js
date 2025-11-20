@@ -5,23 +5,7 @@ export const AuthSessionContext = createContext();
 export const SessionProvider = ({ children }) => {
   const [session, setSession] = useState(null);
   const [email, setEmail] = useState();
-  const [admin, setAdmin] = useState(false);
-  // const [loading, setLoading] = useState(true);
 const [loadingSession, setLoadingSession] = useState(true);
-
-
-  // useEffect(() => {
-  //   const fetchSessionData = async () => {
-  //     await verifySession();
-  //     setLoading(false);
-  //   };
-  //   fetchSessionData();
-  //   const interval = setInterval(() => {
-  //     verifySession();
-  //   }, 60 * 60 * 1000);
-
-  //   return () => clearInterval(interval);
-  // }, [session, admin]);
 
     useEffect(() => {
     verifySession();

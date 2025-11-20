@@ -3,22 +3,13 @@ import { Link } from "react-router-dom";
 import 'rc-slider/assets/index.css';
 import Footer from "./Footer";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { ProductsApiContext } from "../Context/ProductsContext";
-import ContentSpinner from "../components/spinners/ContentSpinner";
+
 
 export default function Home() {
-  const [selectedProducts, setSelectedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [saleProducts, setSaleProducts] = useState([]);
-  const { setProductLoading, productLoading } = useContext(ProductsApiContext)
 
-
-  console.log("Kategorier: ", categories);
-
-
-  
   useEffect(() => {
-    // setProductLoading(true)
     const saleProducts = async () => {
       const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/superdeals`, {
         method: "GET",
@@ -27,15 +18,11 @@ export default function Home() {
       });
       
       const data = await response.json();
-      console.log(data.data);
-      
-      // setProductLoading(true)
+    
       if (response.ok) {
         setSaleProducts(data.data);
         
       }
-      // setProductLoading(false)
-
     }
 
     const getCategories = async () => {
@@ -46,19 +33,15 @@ export default function Home() {
       });
       
       const data = await response.json();
-      console.log(data.data);
-      
-      // setProductLoading(true)
+
       if (response.ok) {
         setCategories(data.data);
         
       }
-      // setProductLoading(false)
     };
 
     saleProducts()
     getCategories();
-    // setProductLoading(false)
   }, []);
 
   return (

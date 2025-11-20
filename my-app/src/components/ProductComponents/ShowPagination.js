@@ -8,8 +8,6 @@ import { GrPrevious } from "react-icons/gr";
 export default function ShowPagination() {
   const { currenPage, setCurrentPage, pages } =
     useContext(ProductsApiContext);
-
-    console.log("Current page: ",currenPage === 1);
     
   const [searchParams, setSearchParams] = useSearchParams();
   const newParams = new URLSearchParams(searchParams);
