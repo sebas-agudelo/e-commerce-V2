@@ -15,7 +15,7 @@ export default function Footer() {
       <section className="footer-about-contact">
       <article className="additional-info">
         <div className="footer-logo-img">
-           <img src="SOUND (2) (2).png"/>
+           <img src="/SOUNDLOGO.png"/>
         </div>
         <div className="info-section">
           <p>
