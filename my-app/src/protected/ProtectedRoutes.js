@@ -16,7 +16,7 @@ export default function ProtectedRoutes({ children }) {
   }, [session, admin, loading, navigate]);
   
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div>Loading....</div>; 
   }
 
   return children;
