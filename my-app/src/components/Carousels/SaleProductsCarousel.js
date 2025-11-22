@@ -43,13 +43,13 @@ export const SaleProductsCarousel = () => {
                 loop={false}
                 breakpoints={{
                     0: {
-                        spaceBetween: 24,
-                        slidesPerView: 1.3,
+                        spaceBetween: 12,
+                        slidesPerView: 1.4,
                         slidesPerGroup: 1
                     },
                     768: {
-                        spaceBetween: 24,
-                        slidesPerView: 2.3,
+                        spaceBetween: 12,
+                        slidesPerView: 2.4,
                         slidesPerGroup: 2
                     },
                     1024: {

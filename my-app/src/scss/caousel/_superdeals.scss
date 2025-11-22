@@ -5,8 +5,7 @@
       background-color: #181818;
       min-height: auto;
       width: 100%;
-      margin: 0 0 12px;
-      padding: 60px 0 60px 24px;
+      padding: 60px 0 60px 12px;
 
 
       h2 {
@@ -27,8 +26,7 @@
           border-bottom: 2px solid #f5752b;
           border-radius: 3px;
           transition: width 350ms ease;
-
-
+          height: 513px;
 
           .swiper-super-deals-img {
               min-height: 300px;
@@ -79,7 +77,7 @@
 
   @media screen and (min-width: 768px) {
       .carousel-container {
-          padding: 60px 0 60px 24px;
+          padding: 60px 12px;
 
           .swiper-carousel-content {
               display: block;
@@ -115,10 +113,9 @@
 
   @media screen and (min-width: 1024px) {
       .carousel-container {
-          padding: 60px 24px 60px 24px;
-
           .swiper {
               padding: 24px 0;
+              max-width: 1400px;
 
               .swiper-carousel-content {
                   transition: transform 250ms ease;
