@@ -1,14 +1,16 @@
 import { useRef, useState, useEffect } from "react"
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, FreeMode, Mousewheel } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/mousewheel";
 import "swiper/css/free-mode";
-import { Link } from "react-router-dom";
 
+import { IoCheckmarkOutline } from "react-icons/io5";
+import { IoCloseOutline } from "react-icons/io5";
 
 export const SaleProductsCarousel = () => {
     const [superDeals, setSuperDeals] = useState([]);
