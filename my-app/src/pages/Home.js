@@ -3,28 +3,13 @@ import { Link } from "react-router-dom";
 import 'rc-slider/assets/index.css';
 import Footer from "./Footer";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { SaleProductsCarousel } from "../components/Carousels/SaleProductsCarousel";
 
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
-  const [saleProducts, setSaleProducts] = useState([]);
 
   useEffect(() => {
-    const saleProducts = async () => {
-      const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/superdeals`, {
-        method: "GET",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-      });
-      
-      const data = await response.json();
-    
-      if (response.ok) {
-        setSaleProducts(data.data);
-        
-      }
-    }
-
     const getCategories = async () => {
       const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/api/categori/get`, {
         method: "GET",
@@ -40,7 +25,6 @@ export default function Home() {
       }
     };
 
-    saleProducts()
     getCategories();
   }, []);
 
@@ -73,26 +57,7 @@ export default function Home() {
           </article>
         </section>
 
-        <section className="home-super-deals">
-          <h2>SUPER DEALS</h2>
-          {/* <p className="mmm">ALWAYS GREAT DEALS</p> */}
-          <div className="home-super-deals-content">
-            {saleProducts.map((p) => (
-              <Link to={`/product/${p.id}`}>
-                <div className="super-deal-product">
-                  <div className="super-deal-img">
-                    <img src={p.img}
-                      alt={p.title}
-                    />
-                  </div>
-                  <p id="title">{p.title}</p>
-                  <p id="price">{p.price} kr.</p>
-                  <p id="sale-price">{p.sale_price}.00 kr.</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
+        <SaleProductsCarousel />
 
         <section className="home-new-product">
           <article className="home-new-product-content">
