@@ -59,7 +59,7 @@ export const SaleProductsCarousel = () => {
                     }
                 }}
             >
-                {superDeals.map((deal) => (
+                 {superDeals.map((deal) => (
                     <SwiperSlide>
                         <Link to={`/product/${deal.id}`} className="swiper-carousel-content">
                             <div className="swiper-super-deals-img">
@@ -68,10 +68,30 @@ export const SaleProductsCarousel = () => {
                                 />
                             </div>
                             <div className="swiper-super-deals-info">
+                                <p id="brand">{deal.brand}</p>
                                 <p id="title">{deal.title}</p>
+                                <ul>
+                                    <li>
+                                        {deal.category_name}
+                                    </li>
+                                    <li>
+                                        Laddningstid: {deal.charging_time}h
+                                    </li>
+                                    <li>
+                                        Batteritid: {deal.battery_life}h
+                                    </li>
+                                </ul>
+
                                 <p id="price">{deal.price} kr.</p>
                                 <p id="sale-price">{deal.sale_price}.00 kr.</p>
+
+                                <p className="purchase_count">{deal.purchase_count > 0 ? <span className="mark">< IoCheckmarkOutline /></span> : <span className="closee">< IoCloseOutline /></span>} i lager</p>
                             </div>
+                            {deal.purchase_count === 0 &&
+                                <div className="out-of-stock">
+                                    <p>Tillfälligt slut</p>
+                                </div>
+                            }
                         </Link>
                     </SwiperSlide>
                 ))}

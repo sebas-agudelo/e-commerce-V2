@@ -22,58 +22,120 @@
           background-color: #f5f5f5;
           text-decoration: none;
           color: #181818;
-          padding: 24px 0;
           border-top: 2px solid #f5752b;
           border-bottom: 2px solid #f5752b;
           border-radius: 3px;
           transition: width 350ms ease;
           height: 513px;
+          position: relative;
 
+          transition: all 350ms ease;
+          
           .swiper-super-deals-img {
-              min-height: 300px;
+              min-height: 260px;
               width: 60%;
               max-width: 135px;
               display: flex;
               align-items: center;
               justify-content: center;
               margin: 0 auto;
-
-
+              
+              
 
               img {
                   width: 100%;
                   max-width: 100%;
                   margin: 0 auto;
 
-              }
-          }
+                }
+            }
+            
+            .swiper-super-deals-info {
+            border-top: 0.5px solid #1818187b;
+            text-align: left;
+            padding: 12px 0 0 12px;
+            
+            p {
+                font-size: 18px;
+                font-weight: 300;
+            }
 
-          .swiper-super-deals-info {
-              padding: 36px 24px 0;
-              text-align: left;
+              #brand{
+                    font-size: 12px;
+                    font-weight: 200;
+                }
+            
+            ul{
+                padding: 0 0 0 12px;
+                margin: 12px 0 24px 0;
 
-              p {
-                  font-size: 18px;
-                  font-weight: 400;
-              }
-
+                li{
+                    font-size: 12px;
+                }
+            }
+            
               #price {
                   text-decoration: line-through;
                   font-weight: 200;
-              }
+                  font-size: 13px;
+                }
 
               #sale-price {
                   color: #c90000;
                   font-size: 20px;
                   font-weight: 600;
-              }
-          }
-      }
+                }
 
-      .swiper-button-prev,
-      .swiper-button-next {
-          display: none;
-      }
+                .purchase_count{
+                    font-size: 12px;
+                        display: flex;
+                    margin: 6px 0 0 0;
+
+                
+                    span{
+                         display: flex;
+                        align-items: center;
+                    }
+                    
+                    .mark{
+                        color: green;
+                       
+                        svg{
+                            font-size: 20px;
+                        }            
+                    }
+
+                    .closee{
+                          color: #c90000;
+                   
+                        svg{
+                            font-size: 22px;
+                        }            
+                    }
+                   
+                }
+            }
+            .out-of-stock{
+                position: absolute;
+                top: -3%;
+                transform: translateY(3%);
+                width: 50%;
+                background-color: #f5752b;
+                border-radius: 0 6px 0 6px;
+
+                p{
+                    font-weight: 600;
+                    color: #fff;
+                    text-align: center;
+                    
+                }
+            }
+        }
+        
+        .swiper-button-prev,
+        .swiper-button-next {
+            display: none;
+        }
   }
 
   @media screen and (min-width: 768px) {
@@ -81,14 +143,23 @@
           padding: 60px 12px;
 
           .swiper-carousel-content {
-              display: block;
-              background-color: #f5f5f5;
-              text-decoration: none;
-              color: #181818;
-              padding: 24px 0;
-              border-top: 2px solid #f5752b;
-              border-bottom: 2px solid #f5752b;
-              border-radius: 3px;
+            .swiper-super-deals-info{
+              
+            }
+
+                &:hover{
+                    .swiper-super-deals-img {
+                        max-width: 145px;
+                    }
+                         .swiper-super-deals-info {
+                            
+                            #title{
+                                text-decoration: underline;
+                         
+                            }
+                         }
+                      
+            }
           }
 
           .swiper-button-prev,
@@ -117,14 +188,6 @@
           .swiper {
               padding: 24px 0;
               max-width: 1400px;
-
-              .swiper-carousel-content {
-                  transition: transform 250ms ease;
-
-                  &:hover {
-                      transform: translateY(-5px);
-                  }
-              }
           }
       }
   }
