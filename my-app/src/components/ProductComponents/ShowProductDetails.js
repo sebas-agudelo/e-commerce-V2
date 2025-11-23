@@ -4,10 +4,12 @@ import { IoMdCheckmark } from "react-icons/io";
 import { VscChromeClose } from "react-icons/vsc";
 import ProductStates from "../../hooks/ProductStates";
 import { CartContext } from "../../Context/CartContext";
+import ContentSpinner from "../spinners/ContentSpinner";
+import ButtonSpinner from "../spinners/ButtonSpinner";
 
 export default function ShowProductDetails({ productData }) {
   const [isClicked, setIsClicked] = useState(false);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, isAddingToCart } = useContext(CartContext);
 
   const readMoreOpen = () => {
     setIsClicked(true);
@@ -35,15 +37,22 @@ export default function ShowProductDetails({ productData }) {
           <p className="price">{productData?.price}.00 kr.</p>
         }
 
+        {productData?.purchase_count > 0 ?
+          <button
+            className="add-cart-btn"
+            onClick={() => addToCart(productData, productData.id)}
+          >
+            {isAddingToCart ? <ButtonSpinner />: <> <PiShoppingCartThin />
+            Lägg i varukorgen</>}
 
-
-        <button
-          className="add-cart-btn"
-          onClick={() => addToCart(productData, productData.id)}
-        >
-          <PiShoppingCartThin />
-          Lägg i varukorgen
-        </button>
+          </button>
+          :
+          <button
+            className="add-cart-btn-disabled"
+          >
+            Tillfälligt slut
+          </button>
+        }
 
         <div className="additional-info">
           <p>

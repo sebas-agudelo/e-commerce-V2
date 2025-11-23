@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, FreeMode, Mousewheel } from "swiper/modules";
-import { Link } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -23,6 +23,9 @@ export const SaleProductsCarousel = () => {
             });
 
             const data = await response.json();
+
+            console.log(data);
+
 
             if (response.ok) {
                 setSuperDeals(data.data);
@@ -61,7 +64,7 @@ export const SaleProductsCarousel = () => {
                     }
                 }}
             >
-                 {superDeals.map((deal) => (
+                {superDeals.map((deal) => (
                     <SwiperSlide>
                         <Link to={`/product/${deal.id}`} className="swiper-carousel-content">
                             <div className="swiper-super-deals-img">

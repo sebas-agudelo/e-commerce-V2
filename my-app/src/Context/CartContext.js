@@ -11,6 +11,8 @@ export const CartProvider = ({ children }) => {
   const [saleTotalPrice, setSaleTotalPrice] = useState()
   const { session, loadingSession } = useContext(AuthSessionContext);
   const [isCartLoading, setIsCartLoading] = useState(true);
+    const [isAddingToCart, setIsAddingToCart] = useState(false);
+
 
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -103,7 +105,7 @@ export const CartProvider = ({ children }) => {
       return;
     }
 
-
+setIsAddingToCart(true);
     // Lägg till produkten i localStorage om inte inloggad
     if (!session) {
       setCartItems((prevCart) => {
@@ -160,6 +162,7 @@ export const CartProvider = ({ children }) => {
         localStorage.setItem("cart", JSON.stringify(updatedCart));
         return updatedCart;
       });
+      setIsAddingToCart(false);
     }
 
     // Lägg till produkter för inloggade användare
@@ -182,6 +185,8 @@ export const CartProvider = ({ children }) => {
         }
       } catch (error) {
         console.error("Ett oväntat fel inträffade. Försök igen");
+      }finally{
+        setIsAddingToCart(false);
       }
     }
   };
@@ -281,7 +286,8 @@ export const CartProvider = ({ children }) => {
         clearCart,
         saleTotalPrice,
         setSaleTotalPrice,
-        isCartLoading
+        isCartLoading,
+        isAddingToCart
       }}
     >
       {children}
