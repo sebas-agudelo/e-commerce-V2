@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <main className="home-main">
         <article className="hero-video">
-          <img src="/HEROOpng" />
+          <img src="/HEROO.png" />
         </article>
 
         <section className="Products-main">

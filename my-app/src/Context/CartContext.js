@@ -205,7 +205,7 @@ setIsAddingToCart(true);
 
       if (response.ok) {
         if (data.success) {
-          await showCart();
+          // await showCart();
         }
       } else {
         alert(data.error);
