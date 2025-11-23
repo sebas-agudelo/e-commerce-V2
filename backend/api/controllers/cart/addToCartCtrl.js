@@ -39,7 +39,7 @@ export const showCart = async (req, res) => {
 
       if (total.sale_unit_price) {
         let unitDiscount = total.unit_price - total.sale_unit_price || 0;
-        salePriceSum = unitDiscount * total.quantity || 0;
+        salePriceSum += unitDiscount * total.quantity || 0;
       }
     });
 
