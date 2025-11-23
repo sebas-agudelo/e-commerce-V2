@@ -245,6 +245,32 @@ export const customerAuthOrders = async (req, res) => {
       );
     }
 
+     const productIds = ItemsToSend.map((item) => item.product_id)
+  
+     let { data: products, error } = await supabase
+      .from('products')
+      .select('id, purchase_count')
+      .in('id', productIds)
+
+
+   const updatedPurchaseCount = products.map((item) => {
+    const findItembyId = ItemsToSend.find((prdt) => prdt.product_id === item.id)
+    console.log(findItembyId);
+
+    if(findItembyId){
+      return {
+        id: item.id,
+        purchase_count: item.purchase_count - findItembyId.quantity
+      }
+    }
+   })   
+
+   if(updatedPurchaseCount.length > 0){
+     let { data: insertproducts, errors } = await supabase
+      .from('products')
+      .upsert(updatedPurchaseCount)
+   }
+
     return res.status(201).json({
       success: "Tack för din betalning! Din order är nu registrerad.",
     });
@@ -363,6 +389,32 @@ export const customerOrders = async (req, res) => {
         )}`
       );
     }
+
+     const productIds = ItemsToSend.map((item) => item.product_id)
+  
+     let { data: products, error } = await supabase
+      .from('products')
+      .select('id, purchase_count')
+      .in('id', productIds)
+
+
+   const updatedPurchaseCount = products.map((item) => {
+    const findItembyId = ItemsToSend.find((prdt) => prdt.product_id === item.id)
+    console.log(findItembyId);
+
+    if(findItembyId){
+      return {
+        id: item.id,
+        purchase_count: item.purchase_count - findItembyId.quantity
+      }
+    }
+   })   
+
+   if(updatedPurchaseCount.length > 0){
+     let { data: insertproducts, errors } = await supabase
+      .from('products')
+      .upsert(updatedPurchaseCount)
+   }
 
     return res.status(201).json({
       success: "Tack för din betalning! Din order är nu registrerad.",
