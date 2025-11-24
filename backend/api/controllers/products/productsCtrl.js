@@ -15,7 +15,7 @@ export const filtredProducts = async (
   const offset = (page - 1) * pageSize;
   let query = supabase
     .from("products")
-    .select("id, title, price, img, sale_price, category_id, category_name, purchase_count, brand", { count: "exact" })
+    .select("id, title, price, img, sale_price, category_id, category_name, purchase_count, brand, battery_life, charging_time", { count: "exact" })
     .range(offset, offset + pageSize - 1);
 
   if (price !== null && price !== undefined && price !== "" && price !== 0) {
