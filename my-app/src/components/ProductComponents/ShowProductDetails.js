@@ -6,7 +6,7 @@ import { CartContext } from "../../Context/CartContext";
 import ButtonSpinner from "../spinners/ButtonSpinner";
 import { ProductContext } from "../../Context/ProductContext";
 
-export default function ShowProductDetails({ productData }) {
+export default function ShowProductDetails() {
   const [isClicked, setIsClicked] = useState(false);
   const { addToCart, isAddingToCart } = useContext(CartContext);
   const {productData} = useContext(ProductContext);
