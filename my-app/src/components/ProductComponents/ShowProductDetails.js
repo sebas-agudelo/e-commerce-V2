@@ -5,6 +5,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import { CartContext } from "../../Context/CartContext";
 import ButtonSpinner from "../spinners/ButtonSpinner";
 import { ProductContext } from "../../Context/ProductContext";
+import ContentSpinner from "../spinners/ContentSpinner"
 
 export default function ShowProductDetails() {
   const [isClicked, setIsClicked] = useState(false);
@@ -21,7 +22,7 @@ export default function ShowProductDetails() {
 
   return (
     <>
-      {isLoading ? null :
+      {isLoading ? <ContentSpinner /> :
         <>
           <div className="image-wrapper">
             <img src={productData?.img} alt={productData?.title} />
