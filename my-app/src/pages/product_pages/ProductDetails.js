@@ -15,7 +15,7 @@ export default function ProductDetails() {
   }, [id]);
 
   return (
-    <main className="product-details" style={{ paddingTop: "65px" }}>
+    <main className="product-details" style={{ paddingTop: "75px" }}>
         <>
           <section>
             <ShowProductDetails />
