@@ -4,27 +4,12 @@ import 'rc-slider/assets/index.css';
 import Footer from "./Footer";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { SaleProductsCarousel } from "../components/Carousels/SaleProductsCarousel";
-
+import { ProductContext } from "../Context/ProductContext";
 
 export default function Home() {
-  const [categories, setCategories] = useState([]);
+  const {categories, getCategories} = useContext(ProductContext)
 
   useEffect(() => {
-    const getCategories = async () => {
-      const response = await fetch(`https://e-commerce-v2-hts6.vercel.app/api/categori/get`, {
-        method: "GET",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-      });
-      
-      const data = await response.json();
-
-      if (response.ok) {
-        setCategories(data.data);
-        
-      }
-    };
-
     getCategories();
   }, []);
 
