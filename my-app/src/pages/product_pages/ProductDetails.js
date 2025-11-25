@@ -10,18 +10,18 @@ export default function ProductDetails() {
   const { id } = useParams();
 
   useEffect(() => {
+    if(isLoading) return;
     fetchProductById(id)
   }, [id]);
 
   return (
     <main className="product-details" style={{ paddingTop: "65px" }}>
-      {isLoading ? null :
         <>
           <section>
             <ShowProductDetails />
           </section>
         </>
-      }
+      
       <Footer />
 
     </main>

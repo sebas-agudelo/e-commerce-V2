@@ -18,8 +18,8 @@ export const ProductProvider = ({ children }) => {
   }, [location]);
 
   const fetchProductById = async (id) => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const response = await fetch(
         `https://e-commerce-v2-hts6.vercel.app/api/product/get/${id}`,
         {
@@ -77,6 +77,7 @@ export const ProductProvider = ({ children }) => {
         getCategories,
         fetchProductById,
         setCategories,
+        isLoading
       }}
     >
       {children}

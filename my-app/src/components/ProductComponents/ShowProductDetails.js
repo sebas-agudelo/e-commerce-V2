@@ -9,7 +9,7 @@ import { ProductContext } from "../../Context/ProductContext";
 export default function ShowProductDetails() {
   const [isClicked, setIsClicked] = useState(false);
   const { addToCart, isAddingToCart } = useContext(CartContext);
-  const {productData} = useContext(ProductContext);
+  const { productData, isLoading } = useContext(ProductContext);
 
   const readMoreOpen = () => {
     setIsClicked(true);
@@ -21,79 +21,83 @@ export default function ShowProductDetails() {
 
   return (
     <>
-      <div className="image-wrapper">
-        <img src={productData?.img} alt={productData?.title} />
-      </div>
+      {isLoading ? null :
+        <>
+          <div className="image-wrapper">
+            <img src={productData?.img} alt={productData?.title} />
+          </div>
 
-      <article className="title-and-actions">
-        <p id="title">{productData?.title}</p>
+          <article className="title-and-actions">
+            <p id="title">{productData?.title}</p>
 
-        {productData?.sale_price ?
-          <>
-            <p className={`price ${productData?.sale_price ? "mmm" : ""}`}>{productData?.price}.00 kr.</p>
-            <p className="sale_price">{productData?.sale_price}.00 kr.</p>
-          </>
-          :
-          <p className="price">{productData?.price}.00 kr.</p>
-        }
+            {productData?.sale_price ?
+              <>
+                <p className={`price ${productData?.sale_price ? "mmm" : ""}`}>{productData?.price}.00 kr.</p>
+                <p className="sale_price">{productData?.sale_price}.00 kr.</p>
+              </>
+              :
+              <p className="price">{productData?.price}.00 kr.</p>
+            }
 
-        {productData?.purchase_count > 0 ?
-          <button
-            className="add-cart-btn"
-            onClick={() => addToCart(productData, productData.id)}
-          >
-            {isAddingToCart ? <ButtonSpinner />: <> <PiShoppingCartThin />
-            Lägg i varukorgen</>}
+            {productData?.purchase_count > 0 ?
+              <button
+                className="add-cart-btn"
+                onClick={() => addToCart(productData, productData.id)}
+              >
+                {isAddingToCart ? <ButtonSpinner /> : <> <PiShoppingCartThin />
+                  Lägg i varukorgen</>}
 
-          </button>
-          :
-          <button
-            className="add-cart-btn-disabled"
-          >
-            Tillfälligt slut
-          </button>
-        }
+              </button>
+              :
+              <button
+                className="add-cart-btn-disabled"
+              >
+                Tillfälligt slut
+              </button>
+            }
 
-        <div className="additional-info">
-          <p>
-            <IoMdCheckmark /> Säker betalning
-          </p>
-          <p>
-            <IoMdCheckmark />
-            30-dagars öppet köp
-          </p>
-          <p>
-            <IoMdCheckmark />
-            Garanti: {productData?.garanti}år
-          </p>
-        </div>
-      </article>
+            <div className="additional-info">
+              <p>
+                <IoMdCheckmark /> Säker betalning
+              </p>
+              <p>
+                <IoMdCheckmark />
+                30-dagars öppet köp
+              </p>
+              <p>
+                <IoMdCheckmark />
+                Garanti: {productData?.garanti}år
+              </p>
+            </div>
+          </article>
 
-      <article className="description">
-        <div className="dddd">
-          <span>Produktbeskrivning</span>
-          {isClicked ? (
-            <span onClick={readMoreClose}>
-              <VscChromeClose />
-            </span>
-          ) : (
-            ""
-          )}
-        </div>
+          <article className="description">
+            <div className="dddd">
+              <span>Produktbeskrivning</span>
+              {isClicked ? (
+                <span onClick={readMoreClose}>
+                  <VscChromeClose />
+                </span>
+              ) : (
+                ""
+              )}
+            </div>
 
-        <p className={isClicked ? "isClicked" : ""}>
-          {productData?.description}
-        </p>
+            <p className={isClicked ? "isClicked" : ""}>
+              {productData?.description}
+            </p>
 
-        {isClicked ? "" : <button onClick={readMoreOpen}>Läs mer</button>}
-      </article>
+            {isClicked ? "" : <button onClick={readMoreOpen}>Läs mer</button>}
+          </article>
 
-      <article className="specifications">
-        <span>Specifikationer</span>
-        <p>Märke: {productData?.brand}</p>
-        <p>Betteritid: {productData?.battery_life}h</p>
-        <p>Anslutning: {productData?.connection_type}</p>
-      </article>
+          <article className="specifications">
+            <span>Specifikationer</span>
+            <p>Märke: {productData?.brand}</p>
+            <p>Betteritid: {productData?.battery_life}h</p>
+            <p>Anslutning: {productData?.connection_type}</p>
+          </article>
+        </>
+      }
     </>
   )
 }
