@@ -41,8 +41,6 @@ export const ProductsProvider = ({ children }) => {
       setCurrentPage(data.currenPage || 0);  
       setProducts(data.products || []);
       setInvalidFilter(true)
-      
-      
     }
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen");

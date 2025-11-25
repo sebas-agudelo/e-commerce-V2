@@ -8,19 +8,9 @@ export const ProductProvider = ({ children }) => {
   const [okmessage, setOkMessage] = useState("");
   const [Errormessage, setErrorMessage] = useState("");
   const [categories, setCategories] = useState([]);
-  const [productData, setProductData] = useState({
-    title: "",
-    price: "",
-    category_id: "",
-    category_name: "",
-    description: "",
-    brand: "",
-    connection_type: "",
-    charging_time: "",
-    battery_life: "",
-    garanti: "",
-    img: null,
-  });
+  const [productData, setProductData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     setErrorMessage("");
@@ -29,6 +19,7 @@ export const ProductProvider = ({ children }) => {
 
   const fetchProductById = async (id) => {
     try {
+      setIsLoading(true);
       const response = await fetch(
         `https://e-commerce-v2-hts6.vercel.app/api/product/get/${id}`,
         {
@@ -47,6 +38,8 @@ export const ProductProvider = ({ children }) => {
       }
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen.");
+    } finally {
+      setIsLoading(false);
     }
   };
 

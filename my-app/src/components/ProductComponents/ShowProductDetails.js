@@ -2,14 +2,14 @@ import React, { useContext, useState } from "react";
 import { PiShoppingCartThin } from "react-icons/pi";
 import { IoMdCheckmark } from "react-icons/io";
 import { VscChromeClose } from "react-icons/vsc";
-import ProductStates from "../../hooks/ProductStates";
 import { CartContext } from "../../Context/CartContext";
-import ContentSpinner from "../spinners/ContentSpinner";
 import ButtonSpinner from "../spinners/ButtonSpinner";
+import { ProductContext } from "../../Context/ProductContext";
 
 export default function ShowProductDetails({ productData }) {
   const [isClicked, setIsClicked] = useState(false);
   const { addToCart, isAddingToCart } = useContext(CartContext);
+  const {productData} = useContext(ProductContext);
 
   const readMoreOpen = () => {
     setIsClicked(true);
