@@ -305,12 +305,12 @@ export const getProductByID = async (req, res) => {
   const { id } = req.params;
 
   try {
-    if (!id || 
-      typeof id !== "string" || 
+    if (!id ||
+      typeof id !== "string" ||
       id.trim() === "") {
       throw new Error("Ogiltig produkt ID.");
     };
-    
+
     let { data: product, error: productError } = await supabase
       .from("products")
       .select("*")
@@ -325,7 +325,17 @@ export const getProductByID = async (req, res) => {
       return res.status(404).json({ error: "Produkten kunde inte hittas." });
     }
 
-    return res.status(200).json({ product });
+    const productId = product.id;
+
+    const { data: productImages, error: imagesError } = await supabase
+      .from("product_images")
+      .select("img")
+      .eq("product_id", productId)
+      
+      
+      let productWithImages = { ...product, images: productImages };
+
+    return res.status(200).json({ product: productWithImages });
   } catch (error) {
     console.error("Intert fel getProductByID", error);
     return res.status(500).json({ error: "Något gick fel. Försök igen." });
