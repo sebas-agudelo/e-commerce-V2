@@ -288,7 +288,6 @@
                 .filter-btn {
                     width: 140px;
                     height: 40px;
-                    padding: 0 0 18px;
 
                     svg {
                         margin: 0 0 0 15px;
@@ -297,7 +296,7 @@
             }
 
             .product-wrapper {
-                width: calc(100% / 4 - 4px);
+                width: calc(100% / 3 - 4px);
                 flex-wrap: wrap;
                 flex-direction: column;
                 transition: all 0.3s ease;
@@ -379,7 +378,8 @@
             top: -3%;
      left: 0%;
             transform: translate(-0%, 3%);
-            width: 38%;
+            width: auto;
+            padding: 0 24px;
             background-color: #f5752b;
             border-radius: 0 6px 0 6px;
             p {
@@ -388,7 +388,16 @@
                 text-align: center;
             }
         }   
+        }
+    }
+}
 
+@media screen and (min-width: 1024px) {
+    .Products-main {
+        .products-container {
+            .product-wrapper {
+                width: calc(100% / 4 - 4px);
+            }
         }
     }
 }

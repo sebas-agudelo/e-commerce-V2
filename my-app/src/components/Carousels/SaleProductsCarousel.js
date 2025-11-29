@@ -52,9 +52,14 @@ export const SaleProductsCarousel = () => {
                         slidesPerView: 1.4,
                         slidesPerGroup: 1
                     },
-                    768: {
+                    576: {
                         spaceBetween: 12,
                         slidesPerView: 2.4,
+                        slidesPerGroup: 2
+                    },
+                    768: {
+                        spaceBetween: 12,
+                        slidesPerView: 3,
                         slidesPerGroup: 2
                     },
                     1024: {
