@@ -350,14 +350,11 @@ export const categories = async (req, res) => {
       url: process.env.UPSTASH_REDIS_REST_URL || "",
       token: process.env.UPSTASH_REDIS_REST_TOKEN || ""
     }) 
-
    
      const cached = await redis.get("categories");
 
-     console.log("Cached categories: ",cached);
-
      if(cached){
-       return res.status(200).json({ data: JSON.parse(cached)});
+       return res.status(200).json({ data: cached});
      }
 
     let { data, error } = await supabase.from("categories").select("category, category_img, id");
