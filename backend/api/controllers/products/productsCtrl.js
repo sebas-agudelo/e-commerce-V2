@@ -1,4 +1,5 @@
 import { supabase_config } from "../../supabase_config/supabase_conlig.js";
+import { Redis } from '@upstash/redis';
 import validator from "validator";
 const supabase = supabase_config();
 
@@ -345,10 +346,25 @@ export const getProductByID = async (req, res) => {
 //HÄMTAR ALLA KATEGORIER
 export const categories = async (req, res) => {
   try {
-    let { data, error } = await supabase.from("categories").select("*");
+    const redis = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL || "",
+      token: process.env.UPSTASH_REDIS_REST_TOKEN || ""
+    }) 
+
+   
+     const cached = await redis.get("categories");
+
+     console.log("Cached categories: ",cached);
+
+     if(cached){
+       return res.status(200).json({ data: JSON.parse(cached)});
+     }
+
+    let { data, error } = await supabase.from("categories").select("category, category_img, id");
     if (error || !data) {
       return res.status(500).json({ error: "Fel vid hämtning av kategorier." });
     } else {
+      await redis.set("categories", JSON.stringify(data))
       return res.status(200).json({ data });
     }
   } catch (error) {
