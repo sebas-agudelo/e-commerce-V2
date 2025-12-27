@@ -1,10 +1,12 @@
 import { createContext, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
 
 export const ProductsApiContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
-  const [pages, setPages] = useState(1); 
-  const [count, setCount] = useState(0); 
+  const [pages, setPages] = useState(1);
+  const [count, setCount] = useState(0);
   const [currenPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState(0);
   const [livePrice, setLivePrice] = useState(0);
@@ -14,34 +16,55 @@ export const ProductsProvider = ({ children }) => {
   const [invalidCategory, setInvalidCategory] = useState(false);
   const [invalidFilter, setInvalidFilter] = useState(false);
   const [productLoading, setProductLoading] = useState(false);
+  const [minprice, setMinprice] = useState()
+  const [maxprice, setMaxprice] = useState()
+  const [initallyMin, setInitiallyMin] = useState();
+  const [initallyMax, setInitiallyMax] = useState();
+  const [mino, setMino] = useState();
 
   const fetchProducts = async (url) => {
-    
     try {
       const response = await fetch(url);
-      const data = await response.json();          
-      
+      const data = await response.json();
+
       if (response.ok) {
-          setPages(data.totalPages || 1);
-          setCount(data.count || 0);
-          setCurrentPage(data.currenPage || 1)
-          setProducts(data.products);
-          setInvalidCategory(false)
-          setInvalidFilter(false)
-    }
-    if(!response.ok){
-      if(data.reason === "INVALID_CATEGORY"){
-        setInvalidCategory(true)
-        return;
+        setPages(data.totalPages || 1);
+        setCount(data.count || 0);
+        setCurrentPage(data.currenPage || 1)
+        setProducts(data.products);
+        setInvalidCategory(false)
+        setInvalidFilter(false)
+        setMinprice(prev =>
+          prev !== 0 && prev !== undefined && prev !== null && prev !== ""
+            ? prev
+            : data.minAndMax?.min || 0
+        );
+
+        setMaxprice(prev =>
+          prev !== 0 && prev !== undefined && prev !== null && prev !== ""
+            ? prev
+            : data.minAndMax?.max || 0
+        );
+
+        setInitiallyMin(data.minAndMax?.min || 0);
+        setInitiallyMax(data.minAndMax?.max || 0);
+      }
+      if (!response.ok) {
+        if (data.reason === "INVALID_CATEGORY") {
+          setInvalidCategory(true)
+          return;
+        }
+
+        setMessage(data.error);
+        setPages(data.totalPages || 0);
+        setCount(data.count || 0);
+        setCurrentPage(data.currenPage || 0);
+        setProducts(data.products || []);
+        setInvalidFilter(true)
+
+
       }
 
-      setMessage(data.error);
-      setPages(data.totalPages || 0);
-      setCount(data.count || 0);
-      setCurrentPage(data.currenPage || 0);  
-      setProducts(data.products || []);
-      setInvalidFilter(true)
-    }
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen");
     }
@@ -55,7 +78,7 @@ export const ProductsProvider = ({ children }) => {
         setCount,
         count,
         setCurrentPage,
-        currenPage, 
+        currenPage,
         setPrice,
         price,
         livePrice,
@@ -69,7 +92,15 @@ export const ProductsProvider = ({ children }) => {
         invalidCategory,
         invalidFilter,
         setProductLoading,
-        productLoading
+        productLoading,
+        minprice,
+        maxprice,
+        setMinprice,
+        setMaxprice,
+        initallyMin,
+        initallyMax,
+        mino,
+        setMino
       }}
     >
       {children}
