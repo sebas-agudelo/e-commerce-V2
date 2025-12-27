@@ -61,6 +61,7 @@
 
             .filter-btns {
                 display: flex;
+                align-items: center;
                 justify-content: space-between;
 
                 .filter-btn {
@@ -80,6 +81,23 @@
                         font-size: 18px;
                         // fill: #efdd54;
 
+                    }
+                }
+
+                .sort-by-container{
+                    select{
+                        font-size: 16px;
+                        max-width: 105px;
+                        padding: 6px 0;
+                        border-style: none;
+                        // border-bottom: 0.5px solid #181818;
+                
+                    // border-radius: 6px;
+
+                        option{
+                        font-size: 13px;
+
+                        }
                     }
                 }
             }
@@ -285,12 +303,22 @@
     
                 }
 
-                .filter-btn {
-                    width: 140px;
-                    height: 40px;
+                .filter-btns {
+                    .sort-by-container{
+                        select{
+                            cursor: pointer;
+                          
+                          option{
+                            font-size: 16px;
+                            
+                            }
 
-                    svg {
-                        margin: 0 0 0 15px;
+
+                            &:focus{
+                                width: 160px;
+                              outline: none;    
+                            }
+                        }   
                     }
                 }
             }
@@ -302,7 +330,7 @@
                 transition: all 0.3s ease;
               min-height: 513px;
                 
-                margin: 8px 2px;
+                margin: 16px 2px;
 
                 a {
                     display: flex;
