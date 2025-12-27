@@ -7,55 +7,59 @@ import { useSearchParams } from "react-router-dom";
 export default function Products() {
   const {
     fetchProducts,
-    price,
-    currenPage,
-    setCurrentPage,
-    categoryID,
     setCategoryID,
-    setProductLoading
+    setProductLoading,
+    setMinprice,
+    setMaxprice,
+    setMino,
   } = useContext(ProductsApiContext);
 
   const [searchParams] = useSearchParams();
   const urlCategory = searchParams.get("categoryID") || "";
   const urlPage = parseInt(searchParams.get("page")) || 1;
+  const minuumPrice = searchParams.get("minprice") || ""
+  const maxiumPrice = searchParams.get("maxprice") || ""
+  const urlOrder = searchParams.get("mino") || ""
 
   useEffect(() => {
     setCategoryID(urlCategory);
-      setCurrentPage(urlPage);
-  }, [urlCategory, urlPage]);
+    setMinprice(minuumPrice);
+    setMaxprice(maxiumPrice);
+    setMino(urlOrder);
+  }, [urlCategory, minuumPrice, maxiumPrice, urlOrder]);
+
 
   useEffect(() => {
-    if (categoryID === urlCategory && currenPage === urlPage) {
-      fetchAllProducts();
-    }
-  }, [currenPage, price, categoryID, urlCategory, urlPage]);
+    fetchAllProducts();
+  }, [urlPage, urlCategory, minuumPrice, maxiumPrice, urlOrder]);
 
   const fetchAllProducts = async () => {
-setProductLoading(true)
     try {
-      let url = `https://e-commerce-v2-hts6.vercel.app/api/products/show?page=${currenPage}`;
+      setProductLoading(true)
 
-      if (price && categoryID) {
-        url += `&price=${price}&categoryID=${categoryID}`;
-      } else if (price) {
-        url += `&price=${price}`;
-      } else if (categoryID) {
-        url += `&categoryID=${categoryID}`;
-      }
+      const backendParams = new URLSearchParams();
 
-      await fetchProducts(url);
+      backendParams.set("page", urlPage);
+      if (urlCategory) backendParams.set("categoryID", urlCategory);
+      if (minuumPrice) backendParams.set("minPrice", minuumPrice);
+      if (maxiumPrice) backendParams.set("maxPrice", maxiumPrice);
+      if (urlOrder) backendParams.set("mino", urlOrder);
 
-      
+      let url = `https://e-commerce-v2-hts6.vercel.app/api/products/show?${backendParams.toString()}`;
+
+ await fetchProducts(url);
+
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen.");
-    } finally{
+    } finally {
       setProductLoading(false)
     }
   };
 
   return (
     <main className="Products-main">
-      <ShowProdcuts />
+      <ShowProdcuts
+      />
       <Footer />
     </main>
   );

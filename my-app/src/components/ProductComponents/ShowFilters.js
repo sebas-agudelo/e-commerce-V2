@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, use } from "react";
 import { IoFilterSharp } from "react-icons/io5";
 import { VscChromeClose } from "react-icons/vsc";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -9,22 +9,28 @@ import { useSearchParams } from "react-router-dom";
 
 export default function ShowFilters({ category, selectedCatId }) {
   const {
-    price,
-    setPrice,
-    setLivePrice,
-    livePrice,
     count,
     setCategoryID,
     categoryID,
-    setCurrentPage
+    setCurrentPage,
+    minprice,
+    setMinprice,
+    maxprice,
+    setMaxprice,
+    initallyMin,
+    initallyMax,
+    setMino,
+    mino
   } = useContext(ProductsApiContext);
+
 
   const [isClicked, setIsClicked] = useState(false);
   const { categories } = useContext(ProductContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const newParams = new URLSearchParams(searchParams);
-
+  const minuumPrice = searchParams.get("minprice") || ""
+  const maxiumPrice = searchParams.get("maxprice") || ""
   const handleClick = () => {
     {
       isClicked ? setIsClicked(false) : setIsClicked(true);
@@ -32,12 +38,14 @@ export default function ShowFilters({ category, selectedCatId }) {
   };
 
   const removeFilters = () => {
-    setPrice(0);
-    setCategoryID("");
-    setCurrentPage(1);
-    newParams.delete("page");
-    newParams.delete("categoryID");
-    setSearchParams(newParams);
+    if (categoryID || minuumPrice || maxiumPrice) {
+      setCategoryID("");
+      setMinprice("");
+      setMaxprice("");
+      const newParams = new URLSearchParams();
+      setSearchParams(newParams);
+    }
+
   };
 
   const handleCategoryFilter = (e) => {
@@ -48,11 +56,45 @@ export default function ShowFilters({ category, selectedCatId }) {
 
     if (selectedCategory) {
       newParams.delete("page");
+      newParams.delete("minprice");
+      newParams.delete("maxprice");
       newParams.set("categoryID", selectedCategory);
       setSearchParams(newParams);
       setCurrentPage(1);
     }
   };
+
+  const updateQueryParams = () => {
+    if (Number(minprice) < initallyMin || Number(maxprice) > initallyMax) {
+      return;
+    }
+    if (minprice) {
+      newParams.delete("page");
+      newParams.set("minprice", minprice);
+    }
+
+    if (maxprice) {
+      newParams.delete("page");
+      newParams.set("maxprice", maxprice);
+    }
+
+    setSearchParams(newParams);
+  };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateQueryParams();
+  };
+
+  const getMino = (e) => {
+    const sortOrder = e.target.value;
+    setMino(sortOrder);
+    newParams.set("mino", sortOrder);
+    setSearchParams(newParams);
+  }
+
+
 
   return (
     <div>
@@ -82,7 +124,39 @@ export default function ShowFilters({ category, selectedCatId }) {
                 </select>
               )}
             </>
-          </div>  
+          </div>
+          <form
+            className="price-form"
+            onSubmit={handleSubmit}>
+            <p>Pris</p>
+            <div
+              className="price-inputs"
+            >
+              <div
+                className="price-input"
+              >
+                <label>Från</label>
+                <input type="text"
+                  placeholder="Från"
+                  value={minprice}
+                  onChange={(e) => setMinprice(e.target.value)}
+                  onBlur={updateQueryParams}
+                />
+              </div>
+              <div
+                className="price-input"
+              >
+                <label>Till</label>
+                <input
+                  type="text"
+                  placeholder="Till"
+                  value={maxprice}
+                  onChange={(e) => setMaxprice(e.target.value)}
+                  onBlur={updateQueryParams}
+                />
+              </div>
+            </div>
+          </form>
         </div>
 
         <div className="filter-actions">
@@ -96,10 +170,14 @@ export default function ShowFilters({ category, selectedCatId }) {
       </div>
 
       <div className="filter-btns">
-      <button className="filter-btn">
-          Sortera efter 
-          <AiOutlinePlus />
-        </button>
+              <div className="sort-by-container">
+                <select className="sort-select" value={mino} onChange={getMino} >
+                  <option value="0" onClick={() => setMino("")}>Relevant</option>
+                  <option value="ASC" onClick={() => setMino("ASC")}>Pris: Lägst till högst</option>
+                  <option value="DESC" onClick={() => setMino("DESC")}>Pris: Högst till lägst</option>
+                </select>
+              </div>
+
         <button className="filter-btn" onClick={handleClick}>
           Alla filter
           <IoFilterSharp />

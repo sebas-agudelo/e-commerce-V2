@@ -5,44 +5,53 @@ import Footer from "../Footer";
 import { ProductsApiContext } from "../../Context/ProductsContext";
 
 const ProductSearch = () => {
-  const [searchParams] = useSearchParams();
-
-  const queryFromURL = searchParams.get("query") || "";
-  const urlPage = parseInt(searchParams.get("page")) || 1;
-  const urlCategory = searchParams.get("categoryID") || "";
-
+  const {
+    fetchProducts,
+    setCategoryID,
+    setProductLoading,
+    setMinprice,
+    setMaxprice,
+    setMino,
+  } = useContext(ProductsApiContext);
   
-  const { fetchProducts, price, currenPage, categoryID, setCategoryID, setProductLoading } =
-    useContext(ProductsApiContext);
+  const [searchParams] = useSearchParams();
+    const queryFromURL = searchParams.get("query") || "";
+   const urlCategory = searchParams.get("categoryID") || "";
+   const urlPage = parseInt(searchParams.get("page")) || 1;
+   const minuumPrice = searchParams.get("minprice") || ""
+   const maxiumPrice = searchParams.get("maxprice") || ""
+   const urlOrder = searchParams.get("mino") || ""
 
-  useEffect(() => {
-    if (urlCategory) {
-      setCategoryID(urlCategory);
-    }
-  }, [urlCategory]);
 
-  useEffect(() => {
-    
-    if (queryFromURL && currenPage === urlPage && categoryID === urlCategory) {
-      fetchSearchProducts(queryFromURL);
-    }
-  }, [currenPage, queryFromURL, price, categoryID, urlPage, urlCategory]);
+ useEffect(() => {
+     setCategoryID(urlCategory);
+     setMinprice(minuumPrice);
+     setMaxprice(maxiumPrice);
+     setMino(urlOrder);
+   }, [urlCategory, minuumPrice, maxiumPrice, urlOrder]);
+ 
+ 
+   useEffect(() => {
+     fetchSearchProducts(queryFromURL);
+   }, [queryFromURL, urlPage, urlCategory, minuumPrice, maxiumPrice, urlOrder]);
+ 
 
   const fetchSearchProducts = async (query) => {
     setProductLoading(true)
+
+     const backendParams = new URLSearchParams();
+
+      backendParams.set("page", urlPage);
+      if (urlCategory) backendParams.set("categoryID", urlCategory);
+      if (minuumPrice) backendParams.set("minPrice", minuumPrice);
+      if (maxiumPrice) backendParams.set("maxPrice", maxiumPrice);
+      if (urlOrder) backendParams.set("mino", urlOrder);
     
     try {
 
-      let url = `https://e-commerce-v2-hts6.vercel.app/search?query=${query}&page=${currenPage}`;
-      
-      if (price && categoryID) {
-        url += `&price=${price}&categoryID=${categoryID}`;
-      } else if (price) {
-        url += `&price=${price}`;
-      } else if (categoryID) {
-        url += `&categoryID=${categoryID}`;
-      }
 
+      let url = `https://e-commerce-v2-hts6.vercel.app/search?query=${query}&${backendParams.toString()}`;
+      
       await fetchProducts(url);
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen.");

@@ -9,33 +9,46 @@ import { useNavigate } from "react-router-dom";
 
 export default function ProductsByCategory() {
   const { selectedCatId, category } = useParams();
+
   const [searchParams] = useSearchParams();
+  const urlCategory = searchParams.get("categoryID") || "";
   const urlPage = parseInt(searchParams.get("page")) || 1;
-  const nav = useNavigate();
-  
-  const { fetchProducts, currenPage, price, setProductLoading} =
+  const minuumPrice = searchParams.get("minprice") || ""
+  const maxiumPrice = searchParams.get("maxprice") || ""
+  const urlOrder = searchParams.get("mino") || ""
+
+  const { fetchProducts, setProductLoading, setCategoryID, setMinprice, setMaxprice, setMino } =
     useContext(ProductsApiContext);
 
-    useEffect(() => {   
-      if (selectedCatId && currenPage === urlPage) {
-        fetchProductByCategory();
-      };
-    }, [currenPage, price, selectedCatId, urlPage]);
-  
+  useEffect(() => {
+    setCategoryID(selectedCatId);
+    setMinprice(minuumPrice);
+    setMaxprice(maxiumPrice);
+    setMino(urlOrder);
+  }, [selectedCatId, minuumPrice, maxiumPrice, urlOrder]);
+
+  useEffect(() => {
+    fetchProductByCategory();
+  }, [minuumPrice, maxiumPrice, urlOrder, selectedCatId, urlPage, urlCategory]);
+
   const fetchProductByCategory = async () => {
     setProductLoading(true)
+
+    const backendParams = new URLSearchParams();
+
+    backendParams.set("page", urlPage);
+    if (urlCategory) backendParams.set("categoryID", urlCategory);
+    if (minuumPrice) backendParams.set("minPrice", minuumPrice);
+    if (maxiumPrice) backendParams.set("maxPrice", maxiumPrice);
+    if (urlOrder) backendParams.set("mino", urlOrder);
     try {
-      let url = `https://e-commerce-v2-hts6.vercel.app/api/product/categori/${selectedCatId}?page=${currenPage}`;
+      let url = `https://e-commerce-v2-hts6.vercel.app/api/product/categori/${selectedCatId}?${backendParams.toString()}`;
 
-      if (price) {
-        url += `&price=${price}`;
-      } 
-
-    await fetchProducts(url);
+      await fetchProducts(url);
 
     } catch (error) {
       alert("Ett oväntat fel har inträffat. Försök igen.")
-    } finally{
+    } finally {
       setProductLoading(false)
     }
   };
@@ -47,3 +60,4 @@ export default function ProductsByCategory() {
     </main>
   );
 }
+
