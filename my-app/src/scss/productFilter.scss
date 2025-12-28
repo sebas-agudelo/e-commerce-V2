@@ -67,6 +67,39 @@ margin: 48px 0 0;
         cursor: pointer;
       }
     }
+
+    .price-form{
+      padding: 24px 0;
+      p{
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0 0 12px;
+      }
+      .price-inputs{
+        display: flex;
+        justify-content: space-between;
+
+        .price-input{
+
+          label{
+            display: block;
+            font-size: 16px;
+            font-weight: 400;
+            margin: 0 0 4px;
+          }
+
+          width: 105px;
+
+          input{
+            width: 100%;
+            padding: 10px 4px;
+            border-radius: 8px;
+            border-style: none;
+            border: 0.5px solid #181818;
+          }
+        }
+      }
+    }
   }
 
   .filter-actions {
@@ -146,7 +179,7 @@ margin: 48px 0 0;
 
 @media screen and (min-width: 768px) {
   .products-filter-container {
-  width: 330px;
+    width: 330px;
     
     .products-filters-wrapper {
       
