@@ -5,6 +5,7 @@ För utloggade användare lagras varukorgens innehåll i webbläsaren (localStor
 När användaren loggar in synkroniseras varukorgen med databasen, vilket innebär att produkter från localStorage överförs till användarens konto och localStorage därefter tömms. Om användaren är inloggad hämtas användarens uppgifter automatiskt i checkout. Användaren behöver då inte fylla i sina personuppgifter manuellt, utan endast ange kortuppgifter för betalning via Stripe.
 
 Vad finns i projektet?
+
 Prisfiltrering – filtrering av produkter baserat på lägsta och högsta pris
 Kategorifiltrering
 Sökfunktion
