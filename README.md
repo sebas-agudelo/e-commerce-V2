@@ -6,7 +6,7 @@ När användaren loggar in synkroniseras varukorgen med databasen, vilket inneb�
 
 Vad finns i projektet?
 
-Prisfiltrering – filtrering av produkter baserat på lägsta och högsta pris
+Prisfiltrering – filtrering av produkter baserat på lägsta och högsta pris </br>
 Kategorifiltrering </br>
 Sökfunktion </br>
 Pagination </br>
