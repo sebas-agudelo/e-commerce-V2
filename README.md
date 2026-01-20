@@ -7,12 +7,19 @@ När användaren loggar in synkroniseras varukorgen med databasen, vilket inneb�
 Vad finns i projektet?
 
 Prisfiltrering – filtrering av produkter baserat på lägsta och högsta pris
+
 Kategorifiltrering
+
 Sökfunktion
+
 Pagination
+
 Betalning via stripe
+
 Varukorg 
+
 Kassa
+
 Autentisering (Auth)
 
 Vercel - 
