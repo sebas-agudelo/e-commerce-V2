@@ -1,4 +1,4 @@
-<img width="913" height="590" alt="image" src="https://github.com/user-attachments/assets/788b233b-96c7-4941-bae1-27f5295537f5" />Projektbeskrivning
+Projektbeskrivning
 
 Projektet är en e-handel som stödjer både inloggade och utloggade användare.
 För utloggade användare lagras varukorgens innehåll i webbläsaren (localStorage).
@@ -6,14 +6,14 @@ När användaren loggar in synkroniseras varukorgen med databasen, vilket inneb�
 
 Vad finns i projektet?
 
-Prisfiltrering – filtrering av produkter baserat på lägsta och högsta pris </br>
-Kategorifiltrering </br>
-Sökfunktion </br>
-Pagination </br>
-Betalning via stripe </br>
-Varukorg </br>
-Kassa </br>
-Autentisering (Auth) </br>
+- Prisfiltrering – filtrering av produkter baserat på lägsta och högsta pris
+- Kategorifiltrering 
+- Sökfunktion 
+- Pagination
+- Betalning via stripe 
+- Varukorg 
+- Kassa 
+- Autentisering (Auth) 
 
 Tekniker
 
