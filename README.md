@@ -10,7 +10,7 @@ Vad finns i projektet?
 - Kategorifiltrering 
 - Sökfunktion 
 - Pagination
-- Betalning via stripe 
+- Betalning via Stripe 
 - Varukorg 
 - Kassa 
 - Autentisering (Auth) 
@@ -23,11 +23,12 @@ Tekniker
 - SCSS
 - JavaScript
 - Swiper
+- LocalStorage
 
 **Backend**
 - Express.js 
 - Supabse – databas och autentisering
-- Rest API 
+- REST API
 - JavaScript 
 
 Vercel - 
